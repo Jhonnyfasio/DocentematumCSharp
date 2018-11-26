@@ -13,18 +13,19 @@ namespace DocentematumCSharp
 		{
 			connection = new MySqlConnection("server = localhost; password =;" + "database = docentematum; " +
 					"User Id = root;");
+			connection.Open();
 		}
 
 		public MySqlCommand getCommand(string sentence)
 		{
 		MySqlCommand command = new MySqlCommand(sentence, connection);
-		connection.Open();
+		//connection.Open();
 			return command;
 		}
 
 		public void closeConnection()
 		{
-
+			connection.Close();
 		}
 
 	}

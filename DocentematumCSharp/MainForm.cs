@@ -11,6 +11,7 @@ namespace DocentematumCSharp
 {
 	public partial class MainForm : Form
 	{
+		MainForm forma;
 		public MainForm()
 		{
 			InitializeComponent();
@@ -19,10 +20,26 @@ namespace DocentematumCSharp
 
 		private void button1_Click(object sender, EventArgs e)
 		{
-			Form1 forma1 = new Form1(this);
+			Login forma1 = new Login(this);
 			this.Hide();
 			forma1.Show();
 			
+		}
+
+		public void endOfProgram()
+		{
+			this.Close();
+		}
+
+		public void setMainForm(MainForm formaMainForm)
+		{
+			
+			forma = formaMainForm;
+		}
+
+		public MainForm getMainForm()
+		{
+			return forma;
 		}
 	}
 }

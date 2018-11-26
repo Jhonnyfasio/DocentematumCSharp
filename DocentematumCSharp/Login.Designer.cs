@@ -1,6 +1,6 @@
 ﻿namespace DocentematumCSharp
 {
-	partial class Form1
+	partial class Login
 	{
 		/// <summary>
 		/// Variable del diseñador necesaria.
@@ -30,8 +30,8 @@
 		{
 			this.components = new System.ComponentModel.Container();
 			this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-			this.textBox1 = new System.Windows.Forms.TextBox();
-			this.textBox2 = new System.Windows.Forms.TextBox();
+			this.usuarioTextBox = new System.Windows.Forms.TextBox();
+			this.contrasenaTextBox = new System.Windows.Forms.TextBox();
 			this.button1 = new System.Windows.Forms.Button();
 			this.Usuario = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
@@ -44,20 +44,21 @@
 			this.contextMenuStrip1.Name = "contextMenuStrip1";
 			this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
 			// 
-			// textBox1
+			// usuarioTextBox
 			// 
-			this.textBox1.Location = new System.Drawing.Point(108, 138);
-			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(154, 20);
-			this.textBox1.TabIndex = 1;
+			this.usuarioTextBox.Location = new System.Drawing.Point(108, 138);
+			this.usuarioTextBox.Name = "usuarioTextBox";
+			this.usuarioTextBox.Size = new System.Drawing.Size(154, 20);
+			this.usuarioTextBox.TabIndex = 1;
 			// 
-			// textBox2
+			// contrasenaTextBox
 			// 
-			this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.textBox2.Location = new System.Drawing.Point(108, 195);
-			this.textBox2.Name = "textBox2";
-			this.textBox2.Size = new System.Drawing.Size(154, 20);
-			this.textBox2.TabIndex = 2;
+			this.contrasenaTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.contrasenaTextBox.Location = new System.Drawing.Point(108, 195);
+			this.contrasenaTextBox.Name = "contrasenaTextBox";
+			this.contrasenaTextBox.PasswordChar = '*';
+			this.contrasenaTextBox.Size = new System.Drawing.Size(154, 20);
+			this.contrasenaTextBox.TabIndex = 2;
 			// 
 			// button1
 			// 
@@ -104,9 +105,8 @@
 			this.pictureBox1.Size = new System.Drawing.Size(66, 78);
 			this.pictureBox1.TabIndex = 6;
 			this.pictureBox1.TabStop = false;
-			this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
 			// 
-			// Form1
+			// Login
 			// 
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
 			this.BackColor = System.Drawing.Color.Black;
@@ -116,10 +116,11 @@
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.Usuario);
 			this.Controls.Add(this.button1);
-			this.Controls.Add(this.textBox2);
-			this.Controls.Add(this.textBox1);
-			this.Name = "Form1";
+			this.Controls.Add(this.contrasenaTextBox);
+			this.Controls.Add(this.usuarioTextBox);
+			this.Name = "Login";
 			this.Text = "Iniciar Sesión";
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
@@ -129,8 +130,8 @@
 		#endregion
 
 		private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-		private System.Windows.Forms.TextBox textBox1;
-		private System.Windows.Forms.TextBox textBox2;
+		private System.Windows.Forms.TextBox usuarioTextBox;
+		private System.Windows.Forms.TextBox contrasenaTextBox;
 		private System.Windows.Forms.Button button1;
 		private System.Windows.Forms.Label Usuario;
 		private System.Windows.Forms.Label label1;
