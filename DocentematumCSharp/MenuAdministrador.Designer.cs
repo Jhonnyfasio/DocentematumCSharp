@@ -51,6 +51,10 @@
 			this.buttonGrado = new System.Windows.Forms.Button();
 			this.buttonProduccion = new System.Windows.Forms.Button();
 			this.buttonInicio = new System.Windows.Forms.Button();
+			this.idCarrera = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.idDivision = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.idNivel = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.tabPrincipal.SuspendLayout();
 			this.tabCarrera.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvCarrera)).BeginInit();
@@ -82,6 +86,7 @@
 			this.tabCarrera.Controls.Add(this.textBox3);
 			this.tabCarrera.Controls.Add(this.textBox2);
 			this.tabCarrera.Controls.Add(this.textBox1);
+			this.tabCarrera.ForeColor = System.Drawing.SystemColors.WindowText;
 			this.tabCarrera.Location = new System.Drawing.Point(4, 22);
 			this.tabCarrera.Name = "tabCarrera";
 			this.tabCarrera.Padding = new System.Windows.Forms.Padding(3);
@@ -92,10 +97,21 @@
 			// 
 			// dgvCarrera
 			// 
+			this.dgvCarrera.AllowUserToAddRows = false;
+			this.dgvCarrera.AllowUserToDeleteRows = false;
+			this.dgvCarrera.AllowUserToOrderColumns = true;
+			this.dgvCarrera.BackgroundColor = System.Drawing.SystemColors.WindowText;
 			this.dgvCarrera.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dgvCarrera.Location = new System.Drawing.Point(42, 235);
+			this.dgvCarrera.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idCarrera,
+            this.nombre,
+            this.idDivision,
+            this.idNivel});
+			this.dgvCarrera.GridColor = System.Drawing.SystemColors.ButtonShadow;
+			this.dgvCarrera.Location = new System.Drawing.Point(21, 235);
 			this.dgvCarrera.Name = "dgvCarrera";
-			this.dgvCarrera.Size = new System.Drawing.Size(489, 150);
+			this.dgvCarrera.ReadOnly = true;
+			this.dgvCarrera.Size = new System.Drawing.Size(535, 150);
 			this.dgvCarrera.TabIndex = 43;
 			// 
 			// label3
@@ -283,6 +299,7 @@
 			this.buttonGrado.TabIndex = 50;
 			this.buttonGrado.Text = "Grados";
 			this.buttonGrado.UseVisualStyleBackColor = true;
+			this.buttonGrado.Click += new System.EventHandler(this.buttonGrado_Click);
 			// 
 			// buttonProduccion
 			// 
@@ -293,6 +310,7 @@
 			this.buttonProduccion.TabIndex = 51;
 			this.buttonProduccion.Text = "Producciones";
 			this.buttonProduccion.UseVisualStyleBackColor = true;
+			this.buttonProduccion.Click += new System.EventHandler(this.buttonProduccion_Click);
 			// 
 			// buttonInicio
 			// 
@@ -303,6 +321,35 @@
 			this.buttonInicio.TabIndex = 52;
 			this.buttonInicio.Text = "Inicio";
 			this.buttonInicio.UseVisualStyleBackColor = true;
+			this.buttonInicio.Click += new System.EventHandler(this.buttonInicio_Click);
+			// 
+			// idCarrera
+			// 
+			this.idCarrera.HeaderText = "ID";
+			this.idCarrera.Name = "idCarrera";
+			this.idCarrera.ReadOnly = true;
+			this.idCarrera.Width = 50;
+			// 
+			// nombre
+			// 
+			this.nombre.HeaderText = "Nombre";
+			this.nombre.Name = "nombre";
+			this.nombre.ReadOnly = true;
+			this.nombre.Width = 240;
+			// 
+			// idDivision
+			// 
+			this.idDivision.HeaderText = "Division";
+			this.idDivision.Name = "idDivision";
+			this.idDivision.ReadOnly = true;
+			this.idDivision.Width = 50;
+			// 
+			// idNivel
+			// 
+			this.idNivel.HeaderText = "Nivel";
+			this.idNivel.Name = "idNivel";
+			this.idNivel.ReadOnly = true;
+			this.idNivel.Width = 150;
 			// 
 			// MenuAdministrator
 			// 
@@ -312,16 +359,16 @@
 			this.BackColor = System.Drawing.Color.Brown;
 			this.BackgroundImage = global::DocentematumCSharp.Properties.Resources.BackGround_Blue;
 			this.ClientSize = new System.Drawing.Size(789, 460);
-			this.Controls.Add(this.buttonInicio);
-			this.Controls.Add(this.buttonProduccion);
-			this.Controls.Add(this.buttonGrado);
-			this.Controls.Add(this.buttonCarrera);
-			this.Controls.Add(this.pictureBox1);
 			this.Controls.Add(this.labelCodigo);
 			this.Controls.Add(this.labelNombre);
 			this.Controls.Add(this.label5);
 			this.Controls.Add(this.labelAlgo);
 			this.Controls.Add(this.tabPrincipal);
+			this.Controls.Add(this.buttonProduccion);
+			this.Controls.Add(this.buttonGrado);
+			this.Controls.Add(this.buttonCarrera);
+			this.Controls.Add(this.buttonInicio);
+			this.Controls.Add(this.pictureBox1);
 			this.Name = "MenuAdministrator";
 			this.Text = "Registro de Usuarios";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MenuAdministrator_FormClosing);
@@ -360,5 +407,9 @@
 		private System.Windows.Forms.Button buttonGrado;
 		private System.Windows.Forms.Button buttonProduccion;
 		private System.Windows.Forms.Button buttonInicio;
+		private System.Windows.Forms.DataGridViewTextBoxColumn idCarrera;
+		private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
+		private System.Windows.Forms.DataGridViewTextBoxColumn idDivision;
+		private System.Windows.Forms.DataGridViewTextBoxColumn idNivel;
 	}
 }

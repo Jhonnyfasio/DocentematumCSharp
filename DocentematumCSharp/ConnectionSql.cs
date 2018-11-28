@@ -28,5 +28,10 @@ namespace DocentematumCSharp
 			connection.Close();
 		}
 
+		public void openConnection()
+		{
+			connection.Open();
+		}
+
 	}
 }
