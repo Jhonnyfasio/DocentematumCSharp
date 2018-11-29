@@ -40,7 +40,7 @@ namespace DocentematumCSharp
 			labelCodigo.Text = userCode.ToString();
 			labelNombre.Text = myReader.GetString(myReader.GetOrdinal("nombre"));
 			connection.closeConnection();
-
+			this.CenterToScreen();
 		}
 
 		private void chargeComboDivision()

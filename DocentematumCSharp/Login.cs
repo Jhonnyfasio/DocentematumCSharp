@@ -38,8 +38,21 @@ namespace DocentematumCSharp
 				if (myReader.Read())
 				{
 					int codTrab;
+					MenuAdministrator menuAdmin;
 					codTrab = myReader.GetInt32(myReader.GetOrdinal("codigoTrabajador"));
-					MenuAdministrator menuAdmin = new MenuAdministrator(main,this,codTrab);
+					if (codTrab == 1)
+					{
+						menuAdmin = new MenuAdministrator(main, this, codTrab);
+					}
+					else if (codTrab == 2)
+					{
+						menuAdmin = new MenuEspecialUsuario(main, this, codTrab);
+					}
+					else
+					{
+						menuAdmin = new MenuEstandarUsuario(main,this,codTrab);
+					}
+					
 					menuAdmin.Show();
 				}
 				else
