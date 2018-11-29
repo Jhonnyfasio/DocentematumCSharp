@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegistroUsuario));
 			this.button1 = new System.Windows.Forms.Button();
 			this.label9 = new System.Windows.Forms.Label();
 			this.textContrasena = new System.Windows.Forms.TextBox();
@@ -55,6 +56,13 @@
 			this.dateUltimoCiclo = new System.Windows.Forms.DateTimePicker();
 			this.labelPaterno = new System.Windows.Forms.Label();
 			this.textMaterno = new System.Windows.Forms.TextBox();
+			this.checkBox1 = new System.Windows.Forms.CheckBox();
+			this.checkBox2 = new System.Windows.Forms.CheckBox();
+			this.checkBox3 = new System.Windows.Forms.CheckBox();
+			this.checkBox4 = new System.Windows.Forms.CheckBox();
+			this.checkBox5 = new System.Windows.Forms.CheckBox();
+			this.checkBox6 = new System.Windows.Forms.CheckBox();
+			this.checkBox7 = new System.Windows.Forms.CheckBox();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -254,7 +262,7 @@
 			// 
 			// pictureBox1
 			// 
-			this.pictureBox1.Image = global::DocentematumCSharp.Properties.Resources.AddUserIcon;
+			this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
 			this.pictureBox1.Location = new System.Drawing.Point(182, 22);
 			this.pictureBox1.Name = "pictureBox1";
 			this.pictureBox1.Size = new System.Drawing.Size(80, 75);
@@ -284,6 +292,9 @@
 			// 
 			// comboTipoUsuario
 			// 
+			this.comboTipoUsuario.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+			this.comboTipoUsuario.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+			this.comboTipoUsuario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.comboTipoUsuario.FormattingEnabled = true;
 			this.comboTipoUsuario.Location = new System.Drawing.Point(182, 530);
 			this.comboTipoUsuario.Name = "comboTipoUsuario";
@@ -325,12 +336,96 @@
 			this.textMaterno.Size = new System.Drawing.Size(216, 20);
 			this.textMaterno.TabIndex = 53;
 			// 
+			// checkBox1
+			// 
+			this.checkBox1.AutoSize = true;
+			this.checkBox1.BackColor = System.Drawing.Color.Red;
+			this.checkBox1.ForeColor = System.Drawing.Color.Red;
+			this.checkBox1.Location = new System.Drawing.Point(404, 122);
+			this.checkBox1.Name = "checkBox1";
+			this.checkBox1.Size = new System.Drawing.Size(15, 14);
+			this.checkBox1.TabIndex = 54;
+			this.checkBox1.UseVisualStyleBackColor = false;
+			// 
+			// checkBox2
+			// 
+			this.checkBox2.AutoSize = true;
+			this.checkBox2.BackColor = System.Drawing.Color.Red;
+			this.checkBox2.ForeColor = System.Drawing.Color.Red;
+			this.checkBox2.Location = new System.Drawing.Point(404, 154);
+			this.checkBox2.Name = "checkBox2";
+			this.checkBox2.Size = new System.Drawing.Size(15, 14);
+			this.checkBox2.TabIndex = 55;
+			this.checkBox2.UseVisualStyleBackColor = false;
+			// 
+			// checkBox3
+			// 
+			this.checkBox3.AutoSize = true;
+			this.checkBox3.BackColor = System.Drawing.Color.Red;
+			this.checkBox3.ForeColor = System.Drawing.Color.Red;
+			this.checkBox3.Location = new System.Drawing.Point(404, 192);
+			this.checkBox3.Name = "checkBox3";
+			this.checkBox3.Size = new System.Drawing.Size(15, 14);
+			this.checkBox3.TabIndex = 56;
+			this.checkBox3.UseVisualStyleBackColor = false;
+			// 
+			// checkBox4
+			// 
+			this.checkBox4.AutoSize = true;
+			this.checkBox4.BackColor = System.Drawing.Color.Red;
+			this.checkBox4.ForeColor = System.Drawing.Color.Red;
+			this.checkBox4.Location = new System.Drawing.Point(404, 375);
+			this.checkBox4.Name = "checkBox4";
+			this.checkBox4.Size = new System.Drawing.Size(15, 14);
+			this.checkBox4.TabIndex = 57;
+			this.checkBox4.UseVisualStyleBackColor = false;
+			// 
+			// checkBox5
+			// 
+			this.checkBox5.AutoSize = true;
+			this.checkBox5.BackColor = System.Drawing.Color.Red;
+			this.checkBox5.ForeColor = System.Drawing.Color.Red;
+			this.checkBox5.Location = new System.Drawing.Point(404, 451);
+			this.checkBox5.Name = "checkBox5";
+			this.checkBox5.Size = new System.Drawing.Size(15, 14);
+			this.checkBox5.TabIndex = 58;
+			this.checkBox5.UseVisualStyleBackColor = false;
+			// 
+			// checkBox6
+			// 
+			this.checkBox6.AutoSize = true;
+			this.checkBox6.BackColor = System.Drawing.Color.Red;
+			this.checkBox6.ForeColor = System.Drawing.Color.Red;
+			this.checkBox6.Location = new System.Drawing.Point(404, 490);
+			this.checkBox6.Name = "checkBox6";
+			this.checkBox6.Size = new System.Drawing.Size(15, 14);
+			this.checkBox6.TabIndex = 59;
+			this.checkBox6.UseVisualStyleBackColor = false;
+			// 
+			// checkBox7
+			// 
+			this.checkBox7.AutoSize = true;
+			this.checkBox7.BackColor = System.Drawing.Color.Red;
+			this.checkBox7.ForeColor = System.Drawing.Color.Red;
+			this.checkBox7.Location = new System.Drawing.Point(404, 529);
+			this.checkBox7.Name = "checkBox7";
+			this.checkBox7.Size = new System.Drawing.Size(15, 14);
+			this.checkBox7.TabIndex = 60;
+			this.checkBox7.UseVisualStyleBackColor = false;
+			// 
 			// RegistroUsuario
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackgroundImage = global::DocentematumCSharp.Properties.Resources.BackGround_Blue;
 			this.ClientSize = new System.Drawing.Size(445, 657);
+			this.Controls.Add(this.checkBox7);
+			this.Controls.Add(this.checkBox6);
+			this.Controls.Add(this.checkBox5);
+			this.Controls.Add(this.checkBox4);
+			this.Controls.Add(this.checkBox3);
+			this.Controls.Add(this.checkBox2);
+			this.Controls.Add(this.checkBox1);
 			this.Controls.Add(this.textMaterno);
 			this.Controls.Add(this.labelPaterno);
 			this.Controls.Add(this.dateUltimoCiclo);
@@ -394,5 +489,12 @@
 		private System.Windows.Forms.DateTimePicker dateUltimoCiclo;
 		private System.Windows.Forms.Label labelPaterno;
 		private System.Windows.Forms.TextBox textMaterno;
+		private System.Windows.Forms.CheckBox checkBox1;
+		private System.Windows.Forms.CheckBox checkBox2;
+		private System.Windows.Forms.CheckBox checkBox3;
+		private System.Windows.Forms.CheckBox checkBox4;
+		private System.Windows.Forms.CheckBox checkBox5;
+		private System.Windows.Forms.CheckBox checkBox6;
+		private System.Windows.Forms.CheckBox checkBox7;
 	}
 }

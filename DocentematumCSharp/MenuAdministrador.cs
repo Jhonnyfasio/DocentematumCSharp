@@ -26,6 +26,7 @@ namespace DocentematumCSharp
 			InitializeComponent();
 			chargeDGVCarreras();
 			chargeDgvDivisiones();
+			chargeDgvUsers();
 			chargeComboDivision();
 			chargeComboNivel();
 			forma1.Hide();
@@ -196,7 +197,7 @@ namespace DocentematumCSharp
 		{
 			string str;
 			ConnectionSql connection = new ConnectionSql();
-			str = "SELECT * FROM carrera WHERE idCarrera = \"" + textBoxFindDiv + "\";";
+			str = "SELECT * FROM division WHERE idDivision = '" + textBoxFindDiv.Text + "';";
 			MySqlCommand command = connection.getCommand(str);
 			MySqlDataReader reader = command.ExecuteReader();
 			if (reader.Read())
@@ -302,12 +303,111 @@ namespace DocentematumCSharp
 			textBoxNomDiv.Clear();
 		}
 
+		
 		//////////////////////////////////////////// USUARIO ///////////////////////////////////////////////
 
 		private void buttonAgregarUsuario_Click(object sender, EventArgs e)
 		{
 			RegistroUsuario user = new RegistroUsuario();
 			user.Show();
+			chargeDgvUsers();
 		}
+
+		public void chargeUsers()
+		{
+			chargeDgvUsers();
+		}
+
+		private void buttonEliminarUsuario_Click(object sender, EventArgs e)
+		{
+			string str;
+			DialogResult dialog = MessageBox.Show("Estás por eliminar un registro ¿Estás seguro de esto?", "Eliminado regsitro.", MessageBoxButtons.YesNoCancel);
+			if (dialog == DialogResult.Yes)
+			{
+				if (n != -1)
+				{
+					ConnectionSql connection = new ConnectionSql();
+					str = "DELETE FROM profesor WHERE codigoTrabajador = " + (string)dgvDivisiones.Rows[n].Cells["ClaveDivision"].Value + ";";
+					MySqlCommand command = connection.getCommand(str);
+					command.ExecuteNonQuery();
+					dgvUsuarios.Rows.RemoveAt(n);
+					chargeDgvUsers();
+
+					connection.closeConnection();
+				}
+			}
+		}
+
+		private void button2_Click(object sender, EventArgs e)
+		{
+			chargeDgvUsers();
+		}
+
+		private void dgvUsuarios_CellClick(object sender, DataGridViewCellEventArgs e)
+		{
+			n = e.RowIndex;
+		}
+
+		public void chargeDgvUsers()
+		{
+			string str;
+			dgvUsuarios.Rows.Clear();
+			ConnectionSql connection = new ConnectionSql();
+			str= "SELECT * FROM profesor AS p LEFT JOIN tipo_usuario AS t ON p.idTipoUsuario = t.idTipoUsuario;";
+			MySqlCommand command = connection.getCommand(str);
+			MySqlDataReader reader;
+			reader = command.ExecuteReader();
+			while (reader.Read())
+			{
+				int row = dgvUsuarios.Rows.Add();
+				dgvUsuarios.Rows[row].Cells["CodigoProfesor"].Value = reader.GetInt32(reader.GetOrdinal("codigoTrabajador")).ToString();
+				dgvUsuarios.Rows[row].Cells["nombreProfesor"].Value = reader.GetString(reader.GetOrdinal("nombre"));
+				dgvUsuarios.Rows[row].Cells["apellidoPProfesor"].Value = reader.GetString(reader.GetOrdinal("apellidoPaterno"));
+				dgvUsuarios.Rows[row].Cells["apellidoMProfesor"].Value = reader.GetString(reader.GetOrdinal("apellidoMaterno"));
+				dgvUsuarios.Rows[row].Cells["usuarioProfesor"].Value = reader.GetString(reader.GetOrdinal("usuario"));
+				if (reader["correo"] != DBNull.Value)
+				{
+					dgvUsuarios.Rows[row].Cells["correoProfesor"].Value = reader.GetString(reader.GetOrdinal("correo"));
+				}
+				
+				dgvUsuarios.Rows[row].Cells["tipoUsuarioProfesor"].Value = reader.GetString(reader.GetOrdinal("tipo"));
+				dgvUsuarios.Rows[row].Cells["estadoProfesor"].Value = reader.GetString(reader.GetOrdinal("estado"));
+			}
+			connection.closeConnection();
+		}
+
+		private void button1_Click(object sender, EventArgs e)
+		{
+			string str;
+			ConnectionSql connection = new ConnectionSql(); str = "SELECT * FROM profesor AS p LEFT JOIN tipo_usuario AS t ON p.idTipoUsuario = t.idTipoUsuario;";
+			//str = "SELECT * FROM profesor WHERE codigoTrabajador = '" + textBoxFindUser.Text + "';";
+			str = "SELECT * FROM profesor AS p LEFT JOIN tipo_usuario AS t ON p.idTipoUsuario = t.idTipoUsuario WHERE codigoTrabajador = '"+
+				textBoxFindUser.Text+"';";
+			MySqlCommand command = connection.getCommand(str);
+			MySqlDataReader reader = command.ExecuteReader();
+			if (reader.Read())
+			{
+				dgvUsuarios.Rows.Clear();
+				int row = dgvUsuarios.Rows.Add();
+				dgvUsuarios.Rows[row].Cells["codigoProfesor"].Value = reader.GetInt32(reader.GetOrdinal("codigoTrabajador")).ToString();
+				dgvUsuarios.Rows[row].Cells["nombreProfesor"].Value = reader.GetString(reader.GetOrdinal("nombre"));
+				dgvUsuarios.Rows[row].Cells["apellidoPProfesor"].Value = reader.GetString(reader.GetOrdinal("apellidoPaterno"));
+				dgvUsuarios.Rows[row].Cells["apellidoMProfesor"].Value = reader.GetString(reader.GetOrdinal("apellidoMaterno"));
+				dgvUsuarios.Rows[row].Cells["usuarioProfesor"].Value = reader.GetString(reader.GetOrdinal("usuario"));
+				if (reader["correo"] != DBNull.Value)
+				{
+					dgvUsuarios.Rows[row].Cells["correoProfesor"].Value = reader.GetString(reader.GetOrdinal("correo"));
+				}
+				dgvUsuarios.Rows[row].Cells["tipoUsuarioProfesor"].Value = reader.GetString(reader.GetOrdinal("tipo"));
+				dgvUsuarios.Rows[row].Cells["estadoProfesor"].Value = reader.GetString(reader.GetOrdinal("estado"));
+			}
+			else
+			{
+				MessageBox.Show("Error, el usuario no pudo ser encontrado");
+			}
+			textBoxFindUser.Clear();
+			connection.closeConnection();
+		}
+
 	}
 }

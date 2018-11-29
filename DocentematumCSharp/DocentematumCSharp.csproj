@@ -81,14 +81,18 @@
     <Compile Include="MenuAdministrador.Designer.cs">
       <DependentUpon>MenuAdministrador.cs</DependentUpon>
     </Compile>
-    <Compile Include="MenuUsuarioEspecial.cs">
+    <Compile Include="MenuEspecialUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MenuUsuarioEspecial.Designer.cs" />
-    <Compile Include="MenuUsuarioNormal.cs">
+    <Compile Include="MenuEspecialUsuario.Designer.cs">
+      <DependentUpon>MenuEspecialUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MenuEstandarUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MenuUsuarioNormal.Designer.cs" />
+    <Compile Include="MenuEstandarUsuario.Designer.cs">
+      <DependentUpon>MenuEstandarUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegistroUsuario.cs">
@@ -106,8 +110,12 @@
     <EmbeddedResource Include="MenuAdministrador.resx">
       <DependentUpon>MenuAdministrador.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MenuUsuarioEspecial.resx" />
-    <EmbeddedResource Include="MenuUsuarioNormal.resx" />
+    <EmbeddedResource Include="MenuEspecialUsuario.resx">
+      <DependentUpon>MenuEspecialUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenuEstandarUsuario.resx">
+      <DependentUpon>MenuEstandarUsuario.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -149,6 +157,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AddUserIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\redIcon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -29,8 +29,14 @@
 		private void InitializeComponent()
 		{
 			this.tabPrincipal = new System.Windows.Forms.TabControl();
-			this.tabInicio = new System.Windows.Forms.TabPage();
-			this.label6 = new System.Windows.Forms.Label();
+			this.tabUsuario = new System.Windows.Forms.TabPage();
+			this.button2 = new System.Windows.Forms.Button();
+			this.button1 = new System.Windows.Forms.Button();
+			this.dgvUsuarios = new System.Windows.Forms.DataGridView();
+			this.buttonEliminarUsuario = new System.Windows.Forms.Button();
+			this.buttonAgregarUsuario = new System.Windows.Forms.Button();
+			this.label9 = new System.Windows.Forms.Label();
+			this.textBoxFindUser = new System.Windows.Forms.TextBox();
 			this.tabCarrera = new System.Windows.Forms.TabPage();
 			this.buttonBorrarCarrera = new System.Windows.Forms.Button();
 			this.label4 = new System.Windows.Forms.Label();
@@ -49,43 +55,43 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.Usuario = new System.Windows.Forms.Label();
 			this.textBox1 = new System.Windows.Forms.TextBox();
-			this.labelAlgo = new System.Windows.Forms.Label();
-			this.label5 = new System.Windows.Forms.Label();
-			this.labelNombre = new System.Windows.Forms.Label();
-			this.labelCodigo = new System.Windows.Forms.Label();
 			this.tabDivision = new System.Windows.Forms.TabPage();
-			this.tabUsuario = new System.Windows.Forms.TabPage();
-			this.label7 = new System.Windows.Forms.Label();
+			this.buttonListarTodo = new System.Windows.Forms.Button();
+			this.dgvDivisiones = new System.Windows.Forms.DataGridView();
+			this.ClaveDivision = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.NombreDivision = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.buttonBuscarDivision = new System.Windows.Forms.Button();
+			this.label10 = new System.Windows.Forms.Label();
+			this.textBoxNomDiv = new System.Windows.Forms.TextBox();
 			this.textBoxFindDiv = new System.Windows.Forms.TextBox();
+			this.label7 = new System.Windows.Forms.Label();
 			this.textBoxClaveDiv = new System.Windows.Forms.TextBox();
 			this.buttonEliminarDivision = new System.Windows.Forms.Button();
 			this.buttonAgregarDivision = new System.Windows.Forms.Button();
 			this.label8 = new System.Windows.Forms.Label();
+			this.tabInicio = new System.Windows.Forms.TabPage();
+			this.label6 = new System.Windows.Forms.Label();
+			this.labelAlgo = new System.Windows.Forms.Label();
+			this.label5 = new System.Windows.Forms.Label();
+			this.labelNombre = new System.Windows.Forms.Label();
+			this.labelCodigo = new System.Windows.Forms.Label();
 			this.buttonEditarPerfil = new System.Windows.Forms.Button();
-			this.buttonEliminarUsuario = new System.Windows.Forms.Button();
-			this.buttonAgregarUsuario = new System.Windows.Forms.Button();
-			this.label9 = new System.Windows.Forms.Label();
-			this.textBoxFindUser = new System.Windows.Forms.TextBox();
-			this.listView2 = new System.Windows.Forms.ListView();
-			this.columnIDUsuario = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.Tipo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.textBoxNomDiv = new System.Windows.Forms.TextBox();
-			this.label10 = new System.Windows.Forms.Label();
-			this.buttonBuscarDivision = new System.Windows.Forms.Button();
-			this.dgvDivisiones = new System.Windows.Forms.DataGridView();
-			this.ClaveDivision = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.NombreDivision = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.buttonListarTodo = new System.Windows.Forms.Button();
+			this.CodigoProfesor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.nombreProfesor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.apellidoPProfesor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.apellidoMProfesor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.usuarioProfesor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.estadoProfesor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.correoProfesor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.tipoUsuarioProfesor = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.tabPrincipal.SuspendLayout();
-			this.tabInicio.SuspendLayout();
+			this.tabUsuario.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
 			this.tabCarrera.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvCarrera)).BeginInit();
 			this.tabDivision.SuspendLayout();
-			this.tabUsuario.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvDivisiones)).BeginInit();
+			this.tabInicio.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// tabPrincipal
@@ -100,28 +106,106 @@
 			this.tabPrincipal.Size = new System.Drawing.Size(598, 391);
 			this.tabPrincipal.TabIndex = 0;
 			// 
-			// tabInicio
+			// tabUsuario
 			// 
-			this.tabInicio.BackgroundImage = global::DocentematumCSharp.Properties.Resources.BackGround_Blue;
-			this.tabInicio.Controls.Add(this.label6);
-			this.tabInicio.Location = new System.Drawing.Point(4, 22);
-			this.tabInicio.Name = "tabInicio";
-			this.tabInicio.Size = new System.Drawing.Size(590, 365);
-			this.tabInicio.TabIndex = 3;
-			this.tabInicio.Text = "Ayuda";
-			this.tabInicio.UseVisualStyleBackColor = true;
+			this.tabUsuario.Controls.Add(this.button2);
+			this.tabUsuario.Controls.Add(this.button1);
+			this.tabUsuario.Controls.Add(this.dgvUsuarios);
+			this.tabUsuario.Controls.Add(this.buttonEliminarUsuario);
+			this.tabUsuario.Controls.Add(this.buttonAgregarUsuario);
+			this.tabUsuario.Controls.Add(this.label9);
+			this.tabUsuario.Controls.Add(this.textBoxFindUser);
+			this.tabUsuario.Location = new System.Drawing.Point(4, 22);
+			this.tabUsuario.Name = "tabUsuario";
+			this.tabUsuario.Size = new System.Drawing.Size(590, 365);
+			this.tabUsuario.TabIndex = 5;
+			this.tabUsuario.Text = "Usuarios";
+			this.tabUsuario.UseVisualStyleBackColor = true;
 			// 
-			// label6
+			// button2
 			// 
-			this.label6.AutoSize = true;
-			this.label6.BackColor = System.Drawing.Color.Transparent;
-			this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label6.ForeColor = System.Drawing.SystemColors.Window;
-			this.label6.Location = new System.Drawing.Point(33, 46);
-			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(45, 18);
-			this.label6.TabIndex = 53;
-			this.label6.Text = "Algo2";
+			this.button2.BackColor = System.Drawing.Color.MidnightBlue;
+			this.button2.ForeColor = System.Drawing.SystemColors.ButtonFace;
+			this.button2.Location = new System.Drawing.Point(494, 51);
+			this.button2.Name = "button2";
+			this.button2.Size = new System.Drawing.Size(75, 23);
+			this.button2.TabIndex = 31;
+			this.button2.Text = "Listar Todos";
+			this.button2.UseVisualStyleBackColor = false;
+			this.button2.Click += new System.EventHandler(this.button2_Click);
+			// 
+			// button1
+			// 
+			this.button1.BackColor = System.Drawing.Color.DarkGreen;
+			this.button1.ForeColor = System.Drawing.SystemColors.ButtonFace;
+			this.button1.Location = new System.Drawing.Point(266, 24);
+			this.button1.Name = "button1";
+			this.button1.Size = new System.Drawing.Size(96, 23);
+			this.button1.TabIndex = 30;
+			this.button1.Text = "Buscar Código";
+			this.button1.UseVisualStyleBackColor = false;
+			this.button1.Click += new System.EventHandler(this.button1_Click);
+			// 
+			// dgvUsuarios
+			// 
+			this.dgvUsuarios.AllowUserToAddRows = false;
+			this.dgvUsuarios.AllowUserToOrderColumns = true;
+			this.dgvUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dgvUsuarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CodigoProfesor,
+            this.nombreProfesor,
+            this.apellidoPProfesor,
+            this.apellidoMProfesor,
+            this.usuarioProfesor,
+            this.estadoProfesor,
+            this.correoProfesor,
+            this.tipoUsuarioProfesor});
+			this.dgvUsuarios.Location = new System.Drawing.Point(25, 80);
+			this.dgvUsuarios.Name = "dgvUsuarios";
+			this.dgvUsuarios.ReadOnly = true;
+			this.dgvUsuarios.Size = new System.Drawing.Size(544, 216);
+			this.dgvUsuarios.TabIndex = 29;
+			this.dgvUsuarios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsuarios_CellClick);
+			// 
+			// buttonEliminarUsuario
+			// 
+			this.buttonEliminarUsuario.BackColor = System.Drawing.Color.DarkRed;
+			this.buttonEliminarUsuario.ForeColor = System.Drawing.SystemColors.ButtonFace;
+			this.buttonEliminarUsuario.Location = new System.Drawing.Point(504, 315);
+			this.buttonEliminarUsuario.Name = "buttonEliminarUsuario";
+			this.buttonEliminarUsuario.Size = new System.Drawing.Size(75, 23);
+			this.buttonEliminarUsuario.TabIndex = 28;
+			this.buttonEliminarUsuario.Text = "Eliminar";
+			this.buttonEliminarUsuario.UseVisualStyleBackColor = false;
+			this.buttonEliminarUsuario.Click += new System.EventHandler(this.buttonEliminarUsuario_Click);
+			// 
+			// buttonAgregarUsuario
+			// 
+			this.buttonAgregarUsuario.BackColor = System.Drawing.Color.DarkGreen;
+			this.buttonAgregarUsuario.ForeColor = System.Drawing.SystemColors.ButtonFace;
+			this.buttonAgregarUsuario.Location = new System.Drawing.Point(413, 315);
+			this.buttonAgregarUsuario.Name = "buttonAgregarUsuario";
+			this.buttonAgregarUsuario.Size = new System.Drawing.Size(75, 23);
+			this.buttonAgregarUsuario.TabIndex = 27;
+			this.buttonAgregarUsuario.Text = "Agregar";
+			this.buttonAgregarUsuario.UseVisualStyleBackColor = false;
+			this.buttonAgregarUsuario.Click += new System.EventHandler(this.buttonAgregarUsuario_Click);
+			// 
+			// label9
+			// 
+			this.label9.AutoSize = true;
+			this.label9.Location = new System.Drawing.Point(11, 29);
+			this.label9.Name = "label9";
+			this.label9.Size = new System.Drawing.Size(46, 13);
+			this.label9.TabIndex = 26;
+			this.label9.Text = "Buscar: ";
+			// 
+			// textBoxFindUser
+			// 
+			this.textBoxFindUser.Location = new System.Drawing.Point(63, 26);
+			this.textBoxFindUser.Name = "textBoxFindUser";
+			this.textBoxFindUser.Size = new System.Drawing.Size(184, 20);
+			this.textBoxFindUser.TabIndex = 25;
 			// 
 			// tabCarrera
 			// 
@@ -216,7 +300,6 @@
 			// dgvCarrera
 			// 
 			this.dgvCarrera.AllowUserToAddRows = false;
-			this.dgvCarrera.AllowUserToDeleteRows = false;
 			this.dgvCarrera.AllowUserToOrderColumns = true;
 			this.dgvCarrera.BackgroundColor = System.Drawing.SystemColors.WindowText;
 			this.dgvCarrera.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -325,6 +408,182 @@
 			this.textBox1.Size = new System.Drawing.Size(216, 20);
 			this.textBox1.TabIndex = 35;
 			// 
+			// tabDivision
+			// 
+			this.tabDivision.Controls.Add(this.buttonListarTodo);
+			this.tabDivision.Controls.Add(this.dgvDivisiones);
+			this.tabDivision.Controls.Add(this.buttonBuscarDivision);
+			this.tabDivision.Controls.Add(this.label10);
+			this.tabDivision.Controls.Add(this.textBoxNomDiv);
+			this.tabDivision.Controls.Add(this.textBoxFindDiv);
+			this.tabDivision.Controls.Add(this.label7);
+			this.tabDivision.Controls.Add(this.textBoxClaveDiv);
+			this.tabDivision.Controls.Add(this.buttonEliminarDivision);
+			this.tabDivision.Controls.Add(this.buttonAgregarDivision);
+			this.tabDivision.Controls.Add(this.label8);
+			this.tabDivision.Location = new System.Drawing.Point(4, 22);
+			this.tabDivision.Name = "tabDivision";
+			this.tabDivision.Padding = new System.Windows.Forms.Padding(3);
+			this.tabDivision.Size = new System.Drawing.Size(590, 365);
+			this.tabDivision.TabIndex = 4;
+			this.tabDivision.Text = "Divisiones";
+			this.tabDivision.UseVisualStyleBackColor = true;
+			// 
+			// buttonListarTodo
+			// 
+			this.buttonListarTodo.BackColor = System.Drawing.Color.MidnightBlue;
+			this.buttonListarTodo.ForeColor = System.Drawing.SystemColors.ButtonFace;
+			this.buttonListarTodo.Location = new System.Drawing.Point(467, 67);
+			this.buttonListarTodo.Name = "buttonListarTodo";
+			this.buttonListarTodo.Size = new System.Drawing.Size(75, 23);
+			this.buttonListarTodo.TabIndex = 31;
+			this.buttonListarTodo.Text = "Listar Todo";
+			this.buttonListarTodo.UseVisualStyleBackColor = false;
+			this.buttonListarTodo.Click += new System.EventHandler(this.buttonListarTodo_Click);
+			// 
+			// dgvDivisiones
+			// 
+			this.dgvDivisiones.AllowUserToAddRows = false;
+			this.dgvDivisiones.AllowUserToOrderColumns = true;
+			this.dgvDivisiones.BackgroundColor = System.Drawing.SystemColors.WindowText;
+			this.dgvDivisiones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dgvDivisiones.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ClaveDivision,
+            this.NombreDivision});
+			this.dgvDivisiones.Location = new System.Drawing.Point(46, 96);
+			this.dgvDivisiones.Name = "dgvDivisiones";
+			this.dgvDivisiones.ReadOnly = true;
+			this.dgvDivisiones.Size = new System.Drawing.Size(496, 150);
+			this.dgvDivisiones.TabIndex = 30;
+			this.dgvDivisiones.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDivisiones_CellClick);
+			// 
+			// ClaveDivision
+			// 
+			this.ClaveDivision.FillWeight = 50F;
+			this.ClaveDivision.HeaderText = "Clave";
+			this.ClaveDivision.Name = "ClaveDivision";
+			this.ClaveDivision.ReadOnly = true;
+			this.ClaveDivision.Width = 50;
+			// 
+			// NombreDivision
+			// 
+			this.NombreDivision.FillWeight = 50F;
+			this.NombreDivision.HeaderText = "Nombre";
+			this.NombreDivision.Name = "NombreDivision";
+			this.NombreDivision.ReadOnly = true;
+			this.NombreDivision.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			this.NombreDivision.Width = 150;
+			// 
+			// buttonBuscarDivision
+			// 
+			this.buttonBuscarDivision.BackColor = System.Drawing.Color.DarkGreen;
+			this.buttonBuscarDivision.ForeColor = System.Drawing.SystemColors.ButtonFace;
+			this.buttonBuscarDivision.Location = new System.Drawing.Point(467, 35);
+			this.buttonBuscarDivision.Name = "buttonBuscarDivision";
+			this.buttonBuscarDivision.Size = new System.Drawing.Size(75, 23);
+			this.buttonBuscarDivision.TabIndex = 29;
+			this.buttonBuscarDivision.Text = "Buscar";
+			this.buttonBuscarDivision.UseVisualStyleBackColor = false;
+			this.buttonBuscarDivision.Click += new System.EventHandler(this.buttonBuscarDivision_Click);
+			// 
+			// label10
+			// 
+			this.label10.AutoSize = true;
+			this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label10.Location = new System.Drawing.Point(304, 291);
+			this.label10.Name = "label10";
+			this.label10.Size = new System.Drawing.Size(62, 18);
+			this.label10.TabIndex = 28;
+			this.label10.Text = "Nombre";
+			// 
+			// textBoxNomDiv
+			// 
+			this.textBoxNomDiv.Location = new System.Drawing.Point(368, 290);
+			this.textBoxNomDiv.Name = "textBoxNomDiv";
+			this.textBoxNomDiv.Size = new System.Drawing.Size(174, 20);
+			this.textBoxNomDiv.TabIndex = 27;
+			// 
+			// textBoxFindDiv
+			// 
+			this.textBoxFindDiv.Location = new System.Drawing.Point(102, 40);
+			this.textBoxFindDiv.Name = "textBoxFindDiv";
+			this.textBoxFindDiv.Size = new System.Drawing.Size(281, 20);
+			this.textBoxFindDiv.TabIndex = 25;
+			// 
+			// label7
+			// 
+			this.label7.AutoSize = true;
+			this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label7.Location = new System.Drawing.Point(33, 40);
+			this.label7.Name = "label7";
+			this.label7.Size = new System.Drawing.Size(63, 18);
+			this.label7.TabIndex = 26;
+			this.label7.Text = "Buscar: ";
+			// 
+			// textBoxClaveDiv
+			// 
+			this.textBoxClaveDiv.Location = new System.Drawing.Point(80, 290);
+			this.textBoxClaveDiv.Name = "textBoxClaveDiv";
+			this.textBoxClaveDiv.Size = new System.Drawing.Size(174, 20);
+			this.textBoxClaveDiv.TabIndex = 24;
+			// 
+			// buttonEliminarDivision
+			// 
+			this.buttonEliminarDivision.BackColor = System.Drawing.Color.DarkRed;
+			this.buttonEliminarDivision.ForeColor = System.Drawing.SystemColors.ButtonFace;
+			this.buttonEliminarDivision.Location = new System.Drawing.Point(439, 328);
+			this.buttonEliminarDivision.Name = "buttonEliminarDivision";
+			this.buttonEliminarDivision.Size = new System.Drawing.Size(75, 23);
+			this.buttonEliminarDivision.TabIndex = 22;
+			this.buttonEliminarDivision.Text = "Eliminar";
+			this.buttonEliminarDivision.UseVisualStyleBackColor = false;
+			this.buttonEliminarDivision.Click += new System.EventHandler(this.buttonEliminarDivision_Click);
+			// 
+			// buttonAgregarDivision
+			// 
+			this.buttonAgregarDivision.BackColor = System.Drawing.Color.DarkGreen;
+			this.buttonAgregarDivision.ForeColor = System.Drawing.SystemColors.ButtonFace;
+			this.buttonAgregarDivision.Location = new System.Drawing.Point(346, 328);
+			this.buttonAgregarDivision.Name = "buttonAgregarDivision";
+			this.buttonAgregarDivision.Size = new System.Drawing.Size(75, 23);
+			this.buttonAgregarDivision.TabIndex = 21;
+			this.buttonAgregarDivision.Text = "Agregar";
+			this.buttonAgregarDivision.UseVisualStyleBackColor = false;
+			this.buttonAgregarDivision.Click += new System.EventHandler(this.buttonAgregarDivision_Click);
+			// 
+			// label8
+			// 
+			this.label8.AutoSize = true;
+			this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label8.Location = new System.Drawing.Point(33, 290);
+			this.label8.Name = "label8";
+			this.label8.Size = new System.Drawing.Size(45, 18);
+			this.label8.TabIndex = 20;
+			this.label8.Text = "Clave";
+			// 
+			// tabInicio
+			// 
+			this.tabInicio.BackgroundImage = global::DocentematumCSharp.Properties.Resources.BackGround_Blue;
+			this.tabInicio.Controls.Add(this.label6);
+			this.tabInicio.Location = new System.Drawing.Point(4, 22);
+			this.tabInicio.Name = "tabInicio";
+			this.tabInicio.Size = new System.Drawing.Size(590, 365);
+			this.tabInicio.TabIndex = 3;
+			this.tabInicio.Text = "Ayuda";
+			this.tabInicio.UseVisualStyleBackColor = true;
+			// 
+			// label6
+			// 
+			this.label6.AutoSize = true;
+			this.label6.BackColor = System.Drawing.Color.Transparent;
+			this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label6.ForeColor = System.Drawing.SystemColors.Window;
+			this.label6.Location = new System.Drawing.Point(33, 46);
+			this.label6.Name = "label6";
+			this.label6.Size = new System.Drawing.Size(45, 18);
+			this.label6.TabIndex = 53;
+			this.label6.Text = "Algo2";
+			// 
 			// labelAlgo
 			// 
 			this.labelAlgo.AutoSize = true;
@@ -373,99 +632,6 @@
 			this.labelCodigo.TabIndex = 47;
 			this.labelCodigo.Text = "Algo";
 			// 
-			// tabDivision
-			// 
-			this.tabDivision.Controls.Add(this.buttonListarTodo);
-			this.tabDivision.Controls.Add(this.dgvDivisiones);
-			this.tabDivision.Controls.Add(this.buttonBuscarDivision);
-			this.tabDivision.Controls.Add(this.label10);
-			this.tabDivision.Controls.Add(this.textBoxNomDiv);
-			this.tabDivision.Controls.Add(this.textBoxFindDiv);
-			this.tabDivision.Controls.Add(this.label7);
-			this.tabDivision.Controls.Add(this.textBoxClaveDiv);
-			this.tabDivision.Controls.Add(this.buttonEliminarDivision);
-			this.tabDivision.Controls.Add(this.buttonAgregarDivision);
-			this.tabDivision.Controls.Add(this.label8);
-			this.tabDivision.Location = new System.Drawing.Point(4, 22);
-			this.tabDivision.Name = "tabDivision";
-			this.tabDivision.Padding = new System.Windows.Forms.Padding(3);
-			this.tabDivision.Size = new System.Drawing.Size(590, 365);
-			this.tabDivision.TabIndex = 4;
-			this.tabDivision.Text = "Divisiones";
-			this.tabDivision.UseVisualStyleBackColor = true;
-			// 
-			// tabUsuario
-			// 
-			this.tabUsuario.Controls.Add(this.buttonEliminarUsuario);
-			this.tabUsuario.Controls.Add(this.buttonAgregarUsuario);
-			this.tabUsuario.Controls.Add(this.label9);
-			this.tabUsuario.Controls.Add(this.textBoxFindUser);
-			this.tabUsuario.Controls.Add(this.listView2);
-			this.tabUsuario.Location = new System.Drawing.Point(4, 22);
-			this.tabUsuario.Name = "tabUsuario";
-			this.tabUsuario.Size = new System.Drawing.Size(590, 365);
-			this.tabUsuario.TabIndex = 5;
-			this.tabUsuario.Text = "Usuarios";
-			this.tabUsuario.UseVisualStyleBackColor = true;
-			// 
-			// label7
-			// 
-			this.label7.AutoSize = true;
-			this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label7.Location = new System.Drawing.Point(33, 40);
-			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(63, 18);
-			this.label7.TabIndex = 26;
-			this.label7.Text = "Buscar: ";
-			// 
-			// textBoxFindDiv
-			// 
-			this.textBoxFindDiv.Location = new System.Drawing.Point(102, 40);
-			this.textBoxFindDiv.Name = "textBoxFindDiv";
-			this.textBoxFindDiv.Size = new System.Drawing.Size(281, 20);
-			this.textBoxFindDiv.TabIndex = 25;
-			// 
-			// textBoxClaveDiv
-			// 
-			this.textBoxClaveDiv.Location = new System.Drawing.Point(80, 290);
-			this.textBoxClaveDiv.Name = "textBoxClaveDiv";
-			this.textBoxClaveDiv.Size = new System.Drawing.Size(174, 20);
-			this.textBoxClaveDiv.TabIndex = 24;
-			// 
-			// buttonEliminarDivision
-			// 
-			this.buttonEliminarDivision.BackColor = System.Drawing.Color.DarkRed;
-			this.buttonEliminarDivision.ForeColor = System.Drawing.SystemColors.ButtonFace;
-			this.buttonEliminarDivision.Location = new System.Drawing.Point(439, 328);
-			this.buttonEliminarDivision.Name = "buttonEliminarDivision";
-			this.buttonEliminarDivision.Size = new System.Drawing.Size(75, 23);
-			this.buttonEliminarDivision.TabIndex = 22;
-			this.buttonEliminarDivision.Text = "Eliminar";
-			this.buttonEliminarDivision.UseVisualStyleBackColor = false;
-			this.buttonEliminarDivision.Click += new System.EventHandler(this.buttonEliminarDivision_Click);
-			// 
-			// buttonAgregarDivision
-			// 
-			this.buttonAgregarDivision.BackColor = System.Drawing.Color.DarkGreen;
-			this.buttonAgregarDivision.ForeColor = System.Drawing.SystemColors.ButtonFace;
-			this.buttonAgregarDivision.Location = new System.Drawing.Point(346, 328);
-			this.buttonAgregarDivision.Name = "buttonAgregarDivision";
-			this.buttonAgregarDivision.Size = new System.Drawing.Size(75, 23);
-			this.buttonAgregarDivision.TabIndex = 21;
-			this.buttonAgregarDivision.Text = "Agregar";
-			this.buttonAgregarDivision.UseVisualStyleBackColor = false;
-			this.buttonAgregarDivision.Click += new System.EventHandler(this.buttonAgregarDivision_Click);
-			// 
-			// label8
-			// 
-			this.label8.AutoSize = true;
-			this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label8.Location = new System.Drawing.Point(33, 290);
-			this.label8.Name = "label8";
-			this.label8.Size = new System.Drawing.Size(45, 18);
-			this.label8.TabIndex = 20;
-			this.label8.Text = "Clave";
-			// 
 			// buttonEditarPerfil
 			// 
 			this.buttonEditarPerfil.BackColor = System.Drawing.Color.Peru;
@@ -477,156 +643,54 @@
 			this.buttonEditarPerfil.Text = "Editar Perfil";
 			this.buttonEditarPerfil.UseVisualStyleBackColor = false;
 			// 
-			// buttonEliminarUsuario
+			// CodigoProfesor
 			// 
-			this.buttonEliminarUsuario.BackColor = System.Drawing.Color.DarkRed;
-			this.buttonEliminarUsuario.ForeColor = System.Drawing.SystemColors.ButtonFace;
-			this.buttonEliminarUsuario.Location = new System.Drawing.Point(504, 315);
-			this.buttonEliminarUsuario.Name = "buttonEliminarUsuario";
-			this.buttonEliminarUsuario.Size = new System.Drawing.Size(75, 23);
-			this.buttonEliminarUsuario.TabIndex = 28;
-			this.buttonEliminarUsuario.Text = "Eliminar";
-			this.buttonEliminarUsuario.UseVisualStyleBackColor = false;
+			this.CodigoProfesor.HeaderText = "Código";
+			this.CodigoProfesor.Name = "CodigoProfesor";
+			this.CodigoProfesor.ReadOnly = true;
+			this.CodigoProfesor.Width = 50;
 			// 
-			// buttonAgregarUsuario
+			// nombreProfesor
 			// 
-			this.buttonAgregarUsuario.BackColor = System.Drawing.Color.DarkGreen;
-			this.buttonAgregarUsuario.ForeColor = System.Drawing.SystemColors.ButtonFace;
-			this.buttonAgregarUsuario.Location = new System.Drawing.Point(413, 315);
-			this.buttonAgregarUsuario.Name = "buttonAgregarUsuario";
-			this.buttonAgregarUsuario.Size = new System.Drawing.Size(75, 23);
-			this.buttonAgregarUsuario.TabIndex = 27;
-			this.buttonAgregarUsuario.Text = "Agregar";
-			this.buttonAgregarUsuario.UseVisualStyleBackColor = false;
-			this.buttonAgregarUsuario.Click += new System.EventHandler(this.buttonAgregarUsuario_Click);
+			this.nombreProfesor.HeaderText = "Nombre";
+			this.nombreProfesor.Name = "nombreProfesor";
+			this.nombreProfesor.ReadOnly = true;
 			// 
-			// label9
+			// apellidoPProfesor
 			// 
-			this.label9.AutoSize = true;
-			this.label9.Location = new System.Drawing.Point(11, 29);
-			this.label9.Name = "label9";
-			this.label9.Size = new System.Drawing.Size(46, 13);
-			this.label9.TabIndex = 26;
-			this.label9.Text = "Buscar: ";
+			this.apellidoPProfesor.HeaderText = "Apellido Paterno";
+			this.apellidoPProfesor.Name = "apellidoPProfesor";
+			this.apellidoPProfesor.ReadOnly = true;
 			// 
-			// textBoxFindUser
+			// apellidoMProfesor
 			// 
-			this.textBoxFindUser.Location = new System.Drawing.Point(63, 26);
-			this.textBoxFindUser.Name = "textBoxFindUser";
-			this.textBoxFindUser.Size = new System.Drawing.Size(516, 20);
-			this.textBoxFindUser.TabIndex = 25;
+			this.apellidoMProfesor.HeaderText = "Apellido Materno";
+			this.apellidoMProfesor.Name = "apellidoMProfesor";
+			this.apellidoMProfesor.ReadOnly = true;
 			// 
-			// listView2
+			// usuarioProfesor
 			// 
-			this.listView2.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnIDUsuario,
-            this.columnHeader2,
-            this.columnHeader3,
-            this.columnHeader4,
-            this.Tipo});
-			this.listView2.FullRowSelect = true;
-			this.listView2.GridLines = true;
-			this.listView2.HoverSelection = true;
-			this.listView2.Location = new System.Drawing.Point(11, 65);
-			this.listView2.Name = "listView2";
-			this.listView2.Size = new System.Drawing.Size(568, 223);
-			this.listView2.TabIndex = 24;
-			this.listView2.UseCompatibleStateImageBehavior = false;
-			this.listView2.View = System.Windows.Forms.View.Details;
+			this.usuarioProfesor.HeaderText = "Usuario";
+			this.usuarioProfesor.Name = "usuarioProfesor";
+			this.usuarioProfesor.ReadOnly = true;
 			// 
-			// columnIDUsuario
+			// estadoProfesor
 			// 
-			this.columnIDUsuario.Text = "ID";
-			this.columnIDUsuario.Width = 40;
+			this.estadoProfesor.HeaderText = "Estado";
+			this.estadoProfesor.Name = "estadoProfesor";
+			this.estadoProfesor.ReadOnly = true;
 			// 
-			// columnHeader2
+			// correoProfesor
 			// 
-			this.columnHeader2.Text = "Nombre";
-			this.columnHeader2.Width = 110;
+			this.correoProfesor.HeaderText = "Correo";
+			this.correoProfesor.Name = "correoProfesor";
+			this.correoProfesor.ReadOnly = true;
 			// 
-			// columnHeader3
+			// tipoUsuarioProfesor
 			// 
-			this.columnHeader3.Text = "Correo";
-			this.columnHeader3.Width = 110;
-			// 
-			// columnHeader4
-			// 
-			this.columnHeader4.Text = "Telefono";
-			this.columnHeader4.Width = 90;
-			// 
-			// Tipo
-			// 
-			this.Tipo.Text = "Tipo";
-			// 
-			// textBoxNomDiv
-			// 
-			this.textBoxNomDiv.Location = new System.Drawing.Point(368, 290);
-			this.textBoxNomDiv.Name = "textBoxNomDiv";
-			this.textBoxNomDiv.Size = new System.Drawing.Size(174, 20);
-			this.textBoxNomDiv.TabIndex = 27;
-			// 
-			// label10
-			// 
-			this.label10.AutoSize = true;
-			this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label10.Location = new System.Drawing.Point(304, 291);
-			this.label10.Name = "label10";
-			this.label10.Size = new System.Drawing.Size(62, 18);
-			this.label10.TabIndex = 28;
-			this.label10.Text = "Nombre";
-			// 
-			// buttonBuscarDivision
-			// 
-			this.buttonBuscarDivision.BackColor = System.Drawing.Color.DarkGreen;
-			this.buttonBuscarDivision.ForeColor = System.Drawing.SystemColors.ButtonFace;
-			this.buttonBuscarDivision.Location = new System.Drawing.Point(467, 35);
-			this.buttonBuscarDivision.Name = "buttonBuscarDivision";
-			this.buttonBuscarDivision.Size = new System.Drawing.Size(75, 23);
-			this.buttonBuscarDivision.TabIndex = 29;
-			this.buttonBuscarDivision.Text = "Buscar";
-			this.buttonBuscarDivision.UseVisualStyleBackColor = false;
-			this.buttonBuscarDivision.Click += new System.EventHandler(this.buttonBuscarDivision_Click);
-			// 
-			// dgvDivisiones
-			// 
-			this.dgvDivisiones.BackgroundColor = System.Drawing.SystemColors.WindowText;
-			this.dgvDivisiones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dgvDivisiones.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ClaveDivision,
-            this.NombreDivision});
-			this.dgvDivisiones.Location = new System.Drawing.Point(46, 96);
-			this.dgvDivisiones.Name = "dgvDivisiones";
-			this.dgvDivisiones.ReadOnly = true;
-			this.dgvDivisiones.Size = new System.Drawing.Size(496, 150);
-			this.dgvDivisiones.TabIndex = 30;
-			this.dgvDivisiones.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDivisiones_CellClick);
-			// 
-			// ClaveDivision
-			// 
-			this.ClaveDivision.FillWeight = 50F;
-			this.ClaveDivision.HeaderText = "Clave";
-			this.ClaveDivision.Name = "ClaveDivision";
-			this.ClaveDivision.Width = 50;
-			// 
-			// NombreDivision
-			// 
-			this.NombreDivision.FillWeight = 50F;
-			this.NombreDivision.HeaderText = "Nombre";
-			this.NombreDivision.Name = "NombreDivision";
-			this.NombreDivision.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-			this.NombreDivision.Width = 150;
-			// 
-			// buttonListarTodo
-			// 
-			this.buttonListarTodo.BackColor = System.Drawing.Color.MidnightBlue;
-			this.buttonListarTodo.ForeColor = System.Drawing.SystemColors.ButtonFace;
-			this.buttonListarTodo.Location = new System.Drawing.Point(467, 67);
-			this.buttonListarTodo.Name = "buttonListarTodo";
-			this.buttonListarTodo.Size = new System.Drawing.Size(75, 23);
-			this.buttonListarTodo.TabIndex = 31;
-			this.buttonListarTodo.Text = "Listar Todo";
-			this.buttonListarTodo.UseVisualStyleBackColor = false;
-			this.buttonListarTodo.Click += new System.EventHandler(this.buttonListarTodo_Click);
+			this.tipoUsuarioProfesor.HeaderText = "Tipo Usuario";
+			this.tipoUsuarioProfesor.Name = "tipoUsuarioProfesor";
+			this.tipoUsuarioProfesor.ReadOnly = true;
 			// 
 			// MenuAdministrator
 			// 
@@ -646,16 +710,17 @@
 			this.Text = "Registro de Usuarios";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MenuAdministrator_FormClosing);
 			this.tabPrincipal.ResumeLayout(false);
-			this.tabInicio.ResumeLayout(false);
-			this.tabInicio.PerformLayout();
+			this.tabUsuario.ResumeLayout(false);
+			this.tabUsuario.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).EndInit();
 			this.tabCarrera.ResumeLayout(false);
 			this.tabCarrera.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvCarrera)).EndInit();
 			this.tabDivision.ResumeLayout(false);
 			this.tabDivision.PerformLayout();
-			this.tabUsuario.ResumeLayout(false);
-			this.tabUsuario.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvDivisiones)).EndInit();
+			this.tabInicio.ResumeLayout(false);
+			this.tabInicio.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -700,12 +765,6 @@
 		private System.Windows.Forms.Button buttonAgregarUsuario;
 		private System.Windows.Forms.Label label9;
 		private System.Windows.Forms.TextBox textBoxFindUser;
-		private System.Windows.Forms.ListView listView2;
-		public System.Windows.Forms.ColumnHeader columnIDUsuario;
-		private System.Windows.Forms.ColumnHeader columnHeader2;
-		private System.Windows.Forms.ColumnHeader columnHeader3;
-		private System.Windows.Forms.ColumnHeader columnHeader4;
-		private System.Windows.Forms.ColumnHeader Tipo;
 		private System.Windows.Forms.Button buttonEditarPerfil;
 		private System.Windows.Forms.Label label10;
 		private System.Windows.Forms.TextBox textBoxNomDiv;
@@ -714,5 +773,16 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn ClaveDivision;
 		private System.Windows.Forms.DataGridViewTextBoxColumn NombreDivision;
 		private System.Windows.Forms.Button buttonListarTodo;
+		private System.Windows.Forms.DataGridView dgvUsuarios;
+		private System.Windows.Forms.Button button2;
+		private System.Windows.Forms.Button button1;
+		private System.Windows.Forms.DataGridViewTextBoxColumn CodigoProfesor;
+		private System.Windows.Forms.DataGridViewTextBoxColumn nombreProfesor;
+		private System.Windows.Forms.DataGridViewTextBoxColumn apellidoPProfesor;
+		private System.Windows.Forms.DataGridViewTextBoxColumn apellidoMProfesor;
+		private System.Windows.Forms.DataGridViewTextBoxColumn usuarioProfesor;
+		private System.Windows.Forms.DataGridViewTextBoxColumn estadoProfesor;
+		private System.Windows.Forms.DataGridViewTextBoxColumn correoProfesor;
+		private System.Windows.Forms.DataGridViewTextBoxColumn tipoUsuarioProfesor;
 	}
 }

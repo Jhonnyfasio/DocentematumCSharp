@@ -9,11 +9,11 @@ using System.Windows.Forms;
 
 namespace DocentematumCSharp
 {
-    public partial class MenuUsuarioEspecial : Form
-    {
-        public MenuUsuarioEspecial()
-        {
-            InitializeComponent();
-        }
-    }
+	public partial class MenuEstandarUsuario : Form
+	{
+		public MenuEstandarUsuario()
+		{
+			InitializeComponent();
+		}
+	}
 }
