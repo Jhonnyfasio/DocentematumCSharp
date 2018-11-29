@@ -56,42 +56,44 @@
 			this.tabDivision = new System.Windows.Forms.TabPage();
 			this.tabUsuario = new System.Windows.Forms.TabPage();
 			this.label7 = new System.Windows.Forms.Label();
-			this.textBoxBuscarDivision = new System.Windows.Forms.TextBox();
-			this.textBox9 = new System.Windows.Forms.TextBox();
-			this.buttonModificarDivision = new System.Windows.Forms.Button();
+			this.textBoxFindDiv = new System.Windows.Forms.TextBox();
+			this.textBoxClaveDiv = new System.Windows.Forms.TextBox();
 			this.buttonEliminarDivision = new System.Windows.Forms.Button();
 			this.buttonAgregarDivision = new System.Windows.Forms.Button();
 			this.label8 = new System.Windows.Forms.Label();
-			this.listView3 = new System.Windows.Forms.ListView();
-			this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.buttonEditarPerfil = new System.Windows.Forms.Button();
 			this.buttonEliminarUsuario = new System.Windows.Forms.Button();
 			this.buttonAgregarUsuario = new System.Windows.Forms.Button();
 			this.label9 = new System.Windows.Forms.Label();
-			this.textBox8 = new System.Windows.Forms.TextBox();
+			this.textBoxFindUser = new System.Windows.Forms.TextBox();
 			this.listView2 = new System.Windows.Forms.ListView();
 			this.columnIDUsuario = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.Tipo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.textBox3 = new System.Windows.Forms.TextBox();
+			this.textBoxNomDiv = new System.Windows.Forms.TextBox();
 			this.label10 = new System.Windows.Forms.Label();
+			this.buttonBuscarDivision = new System.Windows.Forms.Button();
+			this.dgvDivisiones = new System.Windows.Forms.DataGridView();
+			this.ClaveDivision = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.NombreDivision = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.buttonListarTodo = new System.Windows.Forms.Button();
 			this.tabPrincipal.SuspendLayout();
 			this.tabInicio.SuspendLayout();
 			this.tabCarrera.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvCarrera)).BeginInit();
 			this.tabDivision.SuspendLayout();
 			this.tabUsuario.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dgvDivisiones)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// tabPrincipal
 			// 
-			this.tabPrincipal.Controls.Add(this.tabInicio);
+			this.tabPrincipal.Controls.Add(this.tabUsuario);
 			this.tabPrincipal.Controls.Add(this.tabCarrera);
 			this.tabPrincipal.Controls.Add(this.tabDivision);
-			this.tabPrincipal.Controls.Add(this.tabUsuario);
+			this.tabPrincipal.Controls.Add(this.tabInicio);
 			this.tabPrincipal.Location = new System.Drawing.Point(188, 12);
 			this.tabPrincipal.Name = "tabPrincipal";
 			this.tabPrincipal.SelectedIndex = 0;
@@ -104,9 +106,9 @@
 			this.tabInicio.Controls.Add(this.label6);
 			this.tabInicio.Location = new System.Drawing.Point(4, 22);
 			this.tabInicio.Name = "tabInicio";
-			this.tabInicio.Size = new System.Drawing.Size(577, 406);
+			this.tabInicio.Size = new System.Drawing.Size(590, 365);
 			this.tabInicio.TabIndex = 3;
-			this.tabInicio.Text = "tabInicio";
+			this.tabInicio.Text = "Ayuda";
 			this.tabInicio.UseVisualStyleBackColor = true;
 			// 
 			// label6
@@ -224,10 +226,10 @@
             this.idDivision,
             this.idNivel});
 			this.dgvCarrera.GridColor = System.Drawing.SystemColors.ButtonShadow;
-			this.dgvCarrera.Location = new System.Drawing.Point(21, 205);
+			this.dgvCarrera.Location = new System.Drawing.Point(23, 205);
 			this.dgvCarrera.Name = "dgvCarrera";
 			this.dgvCarrera.ReadOnly = true;
-			this.dgvCarrera.Size = new System.Drawing.Size(535, 150);
+			this.dgvCarrera.Size = new System.Drawing.Size(550, 150);
 			this.dgvCarrera.TabIndex = 43;
 			this.dgvCarrera.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCarrera_CellClick);
 			// 
@@ -373,16 +375,17 @@
 			// 
 			// tabDivision
 			// 
+			this.tabDivision.Controls.Add(this.buttonListarTodo);
+			this.tabDivision.Controls.Add(this.dgvDivisiones);
+			this.tabDivision.Controls.Add(this.buttonBuscarDivision);
 			this.tabDivision.Controls.Add(this.label10);
-			this.tabDivision.Controls.Add(this.textBox3);
-			this.tabDivision.Controls.Add(this.textBoxBuscarDivision);
+			this.tabDivision.Controls.Add(this.textBoxNomDiv);
+			this.tabDivision.Controls.Add(this.textBoxFindDiv);
 			this.tabDivision.Controls.Add(this.label7);
-			this.tabDivision.Controls.Add(this.textBox9);
-			this.tabDivision.Controls.Add(this.buttonModificarDivision);
+			this.tabDivision.Controls.Add(this.textBoxClaveDiv);
 			this.tabDivision.Controls.Add(this.buttonEliminarDivision);
 			this.tabDivision.Controls.Add(this.buttonAgregarDivision);
 			this.tabDivision.Controls.Add(this.label8);
-			this.tabDivision.Controls.Add(this.listView3);
 			this.tabDivision.Location = new System.Drawing.Point(4, 22);
 			this.tabDivision.Name = "tabDivision";
 			this.tabDivision.Padding = new System.Windows.Forms.Padding(3);
@@ -396,7 +399,7 @@
 			this.tabUsuario.Controls.Add(this.buttonEliminarUsuario);
 			this.tabUsuario.Controls.Add(this.buttonAgregarUsuario);
 			this.tabUsuario.Controls.Add(this.label9);
-			this.tabUsuario.Controls.Add(this.textBox8);
+			this.tabUsuario.Controls.Add(this.textBoxFindUser);
 			this.tabUsuario.Controls.Add(this.listView2);
 			this.tabUsuario.Location = new System.Drawing.Point(4, 22);
 			this.tabUsuario.Name = "tabUsuario";
@@ -409,92 +412,59 @@
 			// 
 			this.label7.AutoSize = true;
 			this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label7.Location = new System.Drawing.Point(2, 55);
+			this.label7.Location = new System.Drawing.Point(33, 40);
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(63, 18);
 			this.label7.TabIndex = 26;
 			this.label7.Text = "Buscar: ";
 			// 
-			// textBoxBuscarDivision
+			// textBoxFindDiv
 			// 
-			this.textBoxBuscarDivision.Location = new System.Drawing.Point(62, 54);
-			this.textBoxBuscarDivision.Name = "textBoxBuscarDivision";
-			this.textBoxBuscarDivision.Size = new System.Drawing.Size(516, 20);
-			this.textBoxBuscarDivision.TabIndex = 25;
+			this.textBoxFindDiv.Location = new System.Drawing.Point(102, 40);
+			this.textBoxFindDiv.Name = "textBoxFindDiv";
+			this.textBoxFindDiv.Size = new System.Drawing.Size(281, 20);
+			this.textBoxFindDiv.TabIndex = 25;
 			// 
-			// textBox9
+			// textBoxClaveDiv
 			// 
-			this.textBox9.Location = new System.Drawing.Point(64, 292);
-			this.textBox9.Name = "textBox9";
-			this.textBox9.Size = new System.Drawing.Size(174, 20);
-			this.textBox9.TabIndex = 24;
-			// 
-			// buttonModificarDivision
-			// 
-			this.buttonModificarDivision.BackColor = System.Drawing.Color.Olive;
-			this.buttonModificarDivision.ForeColor = System.Drawing.SystemColors.ButtonFace;
-			this.buttonModificarDivision.Location = new System.Drawing.Point(349, 330);
-			this.buttonModificarDivision.Name = "buttonModificarDivision";
-			this.buttonModificarDivision.Size = new System.Drawing.Size(75, 23);
-			this.buttonModificarDivision.TabIndex = 23;
-			this.buttonModificarDivision.Text = "Modificar";
-			this.buttonModificarDivision.UseVisualStyleBackColor = false;
+			this.textBoxClaveDiv.Location = new System.Drawing.Point(80, 290);
+			this.textBoxClaveDiv.Name = "textBoxClaveDiv";
+			this.textBoxClaveDiv.Size = new System.Drawing.Size(174, 20);
+			this.textBoxClaveDiv.TabIndex = 24;
 			// 
 			// buttonEliminarDivision
 			// 
 			this.buttonEliminarDivision.BackColor = System.Drawing.Color.DarkRed;
 			this.buttonEliminarDivision.ForeColor = System.Drawing.SystemColors.ButtonFace;
-			this.buttonEliminarDivision.Location = new System.Drawing.Point(430, 330);
+			this.buttonEliminarDivision.Location = new System.Drawing.Point(439, 328);
 			this.buttonEliminarDivision.Name = "buttonEliminarDivision";
 			this.buttonEliminarDivision.Size = new System.Drawing.Size(75, 23);
 			this.buttonEliminarDivision.TabIndex = 22;
 			this.buttonEliminarDivision.Text = "Eliminar";
 			this.buttonEliminarDivision.UseVisualStyleBackColor = false;
+			this.buttonEliminarDivision.Click += new System.EventHandler(this.buttonEliminarDivision_Click);
 			// 
 			// buttonAgregarDivision
 			// 
 			this.buttonAgregarDivision.BackColor = System.Drawing.Color.DarkGreen;
 			this.buttonAgregarDivision.ForeColor = System.Drawing.SystemColors.ButtonFace;
-			this.buttonAgregarDivision.Location = new System.Drawing.Point(268, 330);
+			this.buttonAgregarDivision.Location = new System.Drawing.Point(346, 328);
 			this.buttonAgregarDivision.Name = "buttonAgregarDivision";
 			this.buttonAgregarDivision.Size = new System.Drawing.Size(75, 23);
 			this.buttonAgregarDivision.TabIndex = 21;
 			this.buttonAgregarDivision.Text = "Agregar";
 			this.buttonAgregarDivision.UseVisualStyleBackColor = false;
+			this.buttonAgregarDivision.Click += new System.EventHandler(this.buttonAgregarDivision_Click);
 			// 
 			// label8
 			// 
 			this.label8.AutoSize = true;
-			this.label8.Location = new System.Drawing.Point(24, 295);
+			this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label8.Location = new System.Drawing.Point(33, 290);
 			this.label8.Name = "label8";
-			this.label8.Size = new System.Drawing.Size(34, 13);
+			this.label8.Size = new System.Drawing.Size(45, 18);
 			this.label8.TabIndex = 20;
 			this.label8.Text = "Clave";
-			// 
-			// listView3
-			// 
-			this.listView3.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader5,
-            this.columnHeader6});
-			this.listView3.FullRowSelect = true;
-			this.listView3.GridLines = true;
-			this.listView3.HoverSelection = true;
-			this.listView3.Location = new System.Drawing.Point(27, 90);
-			this.listView3.Name = "listView3";
-			this.listView3.Size = new System.Drawing.Size(506, 183);
-			this.listView3.TabIndex = 19;
-			this.listView3.UseCompatibleStateImageBehavior = false;
-			this.listView3.View = System.Windows.Forms.View.Details;
-			// 
-			// columnHeader5
-			// 
-			this.columnHeader5.Text = "ID";
-			this.columnHeader5.Width = 51;
-			// 
-			// columnHeader6
-			// 
-			this.columnHeader6.Text = "Nombre";
-			this.columnHeader6.Width = 180;
 			// 
 			// buttonEditarPerfil
 			// 
@@ -528,6 +498,7 @@
 			this.buttonAgregarUsuario.TabIndex = 27;
 			this.buttonAgregarUsuario.Text = "Agregar";
 			this.buttonAgregarUsuario.UseVisualStyleBackColor = false;
+			this.buttonAgregarUsuario.Click += new System.EventHandler(this.buttonAgregarUsuario_Click);
 			// 
 			// label9
 			// 
@@ -538,12 +509,12 @@
 			this.label9.TabIndex = 26;
 			this.label9.Text = "Buscar: ";
 			// 
-			// textBox8
+			// textBoxFindUser
 			// 
-			this.textBox8.Location = new System.Drawing.Point(63, 26);
-			this.textBox8.Name = "textBox8";
-			this.textBox8.Size = new System.Drawing.Size(516, 20);
-			this.textBox8.TabIndex = 25;
+			this.textBoxFindUser.Location = new System.Drawing.Point(63, 26);
+			this.textBoxFindUser.Name = "textBoxFindUser";
+			this.textBoxFindUser.Size = new System.Drawing.Size(516, 20);
+			this.textBoxFindUser.TabIndex = 25;
 			// 
 			// listView2
 			// 
@@ -587,21 +558,75 @@
 			// 
 			this.Tipo.Text = "Tipo";
 			// 
-			// textBox3
+			// textBoxNomDiv
 			// 
-			this.textBox3.Location = new System.Drawing.Point(359, 292);
-			this.textBox3.Name = "textBox3";
-			this.textBox3.Size = new System.Drawing.Size(174, 20);
-			this.textBox3.TabIndex = 27;
+			this.textBoxNomDiv.Location = new System.Drawing.Point(368, 290);
+			this.textBoxNomDiv.Name = "textBoxNomDiv";
+			this.textBoxNomDiv.Size = new System.Drawing.Size(174, 20);
+			this.textBoxNomDiv.TabIndex = 27;
 			// 
 			// label10
 			// 
 			this.label10.AutoSize = true;
-			this.label10.Location = new System.Drawing.Point(309, 295);
+			this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label10.Location = new System.Drawing.Point(304, 291);
 			this.label10.Name = "label10";
-			this.label10.Size = new System.Drawing.Size(44, 13);
+			this.label10.Size = new System.Drawing.Size(62, 18);
 			this.label10.TabIndex = 28;
 			this.label10.Text = "Nombre";
+			// 
+			// buttonBuscarDivision
+			// 
+			this.buttonBuscarDivision.BackColor = System.Drawing.Color.DarkGreen;
+			this.buttonBuscarDivision.ForeColor = System.Drawing.SystemColors.ButtonFace;
+			this.buttonBuscarDivision.Location = new System.Drawing.Point(467, 35);
+			this.buttonBuscarDivision.Name = "buttonBuscarDivision";
+			this.buttonBuscarDivision.Size = new System.Drawing.Size(75, 23);
+			this.buttonBuscarDivision.TabIndex = 29;
+			this.buttonBuscarDivision.Text = "Buscar";
+			this.buttonBuscarDivision.UseVisualStyleBackColor = false;
+			this.buttonBuscarDivision.Click += new System.EventHandler(this.buttonBuscarDivision_Click);
+			// 
+			// dgvDivisiones
+			// 
+			this.dgvDivisiones.BackgroundColor = System.Drawing.SystemColors.WindowText;
+			this.dgvDivisiones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dgvDivisiones.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ClaveDivision,
+            this.NombreDivision});
+			this.dgvDivisiones.Location = new System.Drawing.Point(46, 96);
+			this.dgvDivisiones.Name = "dgvDivisiones";
+			this.dgvDivisiones.ReadOnly = true;
+			this.dgvDivisiones.Size = new System.Drawing.Size(496, 150);
+			this.dgvDivisiones.TabIndex = 30;
+			this.dgvDivisiones.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDivisiones_CellClick);
+			// 
+			// ClaveDivision
+			// 
+			this.ClaveDivision.FillWeight = 50F;
+			this.ClaveDivision.HeaderText = "Clave";
+			this.ClaveDivision.Name = "ClaveDivision";
+			this.ClaveDivision.Width = 50;
+			// 
+			// NombreDivision
+			// 
+			this.NombreDivision.FillWeight = 50F;
+			this.NombreDivision.HeaderText = "Nombre";
+			this.NombreDivision.Name = "NombreDivision";
+			this.NombreDivision.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+			this.NombreDivision.Width = 150;
+			// 
+			// buttonListarTodo
+			// 
+			this.buttonListarTodo.BackColor = System.Drawing.Color.MidnightBlue;
+			this.buttonListarTodo.ForeColor = System.Drawing.SystemColors.ButtonFace;
+			this.buttonListarTodo.Location = new System.Drawing.Point(467, 67);
+			this.buttonListarTodo.Name = "buttonListarTodo";
+			this.buttonListarTodo.Size = new System.Drawing.Size(75, 23);
+			this.buttonListarTodo.TabIndex = 31;
+			this.buttonListarTodo.Text = "Listar Todo";
+			this.buttonListarTodo.UseVisualStyleBackColor = false;
+			this.buttonListarTodo.Click += new System.EventHandler(this.buttonListarTodo_Click);
 			// 
 			// MenuAdministrator
 			// 
@@ -630,6 +655,7 @@
 			this.tabDivision.PerformLayout();
 			this.tabUsuario.ResumeLayout(false);
 			this.tabUsuario.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dgvDivisiones)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -663,21 +689,17 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn idDivision;
 		private System.Windows.Forms.DataGridViewTextBoxColumn idNivel;
 		private System.Windows.Forms.TabPage tabDivision;
-		private System.Windows.Forms.TextBox textBoxBuscarDivision;
+		private System.Windows.Forms.TextBox textBoxFindDiv;
 		private System.Windows.Forms.Label label7;
-		private System.Windows.Forms.TextBox textBox9;
-		private System.Windows.Forms.Button buttonModificarDivision;
+		private System.Windows.Forms.TextBox textBoxClaveDiv;
 		private System.Windows.Forms.Button buttonEliminarDivision;
 		private System.Windows.Forms.Button buttonAgregarDivision;
 		private System.Windows.Forms.Label label8;
-		private System.Windows.Forms.ListView listView3;
-		public System.Windows.Forms.ColumnHeader columnHeader5;
-		private System.Windows.Forms.ColumnHeader columnHeader6;
 		private System.Windows.Forms.TabPage tabUsuario;
 		private System.Windows.Forms.Button buttonEliminarUsuario;
 		private System.Windows.Forms.Button buttonAgregarUsuario;
 		private System.Windows.Forms.Label label9;
-		private System.Windows.Forms.TextBox textBox8;
+		private System.Windows.Forms.TextBox textBoxFindUser;
 		private System.Windows.Forms.ListView listView2;
 		public System.Windows.Forms.ColumnHeader columnIDUsuario;
 		private System.Windows.Forms.ColumnHeader columnHeader2;
@@ -686,6 +708,11 @@
 		private System.Windows.Forms.ColumnHeader Tipo;
 		private System.Windows.Forms.Button buttonEditarPerfil;
 		private System.Windows.Forms.Label label10;
-		private System.Windows.Forms.TextBox textBox3;
+		private System.Windows.Forms.TextBox textBoxNomDiv;
+		private System.Windows.Forms.Button buttonBuscarDivision;
+		private System.Windows.Forms.DataGridView dgvDivisiones;
+		private System.Windows.Forms.DataGridViewTextBoxColumn ClaveDivision;
+		private System.Windows.Forms.DataGridViewTextBoxColumn NombreDivision;
+		private System.Windows.Forms.Button buttonListarTodo;
 	}
 }

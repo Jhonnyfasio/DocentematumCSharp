@@ -25,6 +25,7 @@ namespace DocentematumCSharp
 		{
 			InitializeComponent();
 			chargeDGVCarreras();
+			chargeDgvDivisiones();
 			chargeComboDivision();
 			chargeComboNivel();
 			forma1.Hide();
@@ -87,7 +88,7 @@ namespace DocentematumCSharp
 
 		private void chargeDGVCarreras()
 		{
-			string strCarrera;
+			string strCarrera, str;
 			dgvCarrera.Rows.Clear();
 			ConnectionSql connection = new ConnectionSql();
 			strCarrera = "SELECT idCarrera, c.nombre AS CName, d.nombre AS DName, tipo" +
@@ -99,9 +100,9 @@ namespace DocentematumCSharp
 			while (reader.Read())
 			{
 				int row = dgvCarrera.Rows.Add();
-				dgvCarrera.Rows[row].Cells["idCarrera"].Value = reader.GetString(reader.GetOrdinal("idCarrera"));
-				dgvCarrera.Rows[row].Cells["idDivision"].Value = reader.GetString(reader.GetOrdinal("DName"));
-				dgvCarrera.Rows[row].Cells["idNivel"].Value = reader.GetString(reader.GetOrdinal("tipo"));
+				dgvCarrera.Rows[row].Cells["idCarrera"].Value = reader.GetString(reader.GetOrdinal("idCarrera"));	
+				dgvCarrera.Rows[row].Cells["idDivision"].Value = reader.GetString(reader.GetOrdinal("DName"));			
+				dgvCarrera.Rows[row].Cells["idNivel"].Value = reader.GetString(reader.GetOrdinal("tipo"));				
 				dgvCarrera.Rows[row].Cells["nombre"].Value = reader.GetString(reader.GetOrdinal("CName"));
 			}
 			connection.closeConnection();
@@ -110,26 +111,6 @@ namespace DocentematumCSharp
 		private void MenuAdministrator_FormClosing(object sender, FormClosingEventArgs e)
 		{
 			main.endOfProgram();
-		}
-
-		private void button1_Click_1(object sender, EventArgs e)
-		{
-			tabPrincipal.SelectedIndex = 1;
-		}
-
-		private void buttonGrado_Click(object sender, EventArgs e)
-		{
-			tabPrincipal.SelectedIndex = 2;
-		}
-
-		private void buttonInicio_Click(object sender, EventArgs e)
-		{
-			tabPrincipal.SelectedIndex = 0;
-		}
-
-		private void buttonProduccion_Click(object sender, EventArgs e)
-		{
-			tabPrincipal.SelectedIndex = 3;
 		}
 
 		private void buttonGuardarCarrera_Click(object sender, EventArgs e)
@@ -207,6 +188,126 @@ namespace DocentematumCSharp
 			textBox2.Clear();
 			comboNivel.SelectedItem = -1;
 			comboDivision.SelectedItem = -1;
+		}
+
+		// ///////////////////////////////////////// DIVISIONES ////////////////////////////////////////////
+
+		private void buttonBuscarDivision_Click(object sender, EventArgs e)
+		{
+			string str;
+			ConnectionSql connection = new ConnectionSql();
+			str = "SELECT * FROM carrera WHERE idCarrera = \"" + textBoxFindDiv + "\";";
+			MySqlCommand command = connection.getCommand(str);
+			MySqlDataReader reader = command.ExecuteReader();
+			if (reader.Read())
+			{
+				dgvDivisiones.Rows.Clear();
+				int row = dgvDivisiones.Rows.Add();
+				dgvDivisiones.Rows[row].Cells["ClaveDivision"].Value = reader.GetString(reader.GetOrdinal("idDivision"));
+				dgvDivisiones.Rows[row].Cells["NombreDivision"].Value = reader.GetString(reader.GetOrdinal("nombre"));
+			}
+			else
+			{
+				MessageBox.Show("Error, la división no pudo ser encontrada");
+			}
+			textBoxFindDiv.Clear();
+			connection.closeConnection();
+		}
+
+		private void buttonAgregarDivision_Click(object sender, EventArgs e)
+		{
+			string str;
+			if (string.IsNullOrWhiteSpace(textBoxClaveDiv.Text) || string.IsNullOrWhiteSpace(textBoxNomDiv.Text))
+			{
+				MessageBox.Show("No puede haber campos nulos");
+				return;
+			}
+
+			ConnectionSql connection = new ConnectionSql();
+			str = "SELECT * FROM division WHERE idDivision = " + textBoxClaveDiv.Text + ";";
+			MySqlCommand command = connection.getCommand(str);
+			MySqlDataReader reader = command.ExecuteReader();
+			if (reader.Read())
+			{
+				MessageBox.Show("Error, carrera: '" + textBox1.Text + "' ya previamente registrada");
+			}
+			else
+			{
+				connection.closeConnection();
+
+				connection = new ConnectionSql();
+				str = "INSERT INTO division VALUES ('" + textBoxClaveDiv.Text + "', '" + textBoxNomDiv.Text + "');";
+
+				command = connection.getCommand(str);
+				command.ExecuteNonQuery();
+
+				chargeDgvDivisiones();
+				chargeComboDivision();
+			}
+			connection.closeConnection();
+			cleanTextBoxDivision();
+		}
+
+		public void chargeDgvDivisiones()
+		{
+			string strCarrera;
+			dgvDivisiones.Rows.Clear();
+			ConnectionSql connection = new ConnectionSql();
+			strCarrera = "SELECT * FROM division";
+			MySqlCommand command = connection.getCommand(strCarrera);
+			MySqlDataReader reader;
+			reader = command.ExecuteReader();
+			while (reader.Read())
+			{
+				int row = dgvDivisiones.Rows.Add();
+				dgvDivisiones.Rows[row].Cells["ClaveDivision"].Value = reader.GetString(reader.GetOrdinal("idDivision"));
+				dgvDivisiones.Rows[row].Cells["NombreDivision"].Value = reader.GetString(reader.GetOrdinal("nombre"));
+			}
+			connection.closeConnection();
+		}
+
+		private void buttonEliminarDivision_Click(object sender, EventArgs e)
+		{
+			string str;
+			DialogResult dialog = MessageBox.Show("Estás por eliminar un registro ¿Estás seguro de esto?", "Eliminado regsitro.", MessageBoxButtons.YesNoCancel);
+			if (dialog == DialogResult.Yes)
+			{
+				if (n != -1)
+				{
+					ConnectionSql connection = new ConnectionSql();
+					str = "DELETE FROM division WHERE idDivision = " + (string)dgvDivisiones.Rows[n].Cells["ClaveDivision"].Value + ";";
+					MySqlCommand command = connection.getCommand(str);
+					command.ExecuteNonQuery();
+					dgvDivisiones.Rows.RemoveAt(n);
+					chargeDGVCarreras();
+
+					connection.closeConnection();
+				}
+			}
+		}
+
+		private void dgvDivisiones_CellClick(object sender, DataGridViewCellEventArgs e)
+		{
+			n = e.RowIndex;
+		}
+
+		private void buttonListarTodo_Click(object sender, EventArgs e)
+		{
+			chargeDgvDivisiones();
+		}
+
+		public void cleanTextBoxDivision()
+		{
+			textBoxClaveDiv.Clear();
+			textBoxNomDiv.Clear();
+		}
+
+		//////////////////////////////////////////// USUARIO ///////////////////////////////////////////////
+
+		private void buttonAgregarUsuario_Click(object sender, EventArgs e)
+		{
+			RegistroUsuario user = new RegistroUsuario();
+			user.Show();
 		}
 	}
 }

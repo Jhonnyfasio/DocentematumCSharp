@@ -30,7 +30,8 @@ namespace DocentematumCSharp
 			try
 			{
 				ConnectionSql connection = new ConnectionSql();
-				string sentencia = "SELECT * FROM profesor WHERE usuario = '" + usuarioTextBox.Text + "' AND contrasena = '" + contrasenaTextBox.Text + "';";
+				//string sentencia = "SELECT * FROM profesor WHERE usuario = '" + usuarioTextBox.Text + "' AND contrasena = '" + contrasenaTextBox.Text + "';";
+				string sentencia = "SELECT * FROM profesor WHERE usuario = 'Jhonnyfasio' AND contrasena = 'Juan123';";
 				MySqlCommand comando = connection.getCommand(sentencia);
 				MySqlDataReader myReader;
 				myReader = comando.ExecuteReader();

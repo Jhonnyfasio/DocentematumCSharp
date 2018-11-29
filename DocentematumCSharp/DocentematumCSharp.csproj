@@ -81,6 +81,14 @@
     <Compile Include="MenuAdministrador.Designer.cs">
       <DependentUpon>MenuAdministrador.cs</DependentUpon>
     </Compile>
+    <Compile Include="MenuUsuarioEspecial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenuUsuarioEspecial.Designer.cs" />
+    <Compile Include="MenuUsuarioNormal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenuUsuarioNormal.Designer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegistroUsuario.cs">
@@ -98,6 +106,8 @@
     <EmbeddedResource Include="MenuAdministrador.resx">
       <DependentUpon>MenuAdministrador.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MenuUsuarioEspecial.resx" />
+    <EmbeddedResource Include="MenuUsuarioNormal.resx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
