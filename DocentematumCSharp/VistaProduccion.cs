@@ -25,8 +25,7 @@ namespace DocentematumCSharp
 
 			string str;
 			ConnectionSql connection = new ConnectionSql();
-			str = "SELECT * FROM profesor AS p LEFT JOIN profesor_produccion AS pp ON p.codigoTrabajador = " +
-				"pp.codigoTrabajador LEFT JOIN produccion pro ON p.codigoTrabajador = pro.codigoTrabajador;";
+			str = "SELECT * FROM produccion WHERE idProduccion = '"+prodCode+"';";
 			MySqlCommand command = connection.getCommand(str);
 			command.ExecuteNonQuery();
 			MySqlDataReader reader = command.ExecuteReader();
@@ -38,9 +37,8 @@ namespace DocentematumCSharp
 				dgvProduccion.Rows[row].Cells["tipoProduccion"].Value = reader.GetString(reader.GetOrdinal("tipo"));		
 				dgvProduccion.Rows[row].Cells["fechaProduccion"].Value = reader.GetString(reader.GetOrdinal("fechaInicio"));
 				dgvProduccion.Rows[row].Cells["statusProduccion"].Value = reader.GetString(reader.GetOrdinal("status"));
-				dgvProduccion.Rows[row].Cells["propositoProduccion"].Value = reader.GetSByte(reader.GetOrdinal("proposito"));
-				dgvProduccion.Rows[row].Cells["numeroRegistro"].Value = reader.GetSByte(reader.GetOrdinal("numeroInstituto"));
-				dgvProduccion.Rows[row].Cells["colaboradorProduccion"].Value = reader.GetSByte(reader.GetOrdinal("nombre"));
+				dgvProduccion.Rows[row].Cells["propositoProduccion"].Value = reader.GetString(reader.GetOrdinal("proposito"));
+				dgvProduccion.Rows[row].Cells["numeroRegistro"].Value = reader.GetInt32(reader.GetOrdinal("numeroInstitucion")).ToString();
 			}
 			labelProduccion.Text = reader.GetString(reader.GetOrdinal("titulo"));
 			connection.closeConnection();

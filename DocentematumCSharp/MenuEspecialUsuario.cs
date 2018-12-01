@@ -71,9 +71,14 @@ namespace DocentematumCSharp
 
 		private void buttonAprobar_Click(object sender, EventArgs e)
 		{
+			if (n == -1)
+			{
+				MessageBox.Show("Error, debe seleccionar una producción primero");
+				return;
+			}
 			string str;
 			ConnectionSql connection = new ConnectionSql();
-			str = "UPDATE FROM produccion set status = 'APROBADA' WHERE idProduccion = '" + textBoxFindProd.Text + "';";
+			str = "UPDATE produccion set status = 'APROBADA' WHERE idProduccion = '" + (string)dgvProduccion.Rows[n].Cells["idProduccion"].Value + "';";
 			MySqlCommand command = connection.getCommand(str);
 			command.ExecuteNonQuery();
 
@@ -96,6 +101,7 @@ namespace DocentematumCSharp
 				MySqlCommand command = connection.getCommand(str);
 				command.ExecuteNonQuery();
 				MySqlDataReader reader = command.ExecuteReader();
+				reader.Read();
 
 				VistaProduccion vista = new VistaProduccion(reader.GetInt32(reader.GetOrdinal("idProduccion")));
 				connection.closeConnection();
@@ -106,18 +112,35 @@ namespace DocentematumCSharp
 
 		}
 
+		private void buttonRechazar_Click(object sender, EventArgs e)
+		{
+			if (n == -1)
+			{
+				MessageBox.Show("Error, debe seleccionar una producción primero");
+				return;
+			}
+			string str;
+			ConnectionSql connection = new ConnectionSql();
+			str = "UPDATE produccion set status = 'RECHAZADA' WHERE idProduccion = '" + (string)dgvProduccion.Rows[n].Cells["idProduccion"].Value + "';";
+			MySqlCommand command = connection.getCommand(str);
+			command.ExecuteNonQuery();
+
+			connection.closeConnection();
+			chargeDgvProduccion();
+		}
+
 		private void chargeDgvProduccion()
 		{
 			string str;
 			dgvProduccion.Rows.Clear();
 			ConnectionSql connection = new ConnectionSql();
-			str = "SELECT * produccion;";
+			str = "SELECT * FROM produccion;";
 			MySqlCommand command = connection.getCommand(str);
 			MySqlDataReader reader;
 			reader = command.ExecuteReader();
 			while (reader.Read())
 			{
-				int row = dgvCarrera.Rows.Add();
+				int row = dgvProduccion.Rows.Add();
 				dgvProduccion.Rows[row].Cells["IDProduccion"].Value = reader.GetInt32(reader.GetOrdinal("idProduccion")).ToString();
 				dgvProduccion.Rows[row].Cells["tipoProduccion"].Value = reader.GetString(reader.GetOrdinal("tipo"));
 				dgvProduccion.Rows[row].Cells["tituloProduccion"].Value = reader.GetString(reader.GetOrdinal("titulo"));

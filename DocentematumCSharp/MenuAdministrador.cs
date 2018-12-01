@@ -89,7 +89,7 @@ namespace DocentematumCSharp
 
 		private void chargeDGVCarreras()
 		{
-			string strCarrera, str;
+			string strCarrera;
 			dgvCarrera.Rows.Clear();
 			ConnectionSql connection = new ConnectionSql();
 			strCarrera = "SELECT idCarrera, c.nombre AS CName, d.nombre AS DName, tipo" +

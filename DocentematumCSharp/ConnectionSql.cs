@@ -11,7 +11,7 @@ namespace DocentematumCSharp
 		MySqlConnection connection;
 		public ConnectionSql()
 		{
-			connection = new MySqlConnection("server = localhost; password =;" + "database = docentematum; " +
+			connection = new MySqlConnection("server = localhost; password =;" + "database = docentematum2; " +
 					"User Id = root;");
 			connection.Open();
 		}

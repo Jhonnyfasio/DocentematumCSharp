@@ -41,38 +41,46 @@
 			this.dataGridView3 = new System.Windows.Forms.DataGridView();
 			this.tabPageProduccionesProfesor = new System.Windows.Forms.TabPage();
 			this.button6 = new System.Windows.Forms.Button();
-			this.TipoGrado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.NombreGrado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.dataGridView2 = new System.Windows.Forms.DataGridView();
-			this.IDGrado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.DgvGrado = new System.Windows.Forms.DataGridView();
 			this.labelTipoGrado = new System.Windows.Forms.Label();
-			this.labelCodigoAdministrador = new System.Windows.Forms.Label();
+			this.labelCodigo = new System.Windows.Forms.Label();
 			this.labelNombreAdministrador = new System.Windows.Forms.Label();
 			this.tabPageCarrerasProfesor = new System.Windows.Forms.TabPage();
-			this.dataGridView1 = new System.Windows.Forms.DataGridView();
-			this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Division = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Nivel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.label3 = new System.Windows.Forms.Label();
+			this.label2 = new System.Windows.Forms.Label();
+			this.dgvAgregadas = new System.Windows.Forms.DataGridView();
+			this.idAgregada = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.nombreAgregada = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.buttonBuscarCarrera = new System.Windows.Forms.Button();
+			this.dgvCarrera = new System.Windows.Forms.DataGridView();
+			this.IdCarrera = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.NombreCarrera = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.divisionCarrera = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.nivelCarrera = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.labelBusqueda = new System.Windows.Forms.Label();
-			this.textBoxBusqueda = new System.Windows.Forms.TextBox();
+			this.textBoxBusquedaCarrera = new System.Windows.Forms.TextBox();
 			this.buttonEliminar = new System.Windows.Forms.Button();
 			this.buttonAgregar = new System.Windows.Forms.Button();
 			this.comboBoxTipo = new System.Windows.Forms.ComboBox();
 			this.textBoxNombreGrado = new System.Windows.Forms.TextBox();
 			this.labelNombreGrado = new System.Windows.Forms.Label();
-			this.button2 = new System.Windows.Forms.Button();
-			this.button3 = new System.Windows.Forms.Button();
-			this.label5 = new System.Windows.Forms.Label();
-			this.textBox8 = new System.Windows.Forms.TextBox();
+			this.buttonEliminarGrado = new System.Windows.Forms.Button();
+			this.buttonAgregarGrado = new System.Windows.Forms.Button();
 			this.buttonEditarPerfil = new System.Windows.Forms.Button();
 			this.tabControlProfesor = new System.Windows.Forms.TabControl();
 			this.tabPageGradosProfesor = new System.Windows.Forms.TabPage();
+			this.label1 = new System.Windows.Forms.Label();
+			this.labelNombre = new System.Windows.Forms.Label();
+			this.button1 = new System.Windows.Forms.Button();
+			this.label5 = new System.Windows.Forms.Label();
+			this.NombreGrado = new System.Windows.Forms.DataGridViewButtonColumn();
+			this.TipoGrado = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
 			this.tabPageProduccionesProfesor.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.DgvGrado)).BeginInit();
 			this.tabPageCarrerasProfesor.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.dgvAgregadas)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.dgvCarrera)).BeginInit();
 			this.tabControlProfesor.SuspendLayout();
 			this.tabPageGradosProfesor.SuspendLayout();
 			this.SuspendLayout();
@@ -130,29 +138,36 @@
 			// 
 			this.Status.HeaderText = "Status";
 			this.Status.Name = "Status";
+			this.Status.ReadOnly = true;
 			// 
 			// FechaInicio
 			// 
 			this.FechaInicio.HeaderText = "Fecha Inicio";
 			this.FechaInicio.Name = "FechaInicio";
+			this.FechaInicio.ReadOnly = true;
 			// 
 			// Titulo
 			// 
 			this.Titulo.HeaderText = "Titulo";
 			this.Titulo.Name = "Titulo";
+			this.Titulo.ReadOnly = true;
 			// 
 			// Tipo
 			// 
 			this.Tipo.HeaderText = "Tipo";
 			this.Tipo.Name = "Tipo";
+			this.Tipo.ReadOnly = true;
 			// 
 			// IDProduccion
 			// 
 			this.IDProduccion.HeaderText = "ID";
 			this.IDProduccion.Name = "IDProduccion";
+			this.IDProduccion.ReadOnly = true;
 			// 
 			// dataGridView3
 			// 
+			this.dataGridView3.AllowUserToAddRows = false;
+			this.dataGridView3.AllowUserToOrderColumns = true;
 			this.dataGridView3.BackgroundColor = System.Drawing.SystemColors.ActiveCaptionText;
 			this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -163,6 +178,7 @@
             this.Status});
 			this.dataGridView3.Location = new System.Drawing.Point(9, 75);
 			this.dataGridView3.Name = "dataGridView3";
+			this.dataGridView3.ReadOnly = true;
 			this.dataGridView3.Size = new System.Drawing.Size(543, 169);
 			this.dataGridView3.TabIndex = 19;
 			// 
@@ -193,54 +209,41 @@
 			this.button6.Text = "Agregar";
 			this.button6.UseVisualStyleBackColor = false;
 			// 
-			// TipoGrado
+			// DgvGrado
 			// 
-			this.TipoGrado.HeaderText = "Tipo";
-			this.TipoGrado.Name = "TipoGrado";
-			// 
-			// NombreGrado
-			// 
-			this.NombreGrado.HeaderText = "Nombre";
-			this.NombreGrado.Name = "NombreGrado";
-			// 
-			// dataGridView2
-			// 
-			this.dataGridView2.BackgroundColor = System.Drawing.SystemColors.ActiveCaptionText;
-			this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.IDGrado,
+			this.DgvGrado.AllowUserToAddRows = false;
+			this.DgvGrado.AllowUserToOrderColumns = true;
+			this.DgvGrado.BackgroundColor = System.Drawing.SystemColors.ActiveCaptionText;
+			this.DgvGrado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.DgvGrado.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NombreGrado,
             this.TipoGrado});
-			this.dataGridView2.Location = new System.Drawing.Point(58, 48);
-			this.dataGridView2.Name = "dataGridView2";
-			this.dataGridView2.Size = new System.Drawing.Size(346, 148);
-			this.dataGridView2.TabIndex = 29;
-			// 
-			// IDGrado
-			// 
-			this.IDGrado.HeaderText = "ID";
-			this.IDGrado.Name = "IDGrado";
+			this.DgvGrado.Location = new System.Drawing.Point(43, 32);
+			this.DgvGrado.Name = "DgvGrado";
+			this.DgvGrado.ReadOnly = true;
+			this.DgvGrado.Size = new System.Drawing.Size(294, 168);
+			this.DgvGrado.TabIndex = 29;
 			// 
 			// labelTipoGrado
 			// 
 			this.labelTipoGrado.AutoSize = true;
-			this.labelTipoGrado.Location = new System.Drawing.Point(10, 261);
+			this.labelTipoGrado.Location = new System.Drawing.Point(61, 242);
 			this.labelTipoGrado.Name = "labelTipoGrado";
 			this.labelTipoGrado.Size = new System.Drawing.Size(28, 13);
 			this.labelTipoGrado.TabIndex = 28;
 			this.labelTipoGrado.Text = "Tipo";
 			// 
-			// labelCodigoAdministrador
+			// labelCodigo
 			// 
-			this.labelCodigoAdministrador.AutoSize = true;
-			this.labelCodigoAdministrador.BackColor = System.Drawing.Color.Transparent;
-			this.labelCodigoAdministrador.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.labelCodigoAdministrador.ForeColor = System.Drawing.Color.White;
-			this.labelCodigoAdministrador.Location = new System.Drawing.Point(16, 34);
-			this.labelCodigoAdministrador.Name = "labelCodigoAdministrador";
-			this.labelCodigoAdministrador.Size = new System.Drawing.Size(56, 18);
-			this.labelCodigoAdministrador.TabIndex = 56;
-			this.labelCodigoAdministrador.Text = "Código";
+			this.labelCodigo.AutoSize = true;
+			this.labelCodigo.BackColor = System.Drawing.Color.Transparent;
+			this.labelCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.labelCodigo.ForeColor = System.Drawing.Color.White;
+			this.labelCodigo.Location = new System.Drawing.Point(16, 106);
+			this.labelCodigo.Name = "labelCodigo";
+			this.labelCodigo.Size = new System.Drawing.Size(56, 18);
+			this.labelCodigo.TabIndex = 56;
+			this.labelCodigo.Text = "Código";
 			// 
 			// labelNombreAdministrador
 			// 
@@ -248,7 +251,7 @@
 			this.labelNombreAdministrador.BackColor = System.Drawing.Color.Transparent;
 			this.labelNombreAdministrador.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.labelNombreAdministrador.ForeColor = System.Drawing.Color.White;
-			this.labelNombreAdministrador.Location = new System.Drawing.Point(16, 93);
+			this.labelNombreAdministrador.Location = new System.Drawing.Point(16, 165);
 			this.labelNombreAdministrador.Name = "labelNombreAdministrador";
 			this.labelNombreAdministrador.Size = new System.Drawing.Size(62, 18);
 			this.labelNombreAdministrador.TabIndex = 55;
@@ -256,9 +259,14 @@
 			// 
 			// tabPageCarrerasProfesor
 			// 
-			this.tabPageCarrerasProfesor.Controls.Add(this.dataGridView1);
+			this.tabPageCarrerasProfesor.Controls.Add(this.button1);
+			this.tabPageCarrerasProfesor.Controls.Add(this.label3);
+			this.tabPageCarrerasProfesor.Controls.Add(this.label2);
+			this.tabPageCarrerasProfesor.Controls.Add(this.dgvAgregadas);
+			this.tabPageCarrerasProfesor.Controls.Add(this.buttonBuscarCarrera);
+			this.tabPageCarrerasProfesor.Controls.Add(this.dgvCarrera);
 			this.tabPageCarrerasProfesor.Controls.Add(this.labelBusqueda);
-			this.tabPageCarrerasProfesor.Controls.Add(this.textBoxBusqueda);
+			this.tabPageCarrerasProfesor.Controls.Add(this.textBoxBusquedaCarrera);
 			this.tabPageCarrerasProfesor.Controls.Add(this.buttonEliminar);
 			this.tabPageCarrerasProfesor.Controls.Add(this.buttonAgregar);
 			this.tabPageCarrerasProfesor.Location = new System.Drawing.Point(4, 22);
@@ -269,39 +277,109 @@
 			this.tabPageCarrerasProfesor.Text = "Tus Carreras";
 			this.tabPageCarrerasProfesor.UseVisualStyleBackColor = true;
 			// 
-			// dataGridView1
+			// label3
 			// 
-			this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ActiveCaptionText;
-			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ID,
-            this.Nombre,
-            this.Division,
-            this.Nivel});
-			this.dataGridView1.Location = new System.Drawing.Point(69, 70);
-			this.dataGridView1.Name = "dataGridView1";
-			this.dataGridView1.Size = new System.Drawing.Size(438, 150);
-			this.dataGridView1.TabIndex = 12;
+			this.label3.AutoSize = true;
+			this.label3.Location = new System.Drawing.Point(375, 75);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(58, 13);
+			this.label3.TabIndex = 16;
+			this.label3.Text = "Agregadas";
 			// 
-			// ID
+			// label2
 			// 
-			this.ID.HeaderText = "ID";
-			this.ID.Name = "ID";
+			this.label2.AutoSize = true;
+			this.label2.Location = new System.Drawing.Point(13, 75);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(90, 13);
+			this.label2.TabIndex = 15;
+			this.label2.Text = "En base de datos";
 			// 
-			// Nombre
+			// dgvAgregadas
 			// 
-			this.Nombre.HeaderText = "Nombre";
-			this.Nombre.Name = "Nombre";
+			this.dgvAgregadas.AllowUserToAddRows = false;
+			this.dgvAgregadas.AllowUserToOrderColumns = true;
+			this.dgvAgregadas.BackgroundColor = System.Drawing.SystemColors.ActiveCaptionText;
+			this.dgvAgregadas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dgvAgregadas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idAgregada,
+            this.nombreAgregada});
+			this.dgvAgregadas.Location = new System.Drawing.Point(369, 97);
+			this.dgvAgregadas.Name = "dgvAgregadas";
+			this.dgvAgregadas.ReadOnly = true;
+			this.dgvAgregadas.Size = new System.Drawing.Size(206, 150);
+			this.dgvAgregadas.TabIndex = 14;
+			this.dgvAgregadas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAgregadas_CellClick);
 			// 
-			// Division
+			// idAgregada
 			// 
-			this.Division.HeaderText = "Division";
-			this.Division.Name = "Division";
+			this.idAgregada.HeaderText = "ID";
+			this.idAgregada.Name = "idAgregada";
+			this.idAgregada.ReadOnly = true;
+			this.idAgregada.Width = 50;
 			// 
-			// Nivel
+			// nombreAgregada
 			// 
-			this.Nivel.HeaderText = "Nivel";
-			this.Nivel.Name = "Nivel";
+			this.nombreAgregada.HeaderText = "Nombre";
+			this.nombreAgregada.Name = "nombreAgregada";
+			this.nombreAgregada.ReadOnly = true;
+			// 
+			// buttonBuscarCarrera
+			// 
+			this.buttonBuscarCarrera.BackColor = System.Drawing.Color.MidnightBlue;
+			this.buttonBuscarCarrera.ForeColor = System.Drawing.SystemColors.ButtonFace;
+			this.buttonBuscarCarrera.Location = new System.Drawing.Point(420, 19);
+			this.buttonBuscarCarrera.Name = "buttonBuscarCarrera";
+			this.buttonBuscarCarrera.Size = new System.Drawing.Size(75, 23);
+			this.buttonBuscarCarrera.TabIndex = 13;
+			this.buttonBuscarCarrera.Text = "Buscar ID";
+			this.buttonBuscarCarrera.UseVisualStyleBackColor = false;
+			this.buttonBuscarCarrera.Click += new System.EventHandler(this.buttonBuscarCarrera_Click);
+			// 
+			// dgvCarrera
+			// 
+			this.dgvCarrera.AllowUserToAddRows = false;
+			this.dgvCarrera.AllowUserToOrderColumns = true;
+			this.dgvCarrera.BackgroundColor = System.Drawing.SystemColors.ActiveCaptionText;
+			this.dgvCarrera.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dgvCarrera.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IdCarrera,
+            this.NombreCarrera,
+            this.divisionCarrera,
+            this.nivelCarrera});
+			this.dgvCarrera.Location = new System.Drawing.Point(9, 97);
+			this.dgvCarrera.Name = "dgvCarrera";
+			this.dgvCarrera.ReadOnly = true;
+			this.dgvCarrera.Size = new System.Drawing.Size(345, 150);
+			this.dgvCarrera.TabIndex = 12;
+			this.dgvCarrera.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCarrera_CellClick);
+			// 
+			// IdCarrera
+			// 
+			this.IdCarrera.HeaderText = "ID";
+			this.IdCarrera.Name = "IdCarrera";
+			this.IdCarrera.ReadOnly = true;
+			this.IdCarrera.Width = 50;
+			// 
+			// NombreCarrera
+			// 
+			this.NombreCarrera.HeaderText = "Nombre";
+			this.NombreCarrera.Name = "NombreCarrera";
+			this.NombreCarrera.ReadOnly = true;
+			// 
+			// divisionCarrera
+			// 
+			this.divisionCarrera.HeaderText = "Division";
+			this.divisionCarrera.Name = "divisionCarrera";
+			this.divisionCarrera.ReadOnly = true;
+			this.divisionCarrera.Width = 75;
+			// 
+			// nivelCarrera
+			// 
+			this.nivelCarrera.HeaderText = "Nivel";
+			this.nivelCarrera.Name = "nivelCarrera";
+			this.nivelCarrera.ReadOnly = true;
+			this.nivelCarrera.Width = 75;
 			// 
 			// labelBusqueda
 			// 
@@ -312,12 +390,12 @@
 			this.labelBusqueda.TabIndex = 11;
 			this.labelBusqueda.Text = "Buscar: ";
 			// 
-			// textBoxBusqueda
+			// textBoxBusquedaCarrera
 			// 
-			this.textBoxBusqueda.Location = new System.Drawing.Point(69, 22);
-			this.textBoxBusqueda.Name = "textBoxBusqueda";
-			this.textBoxBusqueda.Size = new System.Drawing.Size(506, 20);
-			this.textBoxBusqueda.TabIndex = 10;
+			this.textBoxBusquedaCarrera.Location = new System.Drawing.Point(69, 22);
+			this.textBoxBusquedaCarrera.Name = "textBoxBusquedaCarrera";
+			this.textBoxBusquedaCarrera.Size = new System.Drawing.Size(328, 20);
+			this.textBoxBusquedaCarrera.TabIndex = 10;
 			// 
 			// buttonEliminar
 			// 
@@ -329,6 +407,7 @@
 			this.buttonEliminar.TabIndex = 4;
 			this.buttonEliminar.Text = "Eliminar";
 			this.buttonEliminar.UseVisualStyleBackColor = false;
+			this.buttonEliminar.Click += new System.EventHandler(this.buttonEliminar_Click);
 			// 
 			// buttonAgregar
 			// 
@@ -340,24 +419,19 @@
 			this.buttonAgregar.TabIndex = 3;
 			this.buttonAgregar.Text = "Agregar";
 			this.buttonAgregar.UseVisualStyleBackColor = false;
+			this.buttonAgregar.Click += new System.EventHandler(this.buttonAgregar_Click);
 			// 
 			// comboBoxTipo
 			// 
 			this.comboBoxTipo.FormattingEnabled = true;
-			this.comboBoxTipo.Items.AddRange(new object[] {
-            "LIC",
-            "MTR",
-            "MTRO",
-            "PHD",
-            "PPHD"});
-			this.comboBoxTipo.Location = new System.Drawing.Point(74, 258);
+			this.comboBoxTipo.Location = new System.Drawing.Point(125, 239);
 			this.comboBoxTipo.Name = "comboBoxTipo";
 			this.comboBoxTipo.Size = new System.Drawing.Size(121, 21);
 			this.comboBoxTipo.TabIndex = 27;
 			// 
 			// textBoxNombreGrado
 			// 
-			this.textBoxNombreGrado.Location = new System.Drawing.Point(74, 219);
+			this.textBoxNombreGrado.Location = new System.Drawing.Point(125, 272);
 			this.textBoxNombreGrado.Name = "textBoxNombreGrado";
 			this.textBoxNombreGrado.Size = new System.Drawing.Size(174, 20);
 			this.textBoxNombreGrado.TabIndex = 26;
@@ -365,49 +439,34 @@
 			// labelNombreGrado
 			// 
 			this.labelNombreGrado.AutoSize = true;
-			this.labelNombreGrado.Location = new System.Drawing.Point(10, 222);
+			this.labelNombreGrado.Location = new System.Drawing.Point(61, 275);
 			this.labelNombreGrado.Name = "labelNombreGrado";
 			this.labelNombreGrado.Size = new System.Drawing.Size(44, 13);
 			this.labelNombreGrado.TabIndex = 24;
 			this.labelNombreGrado.Text = "Nombre";
 			// 
-			// button2
+			// buttonEliminarGrado
 			// 
-			this.button2.BackColor = System.Drawing.Color.DarkRed;
-			this.button2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-			this.button2.Location = new System.Drawing.Point(477, 237);
-			this.button2.Name = "button2";
-			this.button2.Size = new System.Drawing.Size(75, 23);
-			this.button2.TabIndex = 23;
-			this.button2.Text = "Eliminar";
-			this.button2.UseVisualStyleBackColor = false;
+			this.buttonEliminarGrado.BackColor = System.Drawing.Color.DarkRed;
+			this.buttonEliminarGrado.ForeColor = System.Drawing.SystemColors.ButtonFace;
+			this.buttonEliminarGrado.Location = new System.Drawing.Point(477, 237);
+			this.buttonEliminarGrado.Name = "buttonEliminarGrado";
+			this.buttonEliminarGrado.Size = new System.Drawing.Size(75, 23);
+			this.buttonEliminarGrado.TabIndex = 23;
+			this.buttonEliminarGrado.Text = "Eliminar";
+			this.buttonEliminarGrado.UseVisualStyleBackColor = false;
 			// 
-			// button3
+			// buttonAgregarGrado
 			// 
-			this.button3.BackColor = System.Drawing.Color.DarkGreen;
-			this.button3.ForeColor = System.Drawing.SystemColors.ButtonFace;
-			this.button3.Location = new System.Drawing.Point(379, 235);
-			this.button3.Name = "button3";
-			this.button3.Size = new System.Drawing.Size(75, 23);
-			this.button3.TabIndex = 22;
-			this.button3.Text = "Agregar";
-			this.button3.UseVisualStyleBackColor = false;
-			// 
-			// label5
-			// 
-			this.label5.AutoSize = true;
-			this.label5.Location = new System.Drawing.Point(6, 13);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(46, 13);
-			this.label5.TabIndex = 21;
-			this.label5.Text = "Buscar: ";
-			// 
-			// textBox8
-			// 
-			this.textBox8.Location = new System.Drawing.Point(58, 10);
-			this.textBox8.Name = "textBox8";
-			this.textBox8.Size = new System.Drawing.Size(516, 20);
-			this.textBox8.TabIndex = 20;
+			this.buttonAgregarGrado.BackColor = System.Drawing.Color.DarkGreen;
+			this.buttonAgregarGrado.ForeColor = System.Drawing.SystemColors.ButtonFace;
+			this.buttonAgregarGrado.Location = new System.Drawing.Point(379, 235);
+			this.buttonAgregarGrado.Name = "buttonAgregarGrado";
+			this.buttonAgregarGrado.Size = new System.Drawing.Size(75, 23);
+			this.buttonAgregarGrado.TabIndex = 22;
+			this.buttonAgregarGrado.Text = "Agregar";
+			this.buttonAgregarGrado.UseVisualStyleBackColor = false;
+			this.buttonAgregarGrado.Click += new System.EventHandler(this.buttonAgregarGrado_Click);
 			// 
 			// buttonEditarPerfil
 			// 
@@ -433,15 +492,14 @@
 			// 
 			// tabPageGradosProfesor
 			// 
-			this.tabPageGradosProfesor.Controls.Add(this.dataGridView2);
+			this.tabPageGradosProfesor.Controls.Add(this.label5);
+			this.tabPageGradosProfesor.Controls.Add(this.DgvGrado);
 			this.tabPageGradosProfesor.Controls.Add(this.labelTipoGrado);
 			this.tabPageGradosProfesor.Controls.Add(this.comboBoxTipo);
 			this.tabPageGradosProfesor.Controls.Add(this.textBoxNombreGrado);
 			this.tabPageGradosProfesor.Controls.Add(this.labelNombreGrado);
-			this.tabPageGradosProfesor.Controls.Add(this.button2);
-			this.tabPageGradosProfesor.Controls.Add(this.button3);
-			this.tabPageGradosProfesor.Controls.Add(this.label5);
-			this.tabPageGradosProfesor.Controls.Add(this.textBox8);
+			this.tabPageGradosProfesor.Controls.Add(this.buttonEliminarGrado);
+			this.tabPageGradosProfesor.Controls.Add(this.buttonAgregarGrado);
 			this.tabPageGradosProfesor.Location = new System.Drawing.Point(4, 22);
 			this.tabPageGradosProfesor.Name = "tabPageGradosProfesor";
 			this.tabPageGradosProfesor.Padding = new System.Windows.Forms.Padding(3);
@@ -450,26 +508,91 @@
 			this.tabPageGradosProfesor.Text = "Tus Grados";
 			this.tabPageGradosProfesor.UseVisualStyleBackColor = true;
 			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.BackColor = System.Drawing.Color.Transparent;
+			this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label1.ForeColor = System.Drawing.Color.White;
+			this.label1.Location = new System.Drawing.Point(16, 88);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(56, 18);
+			this.label1.TabIndex = 61;
+			this.label1.Text = "Código";
+			// 
+			// labelNombre
+			// 
+			this.labelNombre.AutoSize = true;
+			this.labelNombre.BackColor = System.Drawing.Color.Transparent;
+			this.labelNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.labelNombre.ForeColor = System.Drawing.Color.White;
+			this.labelNombre.Location = new System.Drawing.Point(16, 183);
+			this.labelNombre.Name = "labelNombre";
+			this.labelNombre.Size = new System.Drawing.Size(62, 18);
+			this.labelNombre.TabIndex = 60;
+			this.labelNombre.Text = "Nombre";
+			// 
+			// button1
+			// 
+			this.button1.BackColor = System.Drawing.Color.MidnightBlue;
+			this.button1.ForeColor = System.Drawing.SystemColors.ButtonFace;
+			this.button1.Location = new System.Drawing.Point(279, 70);
+			this.button1.Name = "button1";
+			this.button1.Size = new System.Drawing.Size(75, 23);
+			this.button1.TabIndex = 17;
+			this.button1.Text = "Listar todo";
+			this.button1.UseVisualStyleBackColor = false;
+			this.button1.Click += new System.EventHandler(this.button1_Click);
+			// 
+			// label5
+			// 
+			this.label5.AutoSize = true;
+			this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label5.Location = new System.Drawing.Point(61, 218);
+			this.label5.Name = "label5";
+			this.label5.Size = new System.Drawing.Size(152, 18);
+			this.label5.TabIndex = 30;
+			this.label5.Text = "Agregar Grado Nuevo";
+			// 
+			// NombreGrado
+			// 
+			this.NombreGrado.HeaderText = "Nombre";
+			this.NombreGrado.Name = "NombreGrado";
+			this.NombreGrado.ReadOnly = true;
+			this.NombreGrado.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+			this.NombreGrado.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+			this.NombreGrado.Width = 150;
+			// 
+			// TipoGrado
+			// 
+			this.TipoGrado.HeaderText = "Tipo";
+			this.TipoGrado.Name = "TipoGrado";
+			this.TipoGrado.ReadOnly = true;
+			// 
 			// MenuEstandarUsuario
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackgroundImage = global::DocentematumCSharp.Properties.Resources.BackGround_Blue;
 			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.Controls.Add(this.label1);
+			this.Controls.Add(this.labelNombre);
 			this.Controls.Add(this.buttonExportarCurriculum);
-			this.Controls.Add(this.labelCodigoAdministrador);
+			this.Controls.Add(this.labelCodigo);
 			this.Controls.Add(this.labelNombreAdministrador);
 			this.Controls.Add(this.buttonEditarPerfil);
 			this.Controls.Add(this.tabControlProfesor);
 			this.Name = "MenuEstandarUsuario";
 			this.Text = "MenuEstandarUsuario";
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MenuEstandarUsuario_FormClosing);
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
 			this.tabPageProduccionesProfesor.ResumeLayout(false);
 			this.tabPageProduccionesProfesor.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.DgvGrado)).EndInit();
 			this.tabPageCarrerasProfesor.ResumeLayout(false);
 			this.tabPageCarrerasProfesor.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.dgvAgregadas)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.dgvCarrera)).EndInit();
 			this.tabControlProfesor.ResumeLayout(false);
 			this.tabPageGradosProfesor.ResumeLayout(false);
 			this.tabPageGradosProfesor.PerformLayout();
@@ -493,32 +616,39 @@
 		private System.Windows.Forms.DataGridView dataGridView3;
 		private System.Windows.Forms.TabPage tabPageProduccionesProfesor;
 		private System.Windows.Forms.Button button6;
-		private System.Windows.Forms.DataGridViewTextBoxColumn TipoGrado;
-		private System.Windows.Forms.DataGridViewTextBoxColumn NombreGrado;
-		private System.Windows.Forms.DataGridView dataGridView2;
-		private System.Windows.Forms.DataGridViewTextBoxColumn IDGrado;
+		private System.Windows.Forms.DataGridView DgvGrado;
 		private System.Windows.Forms.Label labelTipoGrado;
-		private System.Windows.Forms.Label labelCodigoAdministrador;
+		private System.Windows.Forms.Label labelCodigo;
 		private System.Windows.Forms.Label labelNombreAdministrador;
 		private System.Windows.Forms.TabPage tabPageCarrerasProfesor;
-		private System.Windows.Forms.DataGridView dataGridView1;
-		private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Division;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Nivel;
+		private System.Windows.Forms.DataGridView dgvCarrera;
 		private System.Windows.Forms.Label labelBusqueda;
-		private System.Windows.Forms.TextBox textBoxBusqueda;
+		private System.Windows.Forms.TextBox textBoxBusquedaCarrera;
 		private System.Windows.Forms.Button buttonEliminar;
 		private System.Windows.Forms.Button buttonAgregar;
 		private System.Windows.Forms.ComboBox comboBoxTipo;
 		private System.Windows.Forms.TextBox textBoxNombreGrado;
 		private System.Windows.Forms.Label labelNombreGrado;
-		private System.Windows.Forms.Button button2;
-		private System.Windows.Forms.Button button3;
-		private System.Windows.Forms.Label label5;
-		private System.Windows.Forms.TextBox textBox8;
+		private System.Windows.Forms.Button buttonEliminarGrado;
+		private System.Windows.Forms.Button buttonAgregarGrado;
 		private System.Windows.Forms.Button buttonEditarPerfil;
 		private System.Windows.Forms.TabControl tabControlProfesor;
 		private System.Windows.Forms.TabPage tabPageGradosProfesor;
+		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.Label labelNombre;
+		private System.Windows.Forms.Label label3;
+		private System.Windows.Forms.Label label2;
+		private System.Windows.Forms.DataGridView dgvAgregadas;
+		private System.Windows.Forms.Button buttonBuscarCarrera;
+		private System.Windows.Forms.DataGridViewTextBoxColumn IdCarrera;
+		private System.Windows.Forms.DataGridViewTextBoxColumn NombreCarrera;
+		private System.Windows.Forms.DataGridViewTextBoxColumn divisionCarrera;
+		private System.Windows.Forms.DataGridViewTextBoxColumn nivelCarrera;
+		private System.Windows.Forms.DataGridViewTextBoxColumn idAgregada;
+		private System.Windows.Forms.DataGridViewTextBoxColumn nombreAgregada;
+		private System.Windows.Forms.Button button1;
+		private System.Windows.Forms.DataGridViewButtonColumn NombreGrado;
+		private System.Windows.Forms.DataGridViewTextBoxColumn TipoGrado;
+		private System.Windows.Forms.Label label5;
 	}
 }

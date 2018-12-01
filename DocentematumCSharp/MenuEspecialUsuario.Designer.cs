@@ -30,7 +30,13 @@
 		{
 			this.buttonCrearProfesor = new System.Windows.Forms.Button();
 			this.tabPageProduccionesUsuarioEspecial = new System.Windows.Forms.TabPage();
+			this.buttonBuscarProduccion = new System.Windows.Forms.Button();
 			this.dgvProduccion = new System.Windows.Forms.DataGridView();
+			this.IDProduccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.tipoProduccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.tituloProduccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.fechaProduccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.statusProduccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.label4 = new System.Windows.Forms.Label();
 			this.textBoxFindProd = new System.Windows.Forms.TextBox();
 			this.buttonVerProduccion = new System.Windows.Forms.Button();
@@ -40,12 +46,8 @@
 			this.buttonEditarPerfil = new System.Windows.Forms.Button();
 			this.labelCodigo = new System.Windows.Forms.Label();
 			this.tabControlUsuarioEspecial = new System.Windows.Forms.TabControl();
-			this.IDProduccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.tipoProduccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.tituloProduccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.fechaProduccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.statusProduccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.buttonBuscarProduccion = new System.Windows.Forms.Button();
+			this.label1 = new System.Windows.Forms.Label();
+			this.label2 = new System.Windows.Forms.Label();
 			this.tabPageProduccionesUsuarioEspecial.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvProduccion)).BeginInit();
 			this.tabControlUsuarioEspecial.SuspendLayout();
@@ -80,6 +82,18 @@
 			this.tabPageProduccionesUsuarioEspecial.Text = "Administracion de Producciones";
 			this.tabPageProduccionesUsuarioEspecial.UseVisualStyleBackColor = true;
 			// 
+			// buttonBuscarProduccion
+			// 
+			this.buttonBuscarProduccion.BackColor = System.Drawing.Color.MediumBlue;
+			this.buttonBuscarProduccion.ForeColor = System.Drawing.SystemColors.ButtonFace;
+			this.buttonBuscarProduccion.Location = new System.Drawing.Point(371, 21);
+			this.buttonBuscarProduccion.Name = "buttonBuscarProduccion";
+			this.buttonBuscarProduccion.Size = new System.Drawing.Size(75, 23);
+			this.buttonBuscarProduccion.TabIndex = 21;
+			this.buttonBuscarProduccion.Text = "Buscar ID";
+			this.buttonBuscarProduccion.UseVisualStyleBackColor = false;
+			this.buttonBuscarProduccion.Click += new System.EventHandler(this.buttonBuscarProduccion_Click);
+			// 
 			// dgvProduccion
 			// 
 			this.dgvProduccion.AllowUserToAddRows = false;
@@ -97,6 +111,36 @@
 			this.dgvProduccion.Size = new System.Drawing.Size(543, 169);
 			this.dgvProduccion.TabIndex = 20;
 			this.dgvProduccion.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProduccion_CellClick);
+			// 
+			// IDProduccion
+			// 
+			this.IDProduccion.HeaderText = "ID";
+			this.IDProduccion.Name = "IDProduccion";
+			this.IDProduccion.ReadOnly = true;
+			// 
+			// tipoProduccion
+			// 
+			this.tipoProduccion.HeaderText = "Tipo";
+			this.tipoProduccion.Name = "tipoProduccion";
+			this.tipoProduccion.ReadOnly = true;
+			// 
+			// tituloProduccion
+			// 
+			this.tituloProduccion.HeaderText = "Titulo";
+			this.tituloProduccion.Name = "tituloProduccion";
+			this.tituloProduccion.ReadOnly = true;
+			// 
+			// fechaProduccion
+			// 
+			this.fechaProduccion.HeaderText = "Fecha Inicio";
+			this.fechaProduccion.Name = "fechaProduccion";
+			this.fechaProduccion.ReadOnly = true;
+			// 
+			// statusProduccion
+			// 
+			this.statusProduccion.HeaderText = "Status";
+			this.statusProduccion.Name = "statusProduccion";
+			this.statusProduccion.ReadOnly = true;
 			// 
 			// label4
 			// 
@@ -136,6 +180,7 @@
 			this.buttonRechazar.TabIndex = 14;
 			this.buttonRechazar.Text = "Rechazar";
 			this.buttonRechazar.UseVisualStyleBackColor = false;
+			this.buttonRechazar.Click += new System.EventHandler(this.buttonRechazar_Click);
 			// 
 			// buttonAprobar
 			// 
@@ -155,7 +200,7 @@
 			this.labelNombre.BackColor = System.Drawing.Color.Transparent;
 			this.labelNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.labelNombre.ForeColor = System.Drawing.Color.White;
-			this.labelNombre.Location = new System.Drawing.Point(16, 100);
+			this.labelNombre.Location = new System.Drawing.Point(18, 177);
 			this.labelNombre.Name = "labelNombre";
 			this.labelNombre.Size = new System.Drawing.Size(62, 18);
 			this.labelNombre.TabIndex = 59;
@@ -178,7 +223,7 @@
 			this.labelCodigo.BackColor = System.Drawing.Color.Transparent;
 			this.labelCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.labelCodigo.ForeColor = System.Drawing.Color.White;
-			this.labelCodigo.Location = new System.Drawing.Point(16, 41);
+			this.labelCodigo.Location = new System.Drawing.Point(18, 92);
 			this.labelCodigo.Name = "labelCodigo";
 			this.labelCodigo.Size = new System.Drawing.Size(56, 18);
 			this.labelCodigo.TabIndex = 60;
@@ -193,42 +238,29 @@
 			this.tabControlUsuarioEspecial.Size = new System.Drawing.Size(599, 369);
 			this.tabControlUsuarioEspecial.TabIndex = 61;
 			// 
-			// IDProduccion
+			// label1
 			// 
-			this.IDProduccion.HeaderText = "ID";
-			this.IDProduccion.Name = "IDProduccion";
+			this.label1.AutoSize = true;
+			this.label1.BackColor = System.Drawing.Color.Transparent;
+			this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label1.ForeColor = System.Drawing.Color.White;
+			this.label1.Location = new System.Drawing.Point(18, 70);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(60, 18);
+			this.label1.TabIndex = 64;
+			this.label1.Text = "Código:";
 			// 
-			// tipoProduccion
+			// label2
 			// 
-			this.tipoProduccion.HeaderText = "Tipo";
-			this.tipoProduccion.Name = "tipoProduccion";
-			// 
-			// tituloProduccion
-			// 
-			this.tituloProduccion.HeaderText = "Titulo";
-			this.tituloProduccion.Name = "tituloProduccion";
-			// 
-			// fechaProduccion
-			// 
-			this.fechaProduccion.HeaderText = "Fecha Inicio";
-			this.fechaProduccion.Name = "fechaProduccion";
-			// 
-			// statusProduccion
-			// 
-			this.statusProduccion.HeaderText = "Status";
-			this.statusProduccion.Name = "statusProduccion";
-			// 
-			// buttonBuscarProduccion
-			// 
-			this.buttonBuscarProduccion.BackColor = System.Drawing.Color.MediumBlue;
-			this.buttonBuscarProduccion.ForeColor = System.Drawing.SystemColors.ButtonFace;
-			this.buttonBuscarProduccion.Location = new System.Drawing.Point(371, 21);
-			this.buttonBuscarProduccion.Name = "buttonBuscarProduccion";
-			this.buttonBuscarProduccion.Size = new System.Drawing.Size(75, 23);
-			this.buttonBuscarProduccion.TabIndex = 21;
-			this.buttonBuscarProduccion.Text = "Buscar ID";
-			this.buttonBuscarProduccion.UseVisualStyleBackColor = false;
-			this.buttonBuscarProduccion.Click += new System.EventHandler(this.buttonBuscarProduccion_Click);
+			this.label2.AutoSize = true;
+			this.label2.BackColor = System.Drawing.Color.Transparent;
+			this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label2.ForeColor = System.Drawing.Color.White;
+			this.label2.Location = new System.Drawing.Point(18, 159);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(66, 18);
+			this.label2.TabIndex = 65;
+			this.label2.Text = "Nombre:";
 			// 
 			// MenuEspecialUsuario
 			// 
@@ -236,6 +268,8 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackgroundImage = global::DocentematumCSharp.Properties.Resources.BackGround_Blue;
 			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.Controls.Add(this.label2);
+			this.Controls.Add(this.label1);
 			this.Controls.Add(this.buttonCrearProfesor);
 			this.Controls.Add(this.labelNombre);
 			this.Controls.Add(this.buttonEditarPerfil);
@@ -272,5 +306,7 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn fechaProduccion;
 		private System.Windows.Forms.DataGridViewTextBoxColumn statusProduccion;
 		private System.Windows.Forms.Button buttonBuscarProduccion;
+		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.Label label2;
 	}
 }

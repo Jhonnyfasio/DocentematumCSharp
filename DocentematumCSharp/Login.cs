@@ -30,30 +30,38 @@ namespace DocentematumCSharp
 			try
 			{
 				ConnectionSql connection = new ConnectionSql();
-				//string sentencia = "SELECT * FROM profesor WHERE usuario = '" + usuarioTextBox.Text + "' AND contrasena = '" + contrasenaTextBox.Text + "';";
-				string sentencia = "SELECT * FROM profesor WHERE usuario = 'Jhonnyfasio' AND contrasena = 'Juan123';";
+				string sentencia = "SELECT * FROM profesor WHERE usuario = '" + usuarioTextBox.Text + "' AND contrasena = '" + contrasenaTextBox.Text + "';";
+				//string sentencia = "SELECT * FROM profesor WHERE usuario = 'Jhonnyfasio' AND contrasena = 'Juan123';";
 				MySqlCommand comando = connection.getCommand(sentencia);
 				MySqlDataReader myReader;
 				myReader = comando.ExecuteReader();
 				if (myReader.Read())
 				{
-					int codTrab;
+					int codTrab, tipo;
 					MenuAdministrator menuAdmin;
+					MenuEspecialUsuario menuEspecial;
+					MenuEstandarUsuario menuEstandar;
+
+					tipo = myReader.GetInt32(myReader.GetOrdinal("idTipoUsuario"));
 					codTrab = myReader.GetInt32(myReader.GetOrdinal("codigoTrabajador"));
-					if (codTrab == 1)
+					//MessageBox.Show(codTrab.ToString());
+					cleanTextBox();
+					if (tipo == 1)
 					{
 						menuAdmin = new MenuAdministrator(main, this, codTrab);
+						menuAdmin.Show();
 					}
-					else if (codTrab == 2)
+					else if (tipo == 2)
 					{
-						menuAdmin = new MenuEspecialUsuario(main, this, codTrab);
+						menuEspecial = new MenuEspecialUsuario(main, this, codTrab);
+						menuEspecial.Show();
 					}
 					else
 					{
-						menuAdmin = new MenuEstandarUsuario(main,this,codTrab);
+						menuEstandar = new MenuEstandarUsuario(main,this,codTrab);
+						menuEstandar.Show();
 					}
-					
-					menuAdmin.Show();
+				
 				}
 				else
 				{
@@ -72,5 +80,12 @@ namespace DocentematumCSharp
 		{
 			main.endOfProgram();
 		}
+
+		private void cleanTextBox()
+		{
+			usuarioTextBox.Clear();
+			contrasenaTextBox.Clear();
+		}
+
 	}
 }
