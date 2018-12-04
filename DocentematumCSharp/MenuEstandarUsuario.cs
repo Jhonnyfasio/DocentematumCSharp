@@ -27,14 +27,6 @@ namespace DocentematumCSharp
 			userCode = uCode;
 			newCode = uCode;
 
-			chargeDvgAgregadas();
-			chargeDgvCarrera();
-
-			main = m;
-			formaLogin = forma1;
-			forma1.Hide();
-			this.CenterToScreen();
-
 			ConnectionSql connection = new ConnectionSql();
 			str = "SELECT nombre, codigoTrabajador FROM profesor WHERE codigoTrabajador = '" + userCode + "';";
 			MySqlCommand command = connection.getCommand(str);
@@ -44,6 +36,18 @@ namespace DocentematumCSharp
 				labelCodigo.Text = reader.GetInt32(reader.GetOrdinal("codigoTrabajador")).ToString();
 				labelNombre.Text = reader.GetString(reader.GetOrdinal("nombre"));
 			}
+
+			chargeComboBoxGrado();
+			chargeDvgAgregadas();
+			chargeDgvCarrera();
+			chargeDgvGrado();
+
+			main = m;
+			formaLogin = forma1;
+			forma1.Hide();
+			this.CenterToScreen();
+
+			
 
 		}
 
@@ -209,6 +213,8 @@ namespace DocentematumCSharp
 
 		///////////////////////////////////////// GRADOS ///////////////////////////////////////////////
 
+		int nGrado = -1;
+
 		private void chargeComboBoxGrado()
 		{
 			comboBoxTipo.Items.Clear();
@@ -219,10 +225,15 @@ namespace DocentematumCSharp
 			MySqlDataReader reader = command.ExecuteReader();
 			while (reader.Read())
 			{
-				comboBoxTipo.Items.Add(reader.GetInt32(reader.GetOrdinal("idTipo"))
+				comboBoxTipo.Items.Add(reader.GetInt32(reader.GetOrdinal("idGradoTipo"))
 					+ " - " + reader.GetString(reader.GetOrdinal("tipo")));
 			}
 			connection.closeConnection();
+		}
+
+		private void DgvGrado_CellClick(object sender, DataGridViewCellEventArgs e)
+		{
+			nGrado = e.RowIndex;
 		}
 
 		private void buttonAgregarGrado_Click(object sender, EventArgs e)
@@ -232,45 +243,123 @@ namespace DocentematumCSharp
 				string str;
 				ConnectionSql connection = new ConnectionSql(), connectionAux;
 				MySqlCommand command;
-				MySqlDataReader reader,readerDos;
-				str = "SELECT * FROM grado WHERE idGrado = '" + textBoxNombreGrado + "' AND nombre =" +
-					"'"+textBoxNombreGrado+"';";
+				MySqlDataReader reader;
+				str = $"SELECT * FROM grado WHERE idTipo = \"{comboBoxTipo.Text.Substring(0, 1)}\" AND nombre = " +
+					$"\"{textBoxNombreGrado.Text}\";";
+				//MessageBox.Show(str);
 				command = connection.getCommand(str);
 				reader = command.ExecuteReader();
 				if (reader.Read())
 				{
 					connectionAux = new ConnectionSql();
-					str = "INSERT INTO grado_profesor VALUES ('"+reader.GetInt32(reader.GetOrdinal("idGrado"))+
-						+"','"+ "','" + reader.GetString(reader.GetOrdinal("nombre"));
+					str = $"INSERT INTO grado_profesor VALUES (\"{ reader.GetInt32(reader.GetOrdinal("idGrado")).ToString()}\"," +
+						$"\"{labelCodigo.Text}\");";
+					//MessageBox.Show(str);
+					command = connectionAux.getCommand(str);
+					command.ExecuteNonQuery();
+					connectionAux.closeConnection();
 				}
+				else
+				{
+					connection.closeConnection();
+					connection = new ConnectionSql();
+					str = $"INSERT INTO grado VALUES (NULL, \"{comboBoxTipo.Text.Substring(0, 1)}\",\"{textBoxNombreGrado.Text}\");";
+					//MessageBox.Show(str);
+					command = connection.getCommand(str);
+					command.ExecuteNonQuery();
+					connection.closeConnection();
 
+					connection = new ConnectionSql();
+					str = $"SELECT * FROM grado WHERE idTipo = \"{ comboBoxTipo.Text.Substring(0, 1)}\"" +
+						$" AND nombre = \"{ textBoxNombreGrado.Text}\";";
+					//MessageBox.Show(str);
+					command = connection.getCommand(str);
+					reader = command.ExecuteReader();
 
-				str = "INSERT INTO grado VALUES (NULL, '" + comboBoxTipo.Text.Substring(0, 1) + "','" +
-					textBoxNombreGrado.Text + "');";
-				connection.getCommand(str);
+					if (reader.Read())
+					{
+						connectionAux = new ConnectionSql();
+						str = $"INSERT INTO grado_profesor VALUES (\"{ reader.GetInt32(reader.GetOrdinal("idGrado")).ToString()}\"" +
+							$",\"{labelCodigo.Text}\");";
+						//MessageBox.Show(str);
+						command = connectionAux.getCommand(str);
+						command.ExecuteNonQuery();
+						connectionAux.closeConnection();
+					}
+				}
+				connection.closeConnection();
+				chargeDgvGrado();
 
-
-			} catch (MySqlException i);
+			} catch (MySqlException i)
 			{
-				MessageBox.Show(i.ToString());
+				MessageBox.Show(i.Message+" - "+i.ToString());
 			}
+		}
+
+		private void buttonEliminarGrado_Click(object sender, EventArgs e)
+		{
+			string str;
+			DialogResult dialog = MessageBox.Show("Estás por eliminar un registro ¿Estás seguro de esto?", "Eliminado regsitro.", MessageBoxButtons.YesNoCancel);
+			if (dialog == DialogResult.Yes)
+			{
+				if (nGrado != -1)
+				{
+					ConnectionSql connection = new ConnectionSql(), connectionAux;
+					MySqlCommand command;
+					MySqlDataReader reader;
+					str = $"SELECT grado.idGrado, grado.nombre, grado_profesor.idProfesor FROM grado_profesor " +
+						$"LEFT JOIN grado ON grado.idGrado = grado_profesor.idGrado " +
+						$"WHERE grado_profesor.idProfesor = {labelCodigo.Text} AND grado.nombre = \"{(string)DgvGrado.Rows[nGrado].Cells["NombreGrado"].Value}\";";
+					//MessageBox.Show(str);
+					command = connection.getCommand(str);
+					reader = command.ExecuteReader();
+					if (reader.Read())
+					{
+						connectionAux = new ConnectionSql();
+						str = $"DELETE FROM grado_profesor WHERE idProfesor = \"{labelCodigo.Text}\" AND  idGrado = \"{reader.GetInt32(reader.GetOrdinal("idGrado"))}\";";
+						//MessageBox.Show(str);
+						command = connectionAux.getCommand(str);
+						command.ExecuteNonQuery();
+						DgvGrado.Rows.RemoveAt(nGrado);
+						connectionAux.closeConnection();
+					}
+
+					connection.closeConnection();
+
+
+				}
+			}
+			//chargeDgvGrado();
 		}
 
 		private void chargeDgvGrado()
 		{
 			int row;
+			DgvGrado.Rows.Clear();
 			ConnectionSql connection = new ConnectionSql();
-			string = "SELECT g.nombre AS gNombre t.tipo AS tTipo FROM grado AS	g LEFT JOIN tipo_grado " +
-				"AS t ON g.idGrado = t.idTipoGrado;";
+			string str = "SELECT g.nombre AS gNombre, gt.tipo AS gtTipo FROM grado_profesor AS gp LEFT JOIN grado AS g " +
+				"ON gp.idGrado = g.idGrado LEFT JOIN grado_tipo AS gt ON g.idTipo = gt.idGradoTipo " +
+				$"WHERE gp.idProfesor = {labelCodigo.Text};";
 			MySqlCommand command = connection.getCommand(str);
 			MySqlDataReader reader = command.ExecuteReader();
 
 			while (reader.Read())
 			{
 				row = DgvGrado.Rows.Add();
-				DgvGrado.Rows[row].Cells["TipoGrado"].Value = reader.GetString(reader.GetOrdinal("tTipo"));
+				DgvGrado.Rows[row].Cells["TipoGrado"].Value = reader.GetString(reader.GetOrdinal("gtTipo"));
 				DgvGrado.Rows[row].Cells["NombreGrado"].Value = reader.GetString(reader.GetOrdinal("gNombre"));
 			}
+
+			connection.closeConnection();
+		}
+
+		// ///////////////////////////////////// Produccion //////////////////////////////////////////////
+
+		int nProd = -1;
+
+		private void buttonAgregarProduccion_Click(object sender, EventArgs e)
+		{
+
 		}
 	}
 }

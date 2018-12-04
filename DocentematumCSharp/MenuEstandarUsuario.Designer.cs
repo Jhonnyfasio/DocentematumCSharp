@@ -31,8 +31,8 @@
 			this.buttonExportarCurriculum = new System.Windows.Forms.Button();
 			this.label4 = new System.Windows.Forms.Label();
 			this.textBox7 = new System.Windows.Forms.TextBox();
-			this.button4 = new System.Windows.Forms.Button();
-			this.button5 = new System.Windows.Forms.Button();
+			this.buttonModificarProduccion = new System.Windows.Forms.Button();
+			this.buttonEliminarProduccion = new System.Windows.Forms.Button();
 			this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.FechaInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Titulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -40,12 +40,15 @@
 			this.IDProduccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.dataGridView3 = new System.Windows.Forms.DataGridView();
 			this.tabPageProduccionesProfesor = new System.Windows.Forms.TabPage();
-			this.button6 = new System.Windows.Forms.Button();
+			this.buttonAgregarProduccion = new System.Windows.Forms.Button();
 			this.DgvGrado = new System.Windows.Forms.DataGridView();
+			this.NombreGrado = new System.Windows.Forms.DataGridViewButtonColumn();
+			this.TipoGrado = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.labelTipoGrado = new System.Windows.Forms.Label();
 			this.labelCodigo = new System.Windows.Forms.Label();
 			this.labelNombreAdministrador = new System.Windows.Forms.Label();
 			this.tabPageCarrerasProfesor = new System.Windows.Forms.TabPage();
+			this.button1 = new System.Windows.Forms.Button();
 			this.label3 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.dgvAgregadas = new System.Windows.Forms.DataGridView();
@@ -69,12 +72,10 @@
 			this.buttonEditarPerfil = new System.Windows.Forms.Button();
 			this.tabControlProfesor = new System.Windows.Forms.TabControl();
 			this.tabPageGradosProfesor = new System.Windows.Forms.TabPage();
+			this.label5 = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
 			this.labelNombre = new System.Windows.Forms.Label();
-			this.button1 = new System.Windows.Forms.Button();
-			this.label5 = new System.Windows.Forms.Label();
-			this.NombreGrado = new System.Windows.Forms.DataGridViewButtonColumn();
-			this.TipoGrado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.buttonBuscarProduccion = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
 			this.tabPageProduccionesProfesor.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.DgvGrado)).BeginInit();
@@ -109,30 +110,30 @@
 			// 
 			this.textBox7.Location = new System.Drawing.Point(69, 23);
 			this.textBox7.Name = "textBox7";
-			this.textBox7.Size = new System.Drawing.Size(516, 20);
+			this.textBox7.Size = new System.Drawing.Size(149, 20);
 			this.textBox7.TabIndex = 17;
 			// 
-			// button4
+			// buttonModificarProduccion
 			// 
-			this.button4.BackColor = System.Drawing.Color.Olive;
-			this.button4.ForeColor = System.Drawing.SystemColors.ButtonFace;
-			this.button4.Location = new System.Drawing.Point(396, 277);
-			this.button4.Name = "button4";
-			this.button4.Size = new System.Drawing.Size(75, 23);
-			this.button4.TabIndex = 15;
-			this.button4.Text = "Modificar";
-			this.button4.UseVisualStyleBackColor = false;
+			this.buttonModificarProduccion.BackColor = System.Drawing.Color.Olive;
+			this.buttonModificarProduccion.ForeColor = System.Drawing.SystemColors.ButtonFace;
+			this.buttonModificarProduccion.Location = new System.Drawing.Point(396, 277);
+			this.buttonModificarProduccion.Name = "buttonModificarProduccion";
+			this.buttonModificarProduccion.Size = new System.Drawing.Size(75, 23);
+			this.buttonModificarProduccion.TabIndex = 15;
+			this.buttonModificarProduccion.Text = "Modificar";
+			this.buttonModificarProduccion.UseVisualStyleBackColor = false;
 			// 
-			// button5
+			// buttonEliminarProduccion
 			// 
-			this.button5.BackColor = System.Drawing.Color.DarkRed;
-			this.button5.ForeColor = System.Drawing.SystemColors.ButtonFace;
-			this.button5.Location = new System.Drawing.Point(477, 277);
-			this.button5.Name = "button5";
-			this.button5.Size = new System.Drawing.Size(75, 23);
-			this.button5.TabIndex = 14;
-			this.button5.Text = "Eliminar";
-			this.button5.UseVisualStyleBackColor = false;
+			this.buttonEliminarProduccion.BackColor = System.Drawing.Color.DarkRed;
+			this.buttonEliminarProduccion.ForeColor = System.Drawing.SystemColors.ButtonFace;
+			this.buttonEliminarProduccion.Location = new System.Drawing.Point(477, 277);
+			this.buttonEliminarProduccion.Name = "buttonEliminarProduccion";
+			this.buttonEliminarProduccion.Size = new System.Drawing.Size(75, 23);
+			this.buttonEliminarProduccion.TabIndex = 14;
+			this.buttonEliminarProduccion.Text = "Eliminar";
+			this.buttonEliminarProduccion.UseVisualStyleBackColor = false;
 			// 
 			// Status
 			// 
@@ -184,12 +185,13 @@
 			// 
 			// tabPageProduccionesProfesor
 			// 
+			this.tabPageProduccionesProfesor.Controls.Add(this.buttonBuscarProduccion);
 			this.tabPageProduccionesProfesor.Controls.Add(this.dataGridView3);
 			this.tabPageProduccionesProfesor.Controls.Add(this.label4);
 			this.tabPageProduccionesProfesor.Controls.Add(this.textBox7);
-			this.tabPageProduccionesProfesor.Controls.Add(this.button4);
-			this.tabPageProduccionesProfesor.Controls.Add(this.button5);
-			this.tabPageProduccionesProfesor.Controls.Add(this.button6);
+			this.tabPageProduccionesProfesor.Controls.Add(this.buttonModificarProduccion);
+			this.tabPageProduccionesProfesor.Controls.Add(this.buttonEliminarProduccion);
+			this.tabPageProduccionesProfesor.Controls.Add(this.buttonAgregarProduccion);
 			this.tabPageProduccionesProfesor.Location = new System.Drawing.Point(4, 22);
 			this.tabPageProduccionesProfesor.Name = "tabPageProduccionesProfesor";
 			this.tabPageProduccionesProfesor.Padding = new System.Windows.Forms.Padding(3);
@@ -198,16 +200,17 @@
 			this.tabPageProduccionesProfesor.Text = "Tus Producciones";
 			this.tabPageProduccionesProfesor.UseVisualStyleBackColor = true;
 			// 
-			// button6
+			// buttonAgregarProduccion
 			// 
-			this.button6.BackColor = System.Drawing.Color.DarkGreen;
-			this.button6.ForeColor = System.Drawing.SystemColors.ButtonFace;
-			this.button6.Location = new System.Drawing.Point(300, 277);
-			this.button6.Name = "button6";
-			this.button6.Size = new System.Drawing.Size(75, 23);
-			this.button6.TabIndex = 13;
-			this.button6.Text = "Agregar";
-			this.button6.UseVisualStyleBackColor = false;
+			this.buttonAgregarProduccion.BackColor = System.Drawing.Color.DarkGreen;
+			this.buttonAgregarProduccion.ForeColor = System.Drawing.SystemColors.ButtonFace;
+			this.buttonAgregarProduccion.Location = new System.Drawing.Point(300, 277);
+			this.buttonAgregarProduccion.Name = "buttonAgregarProduccion";
+			this.buttonAgregarProduccion.Size = new System.Drawing.Size(75, 23);
+			this.buttonAgregarProduccion.TabIndex = 13;
+			this.buttonAgregarProduccion.Text = "Agregar";
+			this.buttonAgregarProduccion.UseVisualStyleBackColor = false;
+			this.buttonAgregarProduccion.Click += new System.EventHandler(this.buttonAgregarProduccion_Click);
 			// 
 			// DgvGrado
 			// 
@@ -223,6 +226,22 @@
 			this.DgvGrado.ReadOnly = true;
 			this.DgvGrado.Size = new System.Drawing.Size(294, 168);
 			this.DgvGrado.TabIndex = 29;
+			this.DgvGrado.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvGrado_CellClick);
+			// 
+			// NombreGrado
+			// 
+			this.NombreGrado.HeaderText = "Nombre";
+			this.NombreGrado.Name = "NombreGrado";
+			this.NombreGrado.ReadOnly = true;
+			this.NombreGrado.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+			this.NombreGrado.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+			this.NombreGrado.Width = 150;
+			// 
+			// TipoGrado
+			// 
+			this.TipoGrado.HeaderText = "Tipo";
+			this.TipoGrado.Name = "TipoGrado";
+			this.TipoGrado.ReadOnly = true;
 			// 
 			// labelTipoGrado
 			// 
@@ -276,6 +295,18 @@
 			this.tabPageCarrerasProfesor.TabIndex = 0;
 			this.tabPageCarrerasProfesor.Text = "Tus Carreras";
 			this.tabPageCarrerasProfesor.UseVisualStyleBackColor = true;
+			// 
+			// button1
+			// 
+			this.button1.BackColor = System.Drawing.Color.MidnightBlue;
+			this.button1.ForeColor = System.Drawing.SystemColors.ButtonFace;
+			this.button1.Location = new System.Drawing.Point(279, 70);
+			this.button1.Name = "button1";
+			this.button1.Size = new System.Drawing.Size(75, 23);
+			this.button1.TabIndex = 17;
+			this.button1.Text = "Listar todo";
+			this.button1.UseVisualStyleBackColor = false;
+			this.button1.Click += new System.EventHandler(this.button1_Click);
 			// 
 			// label3
 			// 
@@ -455,6 +486,7 @@
 			this.buttonEliminarGrado.TabIndex = 23;
 			this.buttonEliminarGrado.Text = "Eliminar";
 			this.buttonEliminarGrado.UseVisualStyleBackColor = false;
+			this.buttonEliminarGrado.Click += new System.EventHandler(this.buttonEliminarGrado_Click);
 			// 
 			// buttonAgregarGrado
 			// 
@@ -508,6 +540,16 @@
 			this.tabPageGradosProfesor.Text = "Tus Grados";
 			this.tabPageGradosProfesor.UseVisualStyleBackColor = true;
 			// 
+			// label5
+			// 
+			this.label5.AutoSize = true;
+			this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label5.Location = new System.Drawing.Point(122, 218);
+			this.label5.Name = "label5";
+			this.label5.Size = new System.Drawing.Size(152, 18);
+			this.label5.TabIndex = 30;
+			this.label5.Text = "Agregar Grado Nuevo";
+			// 
 			// label1
 			// 
 			this.label1.AutoSize = true;
@@ -532,42 +574,16 @@
 			this.labelNombre.TabIndex = 60;
 			this.labelNombre.Text = "Nombre";
 			// 
-			// button1
+			// buttonBuscarProduccion
 			// 
-			this.button1.BackColor = System.Drawing.Color.MidnightBlue;
-			this.button1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-			this.button1.Location = new System.Drawing.Point(279, 70);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(75, 23);
-			this.button1.TabIndex = 17;
-			this.button1.Text = "Listar todo";
-			this.button1.UseVisualStyleBackColor = false;
-			this.button1.Click += new System.EventHandler(this.button1_Click);
-			// 
-			// label5
-			// 
-			this.label5.AutoSize = true;
-			this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label5.Location = new System.Drawing.Point(61, 218);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(152, 18);
-			this.label5.TabIndex = 30;
-			this.label5.Text = "Agregar Grado Nuevo";
-			// 
-			// NombreGrado
-			// 
-			this.NombreGrado.HeaderText = "Nombre";
-			this.NombreGrado.Name = "NombreGrado";
-			this.NombreGrado.ReadOnly = true;
-			this.NombreGrado.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-			this.NombreGrado.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-			this.NombreGrado.Width = 150;
-			// 
-			// TipoGrado
-			// 
-			this.TipoGrado.HeaderText = "Tipo";
-			this.TipoGrado.Name = "TipoGrado";
-			this.TipoGrado.ReadOnly = true;
+			this.buttonBuscarProduccion.BackColor = System.Drawing.Color.MidnightBlue;
+			this.buttonBuscarProduccion.ForeColor = System.Drawing.SystemColors.ButtonFace;
+			this.buttonBuscarProduccion.Location = new System.Drawing.Point(236, 20);
+			this.buttonBuscarProduccion.Name = "buttonBuscarProduccion";
+			this.buttonBuscarProduccion.Size = new System.Drawing.Size(75, 23);
+			this.buttonBuscarProduccion.TabIndex = 20;
+			this.buttonBuscarProduccion.Text = "Buscar";
+			this.buttonBuscarProduccion.UseVisualStyleBackColor = false;
 			// 
 			// MenuEstandarUsuario
 			// 
@@ -606,8 +622,8 @@
 		private System.Windows.Forms.Button buttonExportarCurriculum;
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.TextBox textBox7;
-		private System.Windows.Forms.Button button4;
-		private System.Windows.Forms.Button button5;
+		private System.Windows.Forms.Button buttonModificarProduccion;
+		private System.Windows.Forms.Button buttonEliminarProduccion;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Status;
 		private System.Windows.Forms.DataGridViewTextBoxColumn FechaInicio;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Titulo;
@@ -615,7 +631,7 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn IDProduccion;
 		private System.Windows.Forms.DataGridView dataGridView3;
 		private System.Windows.Forms.TabPage tabPageProduccionesProfesor;
-		private System.Windows.Forms.Button button6;
+		private System.Windows.Forms.Button buttonAgregarProduccion;
 		private System.Windows.Forms.DataGridView DgvGrado;
 		private System.Windows.Forms.Label labelTipoGrado;
 		private System.Windows.Forms.Label labelCodigo;
@@ -650,5 +666,6 @@
 		private System.Windows.Forms.DataGridViewButtonColumn NombreGrado;
 		private System.Windows.Forms.DataGridViewTextBoxColumn TipoGrado;
 		private System.Windows.Forms.Label label5;
+		private System.Windows.Forms.Button buttonBuscarProduccion;
 	}
 }
