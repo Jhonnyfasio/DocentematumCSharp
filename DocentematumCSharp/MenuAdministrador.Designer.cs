@@ -694,7 +694,7 @@
 			this.Controls.Add(this.label5);
 			this.Controls.Add(this.labelAlgo);
 			this.Name = "MenuAdministrator";
-			this.Text = "Registro de Usuarios";
+			this.Text = "Menú Administrador";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MenuAdministrator_FormClosing);
 			this.tabPrincipal.ResumeLayout(false);
 			this.tabUsuario.ResumeLayout(false);

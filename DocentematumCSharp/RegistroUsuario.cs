@@ -43,28 +43,29 @@ namespace DocentematumCSharp
 			date3 = dateUltimoCiclo.Value.Year.ToString() +
 				"-" + dateUltimoCiclo.Value.Month.ToString() + "-" + dateUltimoCiclo.Value.Day.ToString();
 
-			str = "INSERT INTO profesor VALUES('" + textCodigo.Text + "','" +
-				comboTipoUsuario.Items[indexDivision].ToString().Substring(0, 1) + "','0','" + textName.Text
-				+ "','" + textPaterno.Text + "','" + textMaterno.Text + "','" + textUsuario.Text + "','" +
-				textContrasena.Text + "','" + date1 + "','";
-			MessageBox.Show(str);
-			if (string.IsNullOrWhiteSpace(textCorreo.Text))
+			str = $"INSERT INTO profesor VALUES(\"{textCodigo.Text}\",\"{comboTipoUsuario.Items[indexDivision].ToString().Substring(0, 1)}\"" +
+				$",\"{textName.Text}\",\"{textPaterno.Text}\",\"{textMaterno.Text}\",\"{ textUsuario.Text}\"" +
+				$",\"{textContrasena.Text}\",\"{date1} \",";
+			
+			str+=$"\"{textCorreo.Text}\",\"{textTelefono.Text}\",";
+			/*if (string.IsNullOrWhiteSpace(textCorreo.Text))
 			{
-				str += textCorreo.Text + "','";
+				str += $"\"{textCorreo.Text}\",";
 			}
 			else
 			{
-				str += "NULL"+"','";
+				str += "\"NULL\", ";
 			}
-			if (string.IsNullOrWhiteSpace(textCorreo.Text))
+			if (string.IsNullOrWhiteSpace(textTelefono.Text))
 				{
-				str += textTelefono.Text+"','";
+				str += $"\"{textTelefono.Text}\",";
 			}
 			else
 			{
-				str += "NULL" + "','";
-			}
-			str +=date2 + "','" + date3 + "', 'ACTIVO');";
+				str += "\"NULL\",";
+			}*/
+			str += $"\"{date2}\",\"{date3}\",\"ACTIVO\");";
+			//MessageBox.Show(str);
 			MySqlCommand command = connection.getCommand(str);
 			command.ExecuteNonQuery();
 			connection.closeConnection();

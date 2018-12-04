@@ -264,6 +264,7 @@
 			this.Controls.Add(this.tabControlUsuarioEspecial);
 			this.Name = "MenuEspecialUsuario";
 			this.Text = "MenuEspecialUsuario";
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MenuEspecialUsuario_FormClosing);
 			this.tabPageProduccionesUsuarioEspecial.ResumeLayout(false);
 			this.tabPageProduccionesUsuarioEspecial.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvProduccion)).EndInit();

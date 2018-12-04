@@ -13,6 +13,7 @@ namespace DocentematumCSharp
 	public partial class MenuEspecialUsuario : Form
 	{
 		MainForm main;
+		Login formaLogin;
 		int userCode, n;
 
 		public MenuEspecialUsuario()
@@ -27,6 +28,7 @@ namespace DocentematumCSharp
 			forma1.Hide();
 			userCode = uCode;
 			main = m;
+			formaLogin = forma1;
 			ConnectionSql connection = new ConnectionSql();
 			string sentence = "SELECT * FROM profesor WHERE codigoTrabajador = '" + userCode.ToString() + "';";
 			MySqlCommand command = connection.getCommand(sentence);
@@ -127,6 +129,11 @@ namespace DocentematumCSharp
 
 			connection.closeConnection();
 			chargeDgvProduccion();
+		}
+
+		private void MenuEspecialUsuario_FormClosing(object sender, FormClosingEventArgs e)
+		{
+			formaLogin.Show();
 		}
 
 		private void chargeDgvProduccion()

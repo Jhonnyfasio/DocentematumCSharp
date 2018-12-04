@@ -13,6 +13,7 @@ namespace DocentematumCSharp
 	public partial class MenuAdministrator : Form
 	{
 		MainForm main;
+		Login formaLogin;
 		int userCode, n;
 		public string labelDivisionID, labelNivelType;
 
@@ -32,6 +33,7 @@ namespace DocentematumCSharp
 			forma1.Hide();
 			userCode = uCode;
 			main = m;
+			formaLogin = forma1;
 			ConnectionSql connection = new ConnectionSql();
 			string sentence = "SELECT * FROM profesor WHERE codigoTrabajador = '" + userCode.ToString() + "';";
 			MySqlCommand command = connection.getCommand(sentence);
@@ -111,7 +113,7 @@ namespace DocentematumCSharp
 
 		private void MenuAdministrator_FormClosing(object sender, FormClosingEventArgs e)
 		{
-			main.endOfProgram();
+			formaLogin.Show();
 		}
 
 		private void buttonGuardarCarrera_Click(object sender, EventArgs e)
@@ -326,14 +328,20 @@ namespace DocentematumCSharp
 			{
 				if (n != -1)
 				{
+					if ((string)dgvUsuarios.Rows[n].Cells["CodigoProfesor"].Value == labelCodigo.Text)
+					{
+						MessageBox.Show("Error, no puedes eliminar tu propia cuenta de usuario");
+						return;
+					}
 					ConnectionSql connection = new ConnectionSql();
-					str = "DELETE FROM profesor WHERE codigoTrabajador = " + (string)dgvDivisiones.Rows[n].Cells["ClaveDivision"].Value + ";";
+					str = "DELETE FROM profesor WHERE codigoTrabajador = " + (string)dgvUsuarios.Rows[n].Cells["CodigoProfesor"].Value + ";";
 					MySqlCommand command = connection.getCommand(str);
 					command.ExecuteNonQuery();
 					dgvUsuarios.Rows.RemoveAt(n);
 					chargeDgvUsers();
 
 					connection.closeConnection();
+					n = -1;
 				}
 			}
 		}

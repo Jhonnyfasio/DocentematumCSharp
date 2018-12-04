@@ -8,6 +8,10 @@ using System.Text;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
+using System.IO;
+using iTextSharp.text.pdf;
+using iTextSharp.text;
+
 namespace DocentematumCSharp
 {
 	public partial class MenuEstandarUsuario : Form
@@ -300,7 +304,7 @@ namespace DocentematumCSharp
 		private void buttonEliminarGrado_Click(object sender, EventArgs e)
 		{
 			string str;
-			DialogResult dialog = MessageBox.Show("Estás por eliminar un registro ¿Estás seguro de esto?", "Eliminado regsitro.", MessageBoxButtons.YesNoCancel);
+			DialogResult dialog = MessageBox.Show("Estás por eliminar un registro ¿Estás seguro de esto?", "Eliminado registro.", MessageBoxButtons.YesNoCancel);
 			if (dialog == DialogResult.Yes)
 			{
 				if (nGrado != -1)
@@ -425,13 +429,132 @@ namespace DocentematumCSharp
 			chargeDgvProduccion();
 		}
 
+		private void buttonExportarCurriculum_Click(object sender, EventArgs e)
+		{
+			Document doc = new Document(PageSize.A4.Rotate(), 10, 10, 10, 10);
+			SaveFileDialog dialog = new SaveFileDialog();
+			dialog.InitialDirectory = @"C:";
+			dialog.Title = "Guardar Curriculum";
+			dialog.DefaultExt = "pdf";
+			dialog.Filter = "pdf files (*.pdf)|*-pdf| ALL files (*.*)|*.*";
+			dialog.FilterIndex = 2;
+			dialog.RestoreDirectory = true;
+			string filename = "";
+			if (dialog.ShowDialog() == DialogResult.OK)
+			{
+				filename = dialog.FileName;
+			}
+
+
+			FileStream file = new FileStream(filename,FileMode.Create);
+			PdfWriter.GetInstance(doc, file);
+			doc.Open();
+			Paragraph p = new Paragraph();
+			string str;
+			str = "";
+			doc.Add(new Paragraph("\n\n\n"));
+			doc.Add(new Paragraph($"               Código:  {labelCodigo.Text}"));
+
+			ConnectionSql connection = new ConnectionSql();
+			MySqlCommand command;
+			MySqlDataReader reader;
+			str = $"SELECT * FROM profesor WHERE codigoTrabajador = \"{labelCodigo.Text}\";";
+			command = connection.getCommand(str);
+			reader = command.ExecuteReader();
+			if (reader.Read())
+			{
+				doc.Add(new Paragraph($"               Nombre: { reader.GetString(reader.GetOrdinal("nombre")) } { reader.GetString(reader.GetOrdinal("apellidoPaterno"))} { reader.GetString(reader.GetOrdinal("apellidoMaterno"))} \n"));
+				doc.Add(new Paragraph($"               Fecha Nacimiento: {reader.GetString(reader.GetOrdinal("fechaNacimiento"))} \n"));
+				doc.Add(new Paragraph($"               Correo: {reader.GetString(reader.GetOrdinal("Correo"))} \n\n"));
+			}
+
+			BaseFont baseColumn = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252,
+				BaseFont.NOT_EMBEDDED);
+			iTextSharp.text.Font font = new iTextSharp.text.Font(baseColumn, 10, 1, BaseColor.WHITE);
+
+
+			doc.Add(new Paragraph("               Grados obtenidos: \n\n"));
+			PdfPTable tableGrado = new PdfPTable(DgvGrado.Columns.Count);
+			//Table Header
+			for (int i = 0; i < DgvGrado.Columns.Count; i++)
+			{
+				PdfPCell cell = new PdfPCell();
+				cell.BackgroundColor = BaseColor.GRAY;
+				cell.AddElement(new Chunk(DgvGrado.Columns[i].HeaderText.ToUpper(), font));
+				tableGrado.AddCell(cell);
+			}
+
+			//Table Data
+			for (int i = 0; i < DgvGrado.Rows.Count; i++)
+			{
+				for (int j = 0; j < DgvGrado.Columns.Count; j++)
+					tableGrado.AddCell((string)DgvGrado.Rows[i].Cells[j].Value);
+				;
+			}
+			doc.Add(tableGrado);
+			doc.Add(new Paragraph("\n\n"));
+
+
+			doc.Add(new Paragraph("               Carreras impartidas: \n\n"));
+			PdfPTable tableCarrera = new PdfPTable(dgvAgregadas.Columns.Count);
+
+			//Table Header
+			for (int i = 0; i < dgvAgregadas.Columns.Count; i++)
+			{
+				PdfPCell cell = new PdfPCell();
+				cell.BackgroundColor = BaseColor.GRAY;
+				cell.AddElement(new Chunk(dgvAgregadas.Columns[i].HeaderText.ToUpper(), font));
+				tableCarrera.AddCell(cell);
+			}
+
+			//Table Data
+			for (int i = 0; i < dgvAgregadas.Rows.Count; i++)
+			{
+				for (int j = 0; j < dgvAgregadas.Columns.Count; j++)
+					tableCarrera.AddCell((string)dgvAgregadas.Rows[i].Cells[j].Value);
+				;
+			}
+			doc.Add(tableCarrera);
+			doc.Add(new Paragraph("\n\n"));
+
+			doc.Add(new Paragraph("               Producciones Aprobadas y Pendientes: \n\n"));
+			PdfPTable tableProduccion = new PdfPTable(dgvProduccion.Columns.Count);
+			//Table Header
+			for (int i = 0; i < dgvProduccion.Columns.Count; i++)
+			{
+				PdfPCell cell = new PdfPCell();
+				cell.BackgroundColor = BaseColor.GRAY;
+				cell.AddElement(new Chunk(dgvProduccion.Columns[i].HeaderText.ToUpper(), font));
+				tableProduccion.AddCell(cell);
+			}
+
+			//Table Data
+			for (int i = 0; i < dgvProduccion.Rows.Count; i++)
+			{
+				if (dgvProduccion.Columns[i].HeaderText == "Status")
+				{
+					if ((string)dgvProduccion.Rows[i].Cells["Status"].Value != "RECHAZADA")
+					{
+						for (int j = 0; j < dgvProduccion.Columns.Count; j++)
+							tableProduccion.AddCell((string)dgvProduccion.Rows[i].Cells[j].Value);
+					}
+				}
+				
+			}
+			doc.Add(tableProduccion);
+			doc.Add(new Paragraph("\n"));
+
+			doc.Close();
+			
+		}
+
 		private void buttonEliminarProduccion_Click(object sender, EventArgs e)
 		{
 			string str;
 			
 			if (nProd != -1)
 			{
-				DialogResult dialog = MessageBox.Show("Estás por eliminar un registro ¿Estás seguro de esto?", "Eliminado regsitro.", MessageBoxButtons.YesNoCancel);
+				DialogResult dialog = MessageBox.Show("Estás por eliminar un registro ¿Estás seguro de esto?", "Eliminado registro.", MessageBoxButtons.YesNoCancel);
 				if (dialog == DialogResult.Yes)
 				{
 					try

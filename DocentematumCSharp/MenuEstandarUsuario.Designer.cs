@@ -40,6 +40,7 @@
 			this.FechaInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.tabPageProduccionesProfesor = new System.Windows.Forms.TabPage();
+			this.buttonListarProduccion = new System.Windows.Forms.Button();
 			this.buttonDetallarProduccion = new System.Windows.Forms.Button();
 			this.buttonBuscarProduccion = new System.Windows.Forms.Button();
 			this.buttonAgregarProduccion = new System.Windows.Forms.Button();
@@ -76,7 +77,6 @@
 			this.label5 = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
 			this.labelNombre = new System.Windows.Forms.Label();
-			this.buttonListarProduccion = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.dgvProduccion)).BeginInit();
 			this.tabPageProduccionesProfesor.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.DgvGrado)).BeginInit();
@@ -97,6 +97,7 @@
 			this.buttonExportarCurriculum.TabIndex = 59;
 			this.buttonExportarCurriculum.Text = "Exportar Curriculum";
 			this.buttonExportarCurriculum.UseVisualStyleBackColor = false;
+			this.buttonExportarCurriculum.Click += new System.EventHandler(this.buttonExportarCurriculum_Click);
 			// 
 			// label4
 			// 
@@ -206,6 +207,18 @@
 			this.tabPageProduccionesProfesor.TabIndex = 2;
 			this.tabPageProduccionesProfesor.Text = "Tus Producciones";
 			this.tabPageProduccionesProfesor.UseVisualStyleBackColor = true;
+			// 
+			// buttonListarProduccion
+			// 
+			this.buttonListarProduccion.BackColor = System.Drawing.Color.MidnightBlue;
+			this.buttonListarProduccion.ForeColor = System.Drawing.SystemColors.ButtonFace;
+			this.buttonListarProduccion.Location = new System.Drawing.Point(427, 41);
+			this.buttonListarProduccion.Name = "buttonListarProduccion";
+			this.buttonListarProduccion.Size = new System.Drawing.Size(75, 23);
+			this.buttonListarProduccion.TabIndex = 22;
+			this.buttonListarProduccion.Text = "Listar Todos";
+			this.buttonListarProduccion.UseVisualStyleBackColor = false;
+			this.buttonListarProduccion.Click += new System.EventHandler(this.buttonListarProduccion_Click);
 			// 
 			// buttonDetallarProduccion
 			// 
@@ -593,18 +606,6 @@
 			this.labelNombre.Size = new System.Drawing.Size(62, 18);
 			this.labelNombre.TabIndex = 60;
 			this.labelNombre.Text = "Nombre";
-			// 
-			// buttonListarProduccion
-			// 
-			this.buttonListarProduccion.BackColor = System.Drawing.Color.MidnightBlue;
-			this.buttonListarProduccion.ForeColor = System.Drawing.SystemColors.ButtonFace;
-			this.buttonListarProduccion.Location = new System.Drawing.Point(427, 41);
-			this.buttonListarProduccion.Name = "buttonListarProduccion";
-			this.buttonListarProduccion.Size = new System.Drawing.Size(75, 23);
-			this.buttonListarProduccion.TabIndex = 22;
-			this.buttonListarProduccion.Text = "Listar Todos";
-			this.buttonListarProduccion.UseVisualStyleBackColor = false;
-			this.buttonListarProduccion.Click += new System.EventHandler(this.buttonListarProduccion_Click);
 			// 
 			// MenuEstandarUsuario
 			// 
