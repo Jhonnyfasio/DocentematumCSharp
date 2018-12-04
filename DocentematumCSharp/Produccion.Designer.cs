@@ -37,12 +37,12 @@
 			this.label2 = new System.Windows.Forms.Label();
 			this.fechaInicio = new System.Windows.Forms.Label();
 			this.tipo = new System.Windows.Forms.Label();
-			this.textUsuario = new System.Windows.Forms.TextBox();
-			this.textCodigo = new System.Windows.Forms.TextBox();
-			this.textCorreo = new System.Windows.Forms.TextBox();
-			this.textTelefono = new System.Windows.Forms.TextBox();
-			this.textPaterno = new System.Windows.Forms.TextBox();
-			this.textName = new System.Windows.Forms.TextBox();
+			this.textStatus = new System.Windows.Forms.TextBox();
+			this.textNumeroRegistro = new System.Windows.Forms.TextBox();
+			this.textProposito = new System.Windows.Forms.TextBox();
+			this.textNumeroInstitucion = new System.Windows.Forms.TextBox();
+			this.textTitulo = new System.Windows.Forms.TextBox();
+			this.textTipo = new System.Windows.Forms.TextBox();
 			this.checkBox3 = new System.Windows.Forms.CheckBox();
 			this.checkBox2 = new System.Windows.Forms.CheckBox();
 			this.checkBox1 = new System.Windows.Forms.CheckBox();
@@ -50,6 +50,9 @@
 			this.dateFechaIncio = new System.Windows.Forms.DateTimePicker();
 			this.checkBox5 = new System.Windows.Forms.CheckBox();
 			this.checkBox6 = new System.Windows.Forms.CheckBox();
+			this.label10 = new System.Windows.Forms.Label();
+			this.buttonGuardar = new System.Windows.Forms.Button();
+			this.buttonGuardarModificar = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// titulo
@@ -159,48 +162,48 @@
 			this.tipo.TabIndex = 67;
 			this.tipo.Text = "Tipo";
 			// 
-			// textUsuario
+			// textStatus
 			// 
-			this.textUsuario.Enabled = false;
-			this.textUsuario.Location = new System.Drawing.Point(185, 300);
-			this.textUsuario.Name = "textUsuario";
-			this.textUsuario.Size = new System.Drawing.Size(216, 20);
-			this.textUsuario.TabIndex = 66;
+			this.textStatus.Enabled = false;
+			this.textStatus.Location = new System.Drawing.Point(185, 300);
+			this.textStatus.Name = "textStatus";
+			this.textStatus.Size = new System.Drawing.Size(216, 20);
+			this.textStatus.TabIndex = 66;
 			// 
-			// textCodigo
+			// textNumeroRegistro
 			// 
-			this.textCodigo.Location = new System.Drawing.Point(185, 262);
-			this.textCodigo.Name = "textCodigo";
-			this.textCodigo.Size = new System.Drawing.Size(216, 20);
-			this.textCodigo.TabIndex = 65;
+			this.textNumeroRegistro.Location = new System.Drawing.Point(185, 262);
+			this.textNumeroRegistro.Name = "textNumeroRegistro";
+			this.textNumeroRegistro.Size = new System.Drawing.Size(216, 20);
+			this.textNumeroRegistro.TabIndex = 65;
 			// 
-			// textCorreo
+			// textProposito
 			// 
-			this.textCorreo.Location = new System.Drawing.Point(185, 224);
-			this.textCorreo.Name = "textCorreo";
-			this.textCorreo.Size = new System.Drawing.Size(216, 20);
-			this.textCorreo.TabIndex = 64;
+			this.textProposito.Location = new System.Drawing.Point(185, 224);
+			this.textProposito.Name = "textProposito";
+			this.textProposito.Size = new System.Drawing.Size(216, 20);
+			this.textProposito.TabIndex = 64;
 			// 
-			// textTelefono
+			// textNumeroInstitucion
 			// 
-			this.textTelefono.Location = new System.Drawing.Point(185, 188);
-			this.textTelefono.Name = "textTelefono";
-			this.textTelefono.Size = new System.Drawing.Size(216, 20);
-			this.textTelefono.TabIndex = 63;
+			this.textNumeroInstitucion.Location = new System.Drawing.Point(185, 188);
+			this.textNumeroInstitucion.Name = "textNumeroInstitucion";
+			this.textNumeroInstitucion.Size = new System.Drawing.Size(216, 20);
+			this.textNumeroInstitucion.TabIndex = 63;
 			// 
-			// textPaterno
+			// textTitulo
 			// 
-			this.textPaterno.Location = new System.Drawing.Point(185, 82);
-			this.textPaterno.Name = "textPaterno";
-			this.textPaterno.Size = new System.Drawing.Size(216, 20);
-			this.textPaterno.TabIndex = 62;
+			this.textTitulo.Location = new System.Drawing.Point(185, 82);
+			this.textTitulo.Name = "textTitulo";
+			this.textTitulo.Size = new System.Drawing.Size(216, 20);
+			this.textTitulo.TabIndex = 62;
 			// 
-			// textName
+			// textTipo
 			// 
-			this.textName.Location = new System.Drawing.Point(185, 45);
-			this.textName.Name = "textName";
-			this.textName.Size = new System.Drawing.Size(216, 20);
-			this.textName.TabIndex = 61;
+			this.textTipo.Location = new System.Drawing.Point(185, 45);
+			this.textTipo.Name = "textTipo";
+			this.textTipo.Size = new System.Drawing.Size(216, 20);
+			this.textTipo.TabIndex = 61;
 			// 
 			// checkBox3
 			// 
@@ -273,12 +276,52 @@
 			this.checkBox6.TabIndex = 97;
 			this.checkBox6.UseVisualStyleBackColor = false;
 			// 
+			// label10
+			// 
+			this.label10.AutoSize = true;
+			this.label10.BackColor = System.Drawing.Color.Transparent;
+			this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label10.ForeColor = System.Drawing.Color.White;
+			this.label10.Location = new System.Drawing.Point(198, 385);
+			this.label10.Name = "label10";
+			this.label10.Size = new System.Drawing.Size(58, 15);
+			this.label10.TabIndex = 99;
+			this.label10.Text = "Regresar";
+			this.label10.Click += new System.EventHandler(this.label10_Click);
+			// 
+			// buttonGuardar
+			// 
+			this.buttonGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.buttonGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.buttonGuardar.Location = new System.Drawing.Point(153, 344);
+			this.buttonGuardar.Name = "buttonGuardar";
+			this.buttonGuardar.Size = new System.Drawing.Size(158, 27);
+			this.buttonGuardar.TabIndex = 98;
+			this.buttonGuardar.Text = "Guardar";
+			this.buttonGuardar.UseVisualStyleBackColor = true;
+			this.buttonGuardar.Click += new System.EventHandler(this.buttonGuardar_Click);
+			// 
+			// buttonGuardarModificar
+			// 
+			this.buttonGuardarModificar.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.buttonGuardarModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.buttonGuardarModificar.Location = new System.Drawing.Point(153, 344);
+			this.buttonGuardarModificar.Name = "buttonGuardarModificar";
+			this.buttonGuardarModificar.Size = new System.Drawing.Size(158, 27);
+			this.buttonGuardarModificar.TabIndex = 100;
+			this.buttonGuardarModificar.Text = "Guardar";
+			this.buttonGuardarModificar.UseVisualStyleBackColor = true;
+			this.buttonGuardarModificar.Click += new System.EventHandler(this.buttonGuardarModificar_Click);
+			// 
 			// Produccion
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackgroundImage = global::DocentematumCSharp.Properties.Resources.BackGround_Blue;
-			this.ClientSize = new System.Drawing.Size(455, 372);
+			this.ClientSize = new System.Drawing.Size(455, 427);
+			this.Controls.Add(this.buttonGuardarModificar);
+			this.Controls.Add(this.label10);
+			this.Controls.Add(this.buttonGuardar);
 			this.Controls.Add(this.checkBox6);
 			this.Controls.Add(this.checkBox5);
 			this.Controls.Add(this.dateFechaFinal);
@@ -295,12 +338,12 @@
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.fechaInicio);
 			this.Controls.Add(this.tipo);
-			this.Controls.Add(this.textUsuario);
-			this.Controls.Add(this.textCodigo);
-			this.Controls.Add(this.textCorreo);
-			this.Controls.Add(this.textTelefono);
-			this.Controls.Add(this.textPaterno);
-			this.Controls.Add(this.textName);
+			this.Controls.Add(this.textStatus);
+			this.Controls.Add(this.textNumeroRegistro);
+			this.Controls.Add(this.textProposito);
+			this.Controls.Add(this.textNumeroInstitucion);
+			this.Controls.Add(this.textTitulo);
+			this.Controls.Add(this.textTipo);
 			this.Name = "Produccion";
 			this.Text = "Produccion";
 			this.ResumeLayout(false);
@@ -319,12 +362,12 @@
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label fechaInicio;
 		private System.Windows.Forms.Label tipo;
-		private System.Windows.Forms.TextBox textUsuario;
-		private System.Windows.Forms.TextBox textCodigo;
-		private System.Windows.Forms.TextBox textCorreo;
-		private System.Windows.Forms.TextBox textTelefono;
-		private System.Windows.Forms.TextBox textPaterno;
-		private System.Windows.Forms.TextBox textName;
+		private System.Windows.Forms.TextBox textStatus;
+		private System.Windows.Forms.TextBox textNumeroRegistro;
+		private System.Windows.Forms.TextBox textProposito;
+		private System.Windows.Forms.TextBox textNumeroInstitucion;
+		private System.Windows.Forms.TextBox textTitulo;
+		private System.Windows.Forms.TextBox textTipo;
 		private System.Windows.Forms.CheckBox checkBox3;
 		private System.Windows.Forms.CheckBox checkBox2;
 		private System.Windows.Forms.CheckBox checkBox1;
@@ -332,5 +375,8 @@
 		private System.Windows.Forms.DateTimePicker dateFechaIncio;
 		private System.Windows.Forms.CheckBox checkBox5;
 		private System.Windows.Forms.CheckBox checkBox6;
+		private System.Windows.Forms.Label label10;
+		private System.Windows.Forms.Button buttonGuardar;
+		private System.Windows.Forms.Button buttonGuardarModificar;
 	}
 }

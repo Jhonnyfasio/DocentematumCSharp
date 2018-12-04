@@ -30,16 +30,18 @@
 		{
 			this.buttonExportarCurriculum = new System.Windows.Forms.Button();
 			this.label4 = new System.Windows.Forms.Label();
-			this.textBox7 = new System.Windows.Forms.TextBox();
+			this.textBuscarProduccion = new System.Windows.Forms.TextBox();
 			this.buttonModificarProduccion = new System.Windows.Forms.Button();
 			this.buttonEliminarProduccion = new System.Windows.Forms.Button();
-			this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.FechaInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.dgvProduccion = new System.Windows.Forms.DataGridView();
+			this.IDProduccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Titulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.IDProduccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.dataGridView3 = new System.Windows.Forms.DataGridView();
+			this.FechaInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.tabPageProduccionesProfesor = new System.Windows.Forms.TabPage();
+			this.buttonDetallarProduccion = new System.Windows.Forms.Button();
+			this.buttonBuscarProduccion = new System.Windows.Forms.Button();
 			this.buttonAgregarProduccion = new System.Windows.Forms.Button();
 			this.DgvGrado = new System.Windows.Forms.DataGridView();
 			this.NombreGrado = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -75,8 +77,8 @@
 			this.label5 = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
 			this.labelNombre = new System.Windows.Forms.Label();
-			this.buttonBuscarProduccion = new System.Windows.Forms.Button();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+			this.buttonListarProduccion = new System.Windows.Forms.Button();
+			((System.ComponentModel.ISupportInitialize)(this.dgvProduccion)).BeginInit();
 			this.tabPageProduccionesProfesor.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.DgvGrado)).BeginInit();
 			this.tabPageCarrerasProfesor.SuspendLayout();
@@ -106,23 +108,24 @@
 			this.label4.TabIndex = 18;
 			this.label4.Text = "Buscar: ";
 			// 
-			// textBox7
+			// textBuscarProduccion
 			// 
-			this.textBox7.Location = new System.Drawing.Point(69, 23);
-			this.textBox7.Name = "textBox7";
-			this.textBox7.Size = new System.Drawing.Size(149, 20);
-			this.textBox7.TabIndex = 17;
+			this.textBuscarProduccion.Location = new System.Drawing.Point(69, 23);
+			this.textBuscarProduccion.Name = "textBuscarProduccion";
+			this.textBuscarProduccion.Size = new System.Drawing.Size(149, 20);
+			this.textBuscarProduccion.TabIndex = 17;
 			// 
 			// buttonModificarProduccion
 			// 
 			this.buttonModificarProduccion.BackColor = System.Drawing.Color.Olive;
 			this.buttonModificarProduccion.ForeColor = System.Drawing.SystemColors.ButtonFace;
-			this.buttonModificarProduccion.Location = new System.Drawing.Point(396, 277);
+			this.buttonModificarProduccion.Location = new System.Drawing.Point(389, 277);
 			this.buttonModificarProduccion.Name = "buttonModificarProduccion";
 			this.buttonModificarProduccion.Size = new System.Drawing.Size(75, 23);
 			this.buttonModificarProduccion.TabIndex = 15;
 			this.buttonModificarProduccion.Text = "Modificar";
 			this.buttonModificarProduccion.UseVisualStyleBackColor = false;
+			this.buttonModificarProduccion.Click += new System.EventHandler(this.buttonModificarProduccion_Click);
 			// 
 			// buttonEliminarProduccion
 			// 
@@ -134,18 +137,33 @@
 			this.buttonEliminarProduccion.TabIndex = 14;
 			this.buttonEliminarProduccion.Text = "Eliminar";
 			this.buttonEliminarProduccion.UseVisualStyleBackColor = false;
+			this.buttonEliminarProduccion.Click += new System.EventHandler(this.buttonEliminarProduccion_Click);
 			// 
-			// Status
+			// dgvProduccion
 			// 
-			this.Status.HeaderText = "Status";
-			this.Status.Name = "Status";
-			this.Status.ReadOnly = true;
+			this.dgvProduccion.AllowUserToAddRows = false;
+			this.dgvProduccion.AllowUserToOrderColumns = true;
+			this.dgvProduccion.BackgroundColor = System.Drawing.SystemColors.ActiveCaptionText;
+			this.dgvProduccion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dgvProduccion.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IDProduccion,
+            this.Titulo,
+            this.Tipo,
+            this.FechaInicio,
+            this.Status});
+			this.dgvProduccion.Location = new System.Drawing.Point(9, 70);
+			this.dgvProduccion.Name = "dgvProduccion";
+			this.dgvProduccion.ReadOnly = true;
+			this.dgvProduccion.Size = new System.Drawing.Size(493, 169);
+			this.dgvProduccion.TabIndex = 19;
+			this.dgvProduccion.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProduccion_CellClick);
 			// 
-			// FechaInicio
+			// IDProduccion
 			// 
-			this.FechaInicio.HeaderText = "Fecha Inicio";
-			this.FechaInicio.Name = "FechaInicio";
-			this.FechaInicio.ReadOnly = true;
+			this.IDProduccion.HeaderText = "ID";
+			this.IDProduccion.Name = "IDProduccion";
+			this.IDProduccion.ReadOnly = true;
+			this.IDProduccion.Width = 50;
 			// 
 			// Titulo
 			// 
@@ -159,36 +177,26 @@
 			this.Tipo.Name = "Tipo";
 			this.Tipo.ReadOnly = true;
 			// 
-			// IDProduccion
+			// FechaInicio
 			// 
-			this.IDProduccion.HeaderText = "ID";
-			this.IDProduccion.Name = "IDProduccion";
-			this.IDProduccion.ReadOnly = true;
+			this.FechaInicio.HeaderText = "Fecha Inicio";
+			this.FechaInicio.Name = "FechaInicio";
+			this.FechaInicio.ReadOnly = true;
 			// 
-			// dataGridView3
+			// Status
 			// 
-			this.dataGridView3.AllowUserToAddRows = false;
-			this.dataGridView3.AllowUserToOrderColumns = true;
-			this.dataGridView3.BackgroundColor = System.Drawing.SystemColors.ActiveCaptionText;
-			this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.IDProduccion,
-            this.Tipo,
-            this.Titulo,
-            this.FechaInicio,
-            this.Status});
-			this.dataGridView3.Location = new System.Drawing.Point(9, 75);
-			this.dataGridView3.Name = "dataGridView3";
-			this.dataGridView3.ReadOnly = true;
-			this.dataGridView3.Size = new System.Drawing.Size(543, 169);
-			this.dataGridView3.TabIndex = 19;
+			this.Status.HeaderText = "Status";
+			this.Status.Name = "Status";
+			this.Status.ReadOnly = true;
 			// 
 			// tabPageProduccionesProfesor
 			// 
+			this.tabPageProduccionesProfesor.Controls.Add(this.buttonListarProduccion);
+			this.tabPageProduccionesProfesor.Controls.Add(this.buttonDetallarProduccion);
 			this.tabPageProduccionesProfesor.Controls.Add(this.buttonBuscarProduccion);
-			this.tabPageProduccionesProfesor.Controls.Add(this.dataGridView3);
+			this.tabPageProduccionesProfesor.Controls.Add(this.dgvProduccion);
 			this.tabPageProduccionesProfesor.Controls.Add(this.label4);
-			this.tabPageProduccionesProfesor.Controls.Add(this.textBox7);
+			this.tabPageProduccionesProfesor.Controls.Add(this.textBuscarProduccion);
 			this.tabPageProduccionesProfesor.Controls.Add(this.buttonModificarProduccion);
 			this.tabPageProduccionesProfesor.Controls.Add(this.buttonEliminarProduccion);
 			this.tabPageProduccionesProfesor.Controls.Add(this.buttonAgregarProduccion);
@@ -199,6 +207,30 @@
 			this.tabPageProduccionesProfesor.TabIndex = 2;
 			this.tabPageProduccionesProfesor.Text = "Tus Producciones";
 			this.tabPageProduccionesProfesor.UseVisualStyleBackColor = true;
+			// 
+			// buttonDetallarProduccion
+			// 
+			this.buttonDetallarProduccion.BackColor = System.Drawing.Color.MidnightBlue;
+			this.buttonDetallarProduccion.ForeColor = System.Drawing.SystemColors.ButtonFace;
+			this.buttonDetallarProduccion.Location = new System.Drawing.Point(508, 144);
+			this.buttonDetallarProduccion.Name = "buttonDetallarProduccion";
+			this.buttonDetallarProduccion.Size = new System.Drawing.Size(75, 23);
+			this.buttonDetallarProduccion.TabIndex = 21;
+			this.buttonDetallarProduccion.Text = "Detallar";
+			this.buttonDetallarProduccion.UseVisualStyleBackColor = false;
+			this.buttonDetallarProduccion.Click += new System.EventHandler(this.buttonDetallarProduccion_Click);
+			// 
+			// buttonBuscarProduccion
+			// 
+			this.buttonBuscarProduccion.BackColor = System.Drawing.Color.MidnightBlue;
+			this.buttonBuscarProduccion.ForeColor = System.Drawing.SystemColors.ButtonFace;
+			this.buttonBuscarProduccion.Location = new System.Drawing.Point(236, 20);
+			this.buttonBuscarProduccion.Name = "buttonBuscarProduccion";
+			this.buttonBuscarProduccion.Size = new System.Drawing.Size(75, 23);
+			this.buttonBuscarProduccion.TabIndex = 20;
+			this.buttonBuscarProduccion.Text = "Buscar";
+			this.buttonBuscarProduccion.UseVisualStyleBackColor = false;
+			this.buttonBuscarProduccion.Click += new System.EventHandler(this.buttonBuscarProduccion_Click);
 			// 
 			// buttonAgregarProduccion
 			// 
@@ -574,16 +606,17 @@
 			this.labelNombre.TabIndex = 60;
 			this.labelNombre.Text = "Nombre";
 			// 
-			// buttonBuscarProduccion
+			// buttonListarProduccion
 			// 
-			this.buttonBuscarProduccion.BackColor = System.Drawing.Color.MidnightBlue;
-			this.buttonBuscarProduccion.ForeColor = System.Drawing.SystemColors.ButtonFace;
-			this.buttonBuscarProduccion.Location = new System.Drawing.Point(236, 20);
-			this.buttonBuscarProduccion.Name = "buttonBuscarProduccion";
-			this.buttonBuscarProduccion.Size = new System.Drawing.Size(75, 23);
-			this.buttonBuscarProduccion.TabIndex = 20;
-			this.buttonBuscarProduccion.Text = "Buscar";
-			this.buttonBuscarProduccion.UseVisualStyleBackColor = false;
+			this.buttonListarProduccion.BackColor = System.Drawing.Color.MidnightBlue;
+			this.buttonListarProduccion.ForeColor = System.Drawing.SystemColors.ButtonFace;
+			this.buttonListarProduccion.Location = new System.Drawing.Point(427, 41);
+			this.buttonListarProduccion.Name = "buttonListarProduccion";
+			this.buttonListarProduccion.Size = new System.Drawing.Size(75, 23);
+			this.buttonListarProduccion.TabIndex = 22;
+			this.buttonListarProduccion.Text = "Listar Todos";
+			this.buttonListarProduccion.UseVisualStyleBackColor = false;
+			this.buttonListarProduccion.Click += new System.EventHandler(this.buttonListarProduccion_Click);
 			// 
 			// MenuEstandarUsuario
 			// 
@@ -601,7 +634,7 @@
 			this.Name = "MenuEstandarUsuario";
 			this.Text = "MenuEstandarUsuario";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MenuEstandarUsuario_FormClosing);
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.dgvProduccion)).EndInit();
 			this.tabPageProduccionesProfesor.ResumeLayout(false);
 			this.tabPageProduccionesProfesor.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.DgvGrado)).EndInit();
@@ -621,15 +654,10 @@
 
 		private System.Windows.Forms.Button buttonExportarCurriculum;
 		private System.Windows.Forms.Label label4;
-		private System.Windows.Forms.TextBox textBox7;
+		private System.Windows.Forms.TextBox textBuscarProduccion;
 		private System.Windows.Forms.Button buttonModificarProduccion;
 		private System.Windows.Forms.Button buttonEliminarProduccion;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Status;
-		private System.Windows.Forms.DataGridViewTextBoxColumn FechaInicio;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Titulo;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Tipo;
-		private System.Windows.Forms.DataGridViewTextBoxColumn IDProduccion;
-		private System.Windows.Forms.DataGridView dataGridView3;
+		private System.Windows.Forms.DataGridView dgvProduccion;
 		private System.Windows.Forms.TabPage tabPageProduccionesProfesor;
 		private System.Windows.Forms.Button buttonAgregarProduccion;
 		private System.Windows.Forms.DataGridView DgvGrado;
@@ -667,5 +695,12 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn TipoGrado;
 		private System.Windows.Forms.Label label5;
 		private System.Windows.Forms.Button buttonBuscarProduccion;
+		private System.Windows.Forms.DataGridViewTextBoxColumn IDProduccion;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Titulo;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Tipo;
+		private System.Windows.Forms.DataGridViewTextBoxColumn FechaInicio;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Status;
+		private System.Windows.Forms.Button buttonDetallarProduccion;
+		private System.Windows.Forms.Button buttonListarProduccion;
 	}
 }

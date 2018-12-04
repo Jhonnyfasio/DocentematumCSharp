@@ -41,6 +41,7 @@ namespace DocentematumCSharp
 			chargeDvgAgregadas();
 			chargeDgvCarrera();
 			chargeDgvGrado();
+			chargeDgvProduccion();
 
 			main = m;
 			formaLogin = forma1;
@@ -323,7 +324,7 @@ namespace DocentematumCSharp
 						DgvGrado.Rows.RemoveAt(nGrado);
 						connectionAux.closeConnection();
 					}
-
+					nGrado = -1;
 					connection.closeConnection();
 
 
@@ -359,7 +360,130 @@ namespace DocentematumCSharp
 
 		private void buttonAgregarProduccion_Click(object sender, EventArgs e)
 		{
+			Produccion production = new Produccion(Convert.ToInt32(labelCodigo.Text),this);
+			production.Show();
+			
 
+		}
+
+		private void buttonModificarProduccion_Click(object sender, EventArgs e)
+		{
+			if (nProd != -1)
+			{
+				Produccion production = new Produccion((string)dgvProduccion.Rows[nProd].Cells["IDProduccion"].Value, this);
+				production.Show();
+			}
+			else
+			{
+				MessageBox.Show("Error, seleccione primero una producción");
+			}
+
+		}
+
+		private void buttonDetallarProduccion_Click(object sender, EventArgs e)
+		{
+			if (nProd != -1)
+			{
+				//MessageBox.Show((int)dgvProduccion.Rows[nProd].Cells["IDProduccion"].Value);
+				VistaProduccion production = new VistaProduccion(Convert.ToInt32(dgvProduccion.Rows[nProd].Cells["IDProduccion"].Value.ToString()));
+				production.Show();
+			}
+			else
+			{
+				MessageBox.Show("Error, seleccione primero una producción");
+			}
+			
+		}
+
+		private void buttonBuscarProduccion_Click(object sender, EventArgs e)
+		{
+			ConnectionSql connection = new ConnectionSql();
+			MySqlCommand command;
+			MySqlDataReader reader;
+			string str = $"SELECT * FROM produccion WHERE idProduccion = \"{textBuscarProduccion.Text}\";";
+			command = connection.getCommand(str);
+			reader = command.ExecuteReader();
+			dgvProduccion.Rows.Clear();
+			if (reader.Read())
+			{
+				int row = dgvProduccion.Rows.Add();
+				dgvProduccion.Rows[row].Cells["IDProduccion"].Value = reader.GetInt32(reader.GetOrdinal("idProduccion")).ToString();
+				dgvProduccion.Rows[row].Cells["Titulo"].Value = reader.GetString(reader.GetOrdinal("titulo"));
+				dgvProduccion.Rows[row].Cells["Tipo"].Value = reader.GetString(reader.GetOrdinal("tipo"));
+				dgvProduccion.Rows[row].Cells["FechaInicio"].Value = reader.GetString(reader.GetOrdinal("fechaInicio"));
+				dgvProduccion.Rows[row].Cells["Status"].Value = reader.GetString(reader.GetOrdinal("status"));
+			}
+			else
+			{
+				MessageBox.Show("Error, no hay un registro con este ID");
+			}
+			connection.closeConnection();
+		}
+
+		private void buttonListarProduccion_Click(object sender, EventArgs e)
+		{
+			chargeDgvProduccion();
+		}
+
+		private void buttonEliminarProduccion_Click(object sender, EventArgs e)
+		{
+			string str;
+			
+			if (nProd != -1)
+			{
+				DialogResult dialog = MessageBox.Show("Estás por eliminar un registro ¿Estás seguro de esto?", "Eliminado regsitro.", MessageBoxButtons.YesNoCancel);
+				if (dialog == DialogResult.Yes)
+				{
+					try
+					{
+						ConnectionSql connection = new ConnectionSql();
+						MySqlCommand command;
+						str = $"DELETE FROM produccion WHERE idProduccion = \"{(string)dgvProduccion.Rows[nProd].Cells["IDProduccion"].Value}\";";
+						//MessageBox.Show(str);
+						command = connection.getCommand(str);
+						command.ExecuteNonQuery();
+
+						nProd = -1;
+						connection.closeConnection();
+						chargeDgvProduccion();
+					}
+					catch (MySqlException i)
+					{
+						MessageBox.Show(i.Message + "-" + i.ToString());
+					}
+				}
+			}
+			else
+			{
+				MessageBox.Show("Error, seleccione primero una producción");
+			}
+			
+		}
+
+		private void dgvProduccion_CellClick(object sender, DataGridViewCellEventArgs e)
+		{
+			nProd = e.RowIndex;
+		}
+
+		public void chargeDgvProduccion()
+		{
+			ConnectionSql connection = new ConnectionSql();
+			MySqlCommand command;
+			MySqlDataReader reader;
+			string str = $"SELECT * FROM produccion WHERE idProfesor = \"{labelCodigo.Text}\";";
+			command = connection.getCommand(str);
+			reader = command.ExecuteReader();
+			dgvProduccion.Rows.Clear();
+			while (reader.Read())
+			{
+				int row = dgvProduccion.Rows.Add();
+				dgvProduccion.Rows[row].Cells["IDProduccion"].Value = reader.GetInt32(reader.GetOrdinal("idProduccion")).ToString();
+				dgvProduccion.Rows[row].Cells["Titulo"].Value = reader.GetString(reader.GetOrdinal("titulo"));
+				dgvProduccion.Rows[row].Cells["Tipo"].Value = reader.GetString(reader.GetOrdinal("tipo"));
+				dgvProduccion.Rows[row].Cells["FechaInicio"].Value = reader.GetString(reader.GetOrdinal("fechaInicio"));
+				dgvProduccion.Rows[row].Cells["Status"].Value = reader.GetString(reader.GetOrdinal("status"));
+			}
+			connection.closeConnection();
 		}
 	}
 }

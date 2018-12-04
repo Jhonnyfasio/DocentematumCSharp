@@ -20,7 +20,7 @@ namespace DocentematumCSharp
 		public VistaProduccion(int u_code)
 		{
 			InitializeComponent();
-
+			
 			prodCode = u_code;
 
 			string str;
@@ -39,6 +39,7 @@ namespace DocentematumCSharp
 				dgvProduccion.Rows[row].Cells["statusProduccion"].Value = reader.GetString(reader.GetOrdinal("status"));
 				dgvProduccion.Rows[row].Cells["propositoProduccion"].Value = reader.GetString(reader.GetOrdinal("proposito"));
 				dgvProduccion.Rows[row].Cells["numeroRegistro"].Value = reader.GetInt32(reader.GetOrdinal("numeroInstitucion")).ToString();
+				dgvProduccion.Rows[row].Cells["colaboradorProduccion"].Value = reader.GetInt32(reader.GetOrdinal("idProfesor")).ToString();
 			}
 			labelProduccion.Text = reader.GetString(reader.GetOrdinal("titulo"));
 			connection.closeConnection();
