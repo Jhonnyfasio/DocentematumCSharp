@@ -33,6 +33,14 @@
 			this.button2 = new System.Windows.Forms.Button();
 			this.button1 = new System.Windows.Forms.Button();
 			this.dgvUsuarios = new System.Windows.Forms.DataGridView();
+			this.CodigoProfesor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.nombreProfesor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.apellidoPProfesor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.apellidoMProfesor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.usuarioProfesor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.estadoProfesor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.correoProfesor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.tipoUsuarioProfesor = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.buttonEliminarUsuario = new System.Windows.Forms.Button();
 			this.buttonAgregarUsuario = new System.Windows.Forms.Button();
 			this.label9 = new System.Windows.Forms.Label();
@@ -75,15 +83,6 @@
 			this.label5 = new System.Windows.Forms.Label();
 			this.labelNombre = new System.Windows.Forms.Label();
 			this.labelCodigo = new System.Windows.Forms.Label();
-			this.buttonEditarPerfil = new System.Windows.Forms.Button();
-			this.CodigoProfesor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.nombreProfesor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.apellidoPProfesor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.apellidoMProfesor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.usuarioProfesor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.estadoProfesor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.correoProfesor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.tipoUsuarioProfesor = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.tabPrincipal.SuspendLayout();
 			this.tabUsuario.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
@@ -166,6 +165,55 @@
 			this.dgvUsuarios.Size = new System.Drawing.Size(544, 216);
 			this.dgvUsuarios.TabIndex = 29;
 			this.dgvUsuarios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsuarios_CellClick);
+			// 
+			// CodigoProfesor
+			// 
+			this.CodigoProfesor.HeaderText = "Código";
+			this.CodigoProfesor.Name = "CodigoProfesor";
+			this.CodigoProfesor.ReadOnly = true;
+			this.CodigoProfesor.Width = 50;
+			// 
+			// nombreProfesor
+			// 
+			this.nombreProfesor.HeaderText = "Nombre";
+			this.nombreProfesor.Name = "nombreProfesor";
+			this.nombreProfesor.ReadOnly = true;
+			// 
+			// apellidoPProfesor
+			// 
+			this.apellidoPProfesor.HeaderText = "Apellido Paterno";
+			this.apellidoPProfesor.Name = "apellidoPProfesor";
+			this.apellidoPProfesor.ReadOnly = true;
+			// 
+			// apellidoMProfesor
+			// 
+			this.apellidoMProfesor.HeaderText = "Apellido Materno";
+			this.apellidoMProfesor.Name = "apellidoMProfesor";
+			this.apellidoMProfesor.ReadOnly = true;
+			// 
+			// usuarioProfesor
+			// 
+			this.usuarioProfesor.HeaderText = "Usuario";
+			this.usuarioProfesor.Name = "usuarioProfesor";
+			this.usuarioProfesor.ReadOnly = true;
+			// 
+			// estadoProfesor
+			// 
+			this.estadoProfesor.HeaderText = "Estado";
+			this.estadoProfesor.Name = "estadoProfesor";
+			this.estadoProfesor.ReadOnly = true;
+			// 
+			// correoProfesor
+			// 
+			this.correoProfesor.HeaderText = "Correo";
+			this.correoProfesor.Name = "correoProfesor";
+			this.correoProfesor.ReadOnly = true;
+			// 
+			// tipoUsuarioProfesor
+			// 
+			this.tipoUsuarioProfesor.HeaderText = "Tipo Usuario";
+			this.tipoUsuarioProfesor.Name = "tipoUsuarioProfesor";
+			this.tipoUsuarioProfesor.ReadOnly = true;
 			// 
 			// buttonEliminarUsuario
 			// 
@@ -590,7 +638,7 @@
 			this.labelAlgo.BackColor = System.Drawing.Color.Transparent;
 			this.labelAlgo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.labelAlgo.ForeColor = System.Drawing.Color.White;
-			this.labelAlgo.Location = new System.Drawing.Point(22, 240);
+			this.labelAlgo.Location = new System.Drawing.Point(24, 158);
 			this.labelAlgo.Name = "labelAlgo";
 			this.labelAlgo.Size = new System.Drawing.Size(66, 18);
 			this.labelAlgo.TabIndex = 44;
@@ -602,7 +650,7 @@
 			this.label5.BackColor = System.Drawing.Color.Transparent;
 			this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.label5.ForeColor = System.Drawing.Color.White;
-			this.label5.Location = new System.Drawing.Point(22, 160);
+			this.label5.Location = new System.Drawing.Point(24, 78);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(64, 18);
 			this.label5.TabIndex = 45;
@@ -614,7 +662,7 @@
 			this.labelNombre.BackColor = System.Drawing.Color.Transparent;
 			this.labelNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.labelNombre.ForeColor = System.Drawing.SystemColors.Window;
-			this.labelNombre.Location = new System.Drawing.Point(22, 270);
+			this.labelNombre.Location = new System.Drawing.Point(24, 181);
 			this.labelNombre.Name = "labelNombre";
 			this.labelNombre.Size = new System.Drawing.Size(45, 18);
 			this.labelNombre.TabIndex = 46;
@@ -626,71 +674,11 @@
 			this.labelCodigo.BackColor = System.Drawing.Color.Transparent;
 			this.labelCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.labelCodigo.ForeColor = System.Drawing.SystemColors.Window;
-			this.labelCodigo.Location = new System.Drawing.Point(22, 193);
+			this.labelCodigo.Location = new System.Drawing.Point(24, 103);
 			this.labelCodigo.Name = "labelCodigo";
 			this.labelCodigo.Size = new System.Drawing.Size(37, 18);
 			this.labelCodigo.TabIndex = 47;
 			this.labelCodigo.Text = "Algo";
-			// 
-			// buttonEditarPerfil
-			// 
-			this.buttonEditarPerfil.BackColor = System.Drawing.Color.Peru;
-			this.buttonEditarPerfil.ForeColor = System.Drawing.SystemColors.ButtonFace;
-			this.buttonEditarPerfil.Location = new System.Drawing.Point(52, 369);
-			this.buttonEditarPerfil.Name = "buttonEditarPerfil";
-			this.buttonEditarPerfil.Size = new System.Drawing.Size(75, 23);
-			this.buttonEditarPerfil.TabIndex = 50;
-			this.buttonEditarPerfil.Text = "Editar Perfil";
-			this.buttonEditarPerfil.UseVisualStyleBackColor = false;
-			// 
-			// CodigoProfesor
-			// 
-			this.CodigoProfesor.HeaderText = "Código";
-			this.CodigoProfesor.Name = "CodigoProfesor";
-			this.CodigoProfesor.ReadOnly = true;
-			this.CodigoProfesor.Width = 50;
-			// 
-			// nombreProfesor
-			// 
-			this.nombreProfesor.HeaderText = "Nombre";
-			this.nombreProfesor.Name = "nombreProfesor";
-			this.nombreProfesor.ReadOnly = true;
-			// 
-			// apellidoPProfesor
-			// 
-			this.apellidoPProfesor.HeaderText = "Apellido Paterno";
-			this.apellidoPProfesor.Name = "apellidoPProfesor";
-			this.apellidoPProfesor.ReadOnly = true;
-			// 
-			// apellidoMProfesor
-			// 
-			this.apellidoMProfesor.HeaderText = "Apellido Materno";
-			this.apellidoMProfesor.Name = "apellidoMProfesor";
-			this.apellidoMProfesor.ReadOnly = true;
-			// 
-			// usuarioProfesor
-			// 
-			this.usuarioProfesor.HeaderText = "Usuario";
-			this.usuarioProfesor.Name = "usuarioProfesor";
-			this.usuarioProfesor.ReadOnly = true;
-			// 
-			// estadoProfesor
-			// 
-			this.estadoProfesor.HeaderText = "Estado";
-			this.estadoProfesor.Name = "estadoProfesor";
-			this.estadoProfesor.ReadOnly = true;
-			// 
-			// correoProfesor
-			// 
-			this.correoProfesor.HeaderText = "Correo";
-			this.correoProfesor.Name = "correoProfesor";
-			this.correoProfesor.ReadOnly = true;
-			// 
-			// tipoUsuarioProfesor
-			// 
-			this.tipoUsuarioProfesor.HeaderText = "Tipo Usuario";
-			this.tipoUsuarioProfesor.Name = "tipoUsuarioProfesor";
-			this.tipoUsuarioProfesor.ReadOnly = true;
 			// 
 			// MenuAdministrator
 			// 
@@ -700,7 +688,6 @@
 			this.BackColor = System.Drawing.Color.Brown;
 			this.BackgroundImage = global::DocentematumCSharp.Properties.Resources.BackGround_Blue;
 			this.ClientSize = new System.Drawing.Size(789, 407);
-			this.Controls.Add(this.buttonEditarPerfil);
 			this.Controls.Add(this.tabPrincipal);
 			this.Controls.Add(this.labelCodigo);
 			this.Controls.Add(this.labelNombre);
@@ -765,7 +752,6 @@
 		private System.Windows.Forms.Button buttonAgregarUsuario;
 		private System.Windows.Forms.Label label9;
 		private System.Windows.Forms.TextBox textBoxFindUser;
-		private System.Windows.Forms.Button buttonEditarPerfil;
 		private System.Windows.Forms.Label label10;
 		private System.Windows.Forms.TextBox textBoxNomDiv;
 		private System.Windows.Forms.Button buttonBuscarDivision;

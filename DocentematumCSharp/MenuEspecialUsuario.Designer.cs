@@ -43,7 +43,6 @@
 			this.buttonRechazar = new System.Windows.Forms.Button();
 			this.buttonAprobar = new System.Windows.Forms.Button();
 			this.labelNombre = new System.Windows.Forms.Label();
-			this.buttonEditarPerfil = new System.Windows.Forms.Button();
 			this.labelCodigo = new System.Windows.Forms.Label();
 			this.tabControlUsuarioEspecial = new System.Windows.Forms.TabControl();
 			this.label1 = new System.Windows.Forms.Label();
@@ -57,7 +56,7 @@
 			// 
 			this.buttonCrearProfesor.BackColor = System.Drawing.Color.DarkSlateGray;
 			this.buttonCrearProfesor.ForeColor = System.Drawing.SystemColors.ButtonFace;
-			this.buttonCrearProfesor.Location = new System.Drawing.Point(19, 322);
+			this.buttonCrearProfesor.Location = new System.Drawing.Point(21, 340);
 			this.buttonCrearProfesor.Name = "buttonCrearProfesor";
 			this.buttonCrearProfesor.Size = new System.Drawing.Size(99, 23);
 			this.buttonCrearProfesor.TabIndex = 63;
@@ -206,17 +205,6 @@
 			this.labelNombre.TabIndex = 59;
 			this.labelNombre.Text = "Nombre";
 			// 
-			// buttonEditarPerfil
-			// 
-			this.buttonEditarPerfil.BackColor = System.Drawing.Color.Peru;
-			this.buttonEditarPerfil.ForeColor = System.Drawing.SystemColors.ButtonFace;
-			this.buttonEditarPerfil.Location = new System.Drawing.Point(19, 383);
-			this.buttonEditarPerfil.Name = "buttonEditarPerfil";
-			this.buttonEditarPerfil.Size = new System.Drawing.Size(99, 23);
-			this.buttonEditarPerfil.TabIndex = 62;
-			this.buttonEditarPerfil.Text = "Editar Perfil";
-			this.buttonEditarPerfil.UseVisualStyleBackColor = false;
-			// 
 			// labelCodigo
 			// 
 			this.labelCodigo.AutoSize = true;
@@ -272,7 +260,6 @@
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.buttonCrearProfesor);
 			this.Controls.Add(this.labelNombre);
-			this.Controls.Add(this.buttonEditarPerfil);
 			this.Controls.Add(this.labelCodigo);
 			this.Controls.Add(this.tabControlUsuarioEspecial);
 			this.Name = "MenuEspecialUsuario";
@@ -297,7 +284,6 @@
 		private System.Windows.Forms.Button buttonRechazar;
 		private System.Windows.Forms.Button buttonAprobar;
 		private System.Windows.Forms.Label labelNombre;
-		private System.Windows.Forms.Button buttonEditarPerfil;
 		private System.Windows.Forms.Label labelCodigo;
 		private System.Windows.Forms.TabControl tabControlUsuarioEspecial;
 		private System.Windows.Forms.DataGridViewTextBoxColumn IDProduccion;

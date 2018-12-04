@@ -71,7 +71,6 @@
 			this.labelNombreGrado = new System.Windows.Forms.Label();
 			this.buttonEliminarGrado = new System.Windows.Forms.Button();
 			this.buttonAgregarGrado = new System.Windows.Forms.Button();
-			this.buttonEditarPerfil = new System.Windows.Forms.Button();
 			this.tabControlProfesor = new System.Windows.Forms.TabControl();
 			this.tabPageGradosProfesor = new System.Windows.Forms.TabPage();
 			this.label5 = new System.Windows.Forms.Label();
@@ -532,17 +531,6 @@
 			this.buttonAgregarGrado.UseVisualStyleBackColor = false;
 			this.buttonAgregarGrado.Click += new System.EventHandler(this.buttonAgregarGrado_Click);
 			// 
-			// buttonEditarPerfil
-			// 
-			this.buttonEditarPerfil.BackColor = System.Drawing.Color.Peru;
-			this.buttonEditarPerfil.ForeColor = System.Drawing.SystemColors.ButtonFace;
-			this.buttonEditarPerfil.Location = new System.Drawing.Point(19, 393);
-			this.buttonEditarPerfil.Name = "buttonEditarPerfil";
-			this.buttonEditarPerfil.Size = new System.Drawing.Size(75, 23);
-			this.buttonEditarPerfil.TabIndex = 58;
-			this.buttonEditarPerfil.Text = "Editar Perfil";
-			this.buttonEditarPerfil.UseVisualStyleBackColor = false;
-			// 
 			// tabControlProfesor
 			// 
 			this.tabControlProfesor.Controls.Add(this.tabPageCarrerasProfesor);
@@ -629,7 +617,6 @@
 			this.Controls.Add(this.buttonExportarCurriculum);
 			this.Controls.Add(this.labelCodigo);
 			this.Controls.Add(this.labelNombreAdministrador);
-			this.Controls.Add(this.buttonEditarPerfil);
 			this.Controls.Add(this.tabControlProfesor);
 			this.Name = "MenuEstandarUsuario";
 			this.Text = "MenuEstandarUsuario";
@@ -675,7 +662,6 @@
 		private System.Windows.Forms.Label labelNombreGrado;
 		private System.Windows.Forms.Button buttonEliminarGrado;
 		private System.Windows.Forms.Button buttonAgregarGrado;
-		private System.Windows.Forms.Button buttonEditarPerfil;
 		private System.Windows.Forms.TabControl tabControlProfesor;
 		private System.Windows.Forms.TabPage tabPageGradosProfesor;
 		private System.Windows.Forms.Label label1;
