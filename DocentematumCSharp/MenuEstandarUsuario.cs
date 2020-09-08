@@ -19,17 +19,30 @@ namespace DocentematumCSharp
 		MainForm main;
 		Login formaLogin;
 		int userCode, n = -1, n2 = -1, newCode;
+        string imageRoute = "C:\\Users\\Juan Balderrama\\source\\repos\\Jhonnyfasio\\DocentematumCSharp\\DocentematumCSharp\\bin\\Debug\\Images\\NotFound.jpg";
 		public MenuEstandarUsuario()
 		{
 			InitializeComponent();
+            
 		}
 
 		public MenuEstandarUsuario(MainForm m, Login forma1, int uCode)
 		{
+            
 			string str;
 			InitializeComponent();
 			userCode = uCode;
 			newCode = uCode;
+            str = "C:\\Users\\Juan Balderrama\\source\\repos\\Jhonnyfasio\\DocentematumCSharp\\DocentematumCSharp\\bin\\Debug\\Images\\" + userCode.ToString() + ".jpg";
+            if (File.Exists(str))
+            {
+                pictureProfile.Image = System.Drawing.Image.FromFile(str);
+                imageRoute = str;
+            }
+            else
+            {
+                pictureProfile.Image = System.Drawing.Image.FromFile("Images\\NotFound.jpg");
+            }
 
 			ConnectionSql connection = new ConnectionSql();
 			str = "SELECT nombre, codigoTrabajador FROM profesor WHERE codigoTrabajador = '" + userCode + "';";
@@ -431,7 +444,8 @@ namespace DocentematumCSharp
 
 		private void buttonExportarCurriculum_Click(object sender, EventArgs e)
 		{
-			Document doc = new Document(PageSize.A4.Rotate(), 10, 10, 10, 10);
+            iTextSharp.text.Image image = iTextSharp.text.Image.GetInstance(imageRoute);
+			Document doc = new Document(PageSize.A4, 10, 10, 10, 10);
 			SaveFileDialog dialog = new SaveFileDialog();
 			dialog.InitialDirectory = @"C:";
 			dialog.Title = "Guardar Curriculum";
@@ -439,21 +453,39 @@ namespace DocentematumCSharp
 			dialog.Filter = "pdf files (*.pdf)|*-pdf| ALL files (*.*)|*.*";
 			dialog.FilterIndex = 2;
 			dialog.RestoreDirectory = true;
+            image.ScaleToFit(80f, 80f);
+            image.SpacingBefore = 10f;
+            image.SpacingAfter = 10f;
+            image.BorderColor = iTextSharp.text.BaseColor.BLUE;
+            image.SetAbsolutePosition(doc.PageSize.Width - 150f, doc.PageSize.Height - 140);
+            //image.IndentationRight = 20f;
+            //image.Alignment = Element.ALIGN_LEFT + 20;
+            //image.Alignment = Element.
+            
 			string filename = "";
 			if (dialog.ShowDialog() == DialogResult.OK)
 			{
 				filename = dialog.FileName;
 			}
-
-
-			FileStream file = new FileStream(filename,FileMode.Create);
-			PdfWriter.GetInstance(doc, file);
-			doc.Open();
+            if (File.Exists(filename))
+            {
+                File.Delete(filename);
+            }
+            if(filename == "")
+            {
+                return;
+            }
+            FileStream file = new FileStream(filename, FileMode.Create);
+            PdfWriter.GetInstance(doc, file);
+            doc.Open();
+			
 			Paragraph p = new Paragraph();
 			string str;
 			str = "";
-			doc.Add(new Paragraph("\n\n\n"));
-			doc.Add(new Paragraph($"               Código:  {labelCodigo.Text}"));
+            
+            doc.Add(new Paragraph("\n\n"));
+            doc.Add(image);
+            doc.Add(new Paragraph($"               Código:  {labelCodigo.Text}"));
 
 			ConnectionSql connection = new ConnectionSql();
 			MySqlCommand command;
@@ -472,7 +504,7 @@ namespace DocentematumCSharp
 				BaseFont.NOT_EMBEDDED);
 			iTextSharp.text.Font font = new iTextSharp.text.Font(baseColumn, 10, 1, BaseColor.WHITE);
 
-
+            ////////////////////// Grados ////////////////////////
 			doc.Add(new Paragraph("               Grados obtenidos: \n\n"));
 			PdfPTable tableGrado = new PdfPTable(DgvGrado.Columns.Count);
 			//Table Header
@@ -494,8 +526,8 @@ namespace DocentematumCSharp
 			doc.Add(tableGrado);
 			doc.Add(new Paragraph("\n\n"));
 
-
-			doc.Add(new Paragraph("               Carreras impartidas: \n\n"));
+            ////////////////////// Carreras ////////////////////////
+            doc.Add(new Paragraph("               Carreras impartidas: \n\n"));
 			PdfPTable tableCarrera = new PdfPTable(dgvAgregadas.Columns.Count);
 
 			//Table Header
@@ -517,12 +549,19 @@ namespace DocentematumCSharp
 			doc.Add(tableCarrera);
 			doc.Add(new Paragraph("\n\n"));
 
-			doc.Add(new Paragraph("               Producciones Aprobadas y Pendientes: \n\n"));
+            ////////////////////// Producciones ////////////////////////
+            doc.Add(new Paragraph("               Producciones Aprobadas y Pendientes: \n\n"));
 			PdfPTable tableProduccion = new PdfPTable(dgvProduccion.Columns.Count);
+            float[] widths = new float[] { 20f, 20f, 20f, 20f, 20f };
+            tableProduccion.SetWidths(widths);
 			//Table Header
 			for (int i = 0; i < dgvProduccion.Columns.Count; i++)
 			{
 				PdfPCell cell = new PdfPCell();
+                if(i == 0)
+                {
+                    //cell.fix
+                }
 				cell.BackgroundColor = BaseColor.GRAY;
 				cell.AddElement(new Chunk(dgvProduccion.Columns[i].HeaderText.ToUpper(), font));
 				tableProduccion.AddCell(cell);
@@ -531,14 +570,14 @@ namespace DocentematumCSharp
 			//Table Data
 			for (int i = 0; i < dgvProduccion.Rows.Count; i++)
 			{
-				if (dgvProduccion.Columns[i].HeaderText == "Status")
+
+                //MessageBox.Show((string)dgvProduccion.Rows[i].Cells["Status"].Value);
+				if ((string)dgvProduccion.Rows[i].Cells["Status"].Value == "APROBADA")
 				{
-					if ((string)dgvProduccion.Rows[i].Cells["Status"].Value != "RECHAZADA")
-					{
-						for (int j = 0; j < dgvProduccion.Columns.Count; j++)
-							tableProduccion.AddCell((string)dgvProduccion.Rows[i].Cells[j].Value);
-					}
+					for (int j = 0; j < dgvProduccion.Columns.Count; j++)
+						tableProduccion.AddCell((string)dgvProduccion.Rows[i].Cells[j].Value);
 				}
+				
 				
 			}
 			doc.Add(tableProduccion);

@@ -139,14 +139,25 @@ namespace DocentematumCSharp
 			else
 			{
 				connection.closeConnection();
-				division = comboDivision.Items[indexDivision].ToString().Substring(0, 5);
+                int i = 0;
+                string acumulator = "";
+                string textOne = comboDivision.Items[indexDivision].ToString().Substring(i, 1);
+                while (textOne != " ")
+                {
+                    acumulator += textOne;
+                    MessageBox.Show(acumulator + " - " + i);
+                    i++;
+                    textOne = comboDivision.Items[indexDivision].ToString().Substring(i, 1);
+                }
+                division = acumulator;
 				nivel = comboNivel.Items[indexNivel].ToString().Substring(0, 1);
-
+                
 				connection = new ConnectionSql();
 				str = "INSERT INTO carrera VALUES ('" + textBox1.Text + "', '" + division +
 					"', '" + nivel + "', '" + textBox2.Text + "');";
+                MessageBox.Show(str);
 
-				command = connection.getCommand(str);
+                command = connection.getCommand(str);
 				command.ExecuteNonQuery();
 
 				chargeDGVCarreras();
@@ -220,11 +231,15 @@ namespace DocentematumCSharp
 		private void buttonAgregarDivision_Click(object sender, EventArgs e)
 		{
 			string str;
-			if (string.IsNullOrWhiteSpace(textBoxClaveDiv.Text) || string.IsNullOrWhiteSpace(textBoxNomDiv.Text))
-			{
-				MessageBox.Show("No puede haber campos nulos");
-				return;
-			}
+            if (string.IsNullOrWhiteSpace(textBoxClaveDiv.Text) || string.IsNullOrWhiteSpace(textBoxNomDiv.Text))
+            {
+                MessageBox.Show("No puede haber campos nulos");
+                return;
+            }
+            else if (System.Text.RegularExpressions.Regex.IsMatch(textBoxClaveDiv.Text, "[^0-9]")) {
+                MessageBox.Show("Sólo se permiten números en el campo de Clave");
+                return;
+            }
 
 			ConnectionSql connection = new ConnectionSql();
 			str = "SELECT * FROM division WHERE idDivision = " + textBoxClaveDiv.Text + ";";
@@ -248,7 +263,6 @@ namespace DocentematumCSharp
 				chargeComboDivision();
 			}
 			connection.closeConnection();
-			cleanTextBoxDivision();
 		}
 
 		public void chargeDgvDivisiones()
@@ -275,7 +289,7 @@ namespace DocentematumCSharp
 			DialogResult dialog = MessageBox.Show("Estás por eliminar un registro ¿Estás seguro de esto?", "Eliminado regsitro.", MessageBoxButtons.YesNoCancel);
 			if (dialog == DialogResult.Yes)
 			{
-				if (n != -1)
+				if (n > -1)
 				{
 					ConnectionSql connection = new ConnectionSql();
 					str = "DELETE FROM division WHERE idDivision = " + (string)dgvDivisiones.Rows[n].Cells["ClaveDivision"].Value + ";";
@@ -285,6 +299,8 @@ namespace DocentematumCSharp
 					chargeDGVCarreras();
 
 					connection.closeConnection();
+                    cleanTextBoxDivision();
+                    chargeComboDivision();
 				}
 			}
 		}

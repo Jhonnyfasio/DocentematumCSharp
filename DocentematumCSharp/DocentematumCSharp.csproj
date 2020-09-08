@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>DocentematumCSharp</RootNamespace>
     <AssemblyName>DocentematumCSharp</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
@@ -25,6 +25,7 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -35,6 +36,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -44,13 +46,14 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>DocentematumCSharp.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="itextsharp">
-      <HintPath>..\..\..\..\Desktop\Tareas INCO PC\5to Semestre\03 - Ingeniería de Software\Software\iTextSharp\itextsharp.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\MySQL\MySQL Connector Net 8.0.20\Assemblies\v4.5.2\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="itextsharp.pdfa">
       <HintPath>..\..\..\..\Desktop\Tareas INCO PC\5to Semestre\03 - Ingeniería de Software\Software\iTextSharp\itextsharp.pdfa.dll</HintPath>
@@ -58,7 +61,10 @@
     <Reference Include="itextsharp.xtra">
       <HintPath>..\..\..\..\Desktop\Tareas INCO PC\5to Semestre\03 - Ingeniería de Software\Software\iTextSharp\itextsharp.xtra.dll</HintPath>
     </Reference>
-    <Reference Include="MySql.Data, Version=6.9.12.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data, Version=8.0.20.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\MySQL\MySQL Connector Net 8.0.20\Assemblies\v4.5.2\MySql.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -156,6 +162,7 @@
     <EmbeddedResource Include="VistaProduccion.resx">
       <DependentUpon>VistaProduccion.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -187,6 +194,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\redIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DuckSolutionsWhite-02.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\administrator.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

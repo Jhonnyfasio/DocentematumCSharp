@@ -73,6 +73,16 @@ namespace DocentematumCSharp.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap administrator {
+            get {
+                object obj = ResourceManager.GetObject("administrator", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap BackGround_Blue {
             get {
                 object obj = ResourceManager.GetObject("BackGround Blue", resourceCulture);
@@ -86,6 +96,16 @@ namespace DocentematumCSharp.Properties {
         internal static System.Drawing.Bitmap DocentematumLogo {
             get {
                 object obj = ResourceManager.GetObject("DocentematumLogo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap DuckSolutionsWhite_02 {
+            get {
+                object obj = ResourceManager.GetObject("DuckSolutionsWhite-02", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

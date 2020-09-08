@@ -96,7 +96,7 @@ namespace DocentematumCSharp
 		private void buttonVerProduccion_Click(object sender, EventArgs e)
 		{
 		string str;
-			if (n != -1)
+			if (n > -1)
 			{
 				ConnectionSql connection = new ConnectionSql();
 				str = "SELECT * FROM produccion WHERE idProduccion = '" + (string)dgvProduccion.Rows[n].Cells["idProduccion"].Value + "';";

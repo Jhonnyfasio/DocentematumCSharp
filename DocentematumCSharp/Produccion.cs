@@ -72,17 +72,24 @@ namespace DocentematumCSharp
 		{
 			if (checkNullFields())
 			{
-				try
-				{
-					buttonGuardarModificar.Hide();
-					buttonGuardar.Show();
-					ConnectionSql connection = new ConnectionSql();
-					MySqlCommand command;
-					string date1, date2;
-					date1 = dateFechaIncio.Value.Year.ToString() + "-" + dateFechaIncio.Value.Month.ToString() + "-" + dateFechaIncio.Value.Day.ToString();
-					date2 = dateFechaFinal.Value.Year.ToString() + "-" + dateFechaFinal.Value.Month.ToString() + "-" + dateFechaFinal.Value.Day.ToString();
+                try
+                {
+                    buttonGuardarModificar.Hide();
+                    buttonGuardar.Show();
+                    ConnectionSql connection = new ConnectionSql();
+                    MySqlCommand command;
+                    string date1, date2;
+                    date1 = dateFechaIncio.Value.Year.ToString() + "-" + dateFechaIncio.Value.Month.ToString() + "-" + dateFechaIncio.Value.Day.ToString();
+                    date2 = dateFechaFinal.Value.Year.ToString() + "-" + dateFechaFinal.Value.Month.ToString() + "-" + dateFechaFinal.Value.Day.ToString();
 
-					string str = $"INSERT INTO produccion VALUES (NULL,\"{textTipo.Text}\",\"{textTitulo.Text}\"," +
+                    //MessageBox.Show("here1");
+                    if (dateFechaFinal.Value.Date < dateFechaIncio.Value.Date)
+                    {
+                        MessageBox.Show("La fecha final de la producción no puede ser menor a la inicial");
+                        return;
+                    }
+
+                    string str = $"INSERT INTO produccion VALUES (NULL,\"{textTipo.Text}\",\"{textTitulo.Text}\"," +
 						$"\"{date1}\",\"{date2}\",\"{textNumeroInstitucion.Text}\",\"{textProposito.Text}\"," +
 						$"\"{textNumeroRegistro.Text}\",'Pendiente',\"{idProfesor.ToString()}\");";
 					//MessageBox.Show(str);
@@ -107,29 +114,38 @@ namespace DocentematumCSharp
 
 		private void buttonGuardarModificar_Click(object sender, EventArgs e)
 		{
-			try
-			{
-				ConnectionSql connection = new ConnectionSql();
-				MySqlCommand command;
-				string date1, date2;
-				date1 = dateFechaIncio.Value.Year.ToString() + "-" + dateFechaIncio.Value.Month.ToString() + "-" + dateFechaIncio.Value.Day.ToString();
-				date2 = dateFechaFinal.Value.Year.ToString() + "-" + dateFechaFinal.Value.Month.ToString() + "-" + dateFechaFinal.Value.Day.ToString();
+            if (checkNullFields())
+            {
+                try
+                {
+                    ConnectionSql connection = new ConnectionSql();
+                    MySqlCommand command;
+                    string date1, date2;
+                    date1 = dateFechaIncio.Value.Year.ToString() + "-" + dateFechaIncio.Value.Month.ToString() + "-" + dateFechaIncio.Value.Day.ToString();
+                    date2 = dateFechaFinal.Value.Year.ToString() + "-" + dateFechaFinal.Value.Month.ToString() + "-" + dateFechaFinal.Value.Day.ToString();
+                    //MessageBox.Show("here");
+                    if (dateFechaFinal.Value.Date < dateFechaIncio.Value.Date)
+                    {
+                        MessageBox.Show("La fecha final de la producción no puede ser menor a la inicial");
+                        return;
+                    }
 
-				string str = $"UPDATE produccion SET tipo=\"{textTipo.Text}\", titulo=\"{textTitulo.Text}\"," +
-					$"fechaInicio = \"{date1}\",fechaFinal = \"{date2}\", numeroInstitucion = \"{textNumeroInstitucion.Text}\", proposito=\"{textProposito.Text}\"," +
-					$"numeroRegistro = \"{textNumeroRegistro.Text}\" WHERE idProduccion = \"{idProduccion}\";";
-				//MessageBox.Show(str);
-				command = connection.getCommand(str);
-				command.ExecuteNonQuery();
-				connection.closeConnection();
-				menuEstandarUser.chargeDgvProduccion();
-				this.Close();
+                    string str = $"UPDATE produccion SET tipo=\"{textTipo.Text}\", titulo=\"{textTitulo.Text}\"," +
+                        $"fechaInicio = \"{date1}\",fechaFinal = \"{date2}\", numeroInstitucion = \"{textNumeroInstitucion.Text}\", proposito=\"{textProposito.Text}\"," +
+                        $"numeroRegistro = \"{textNumeroRegistro.Text}\" WHERE idProduccion = \"{idProduccion}\";";
+                    //MessageBox.Show(str);
+                    command = connection.getCommand(str);
+                    command.ExecuteNonQuery();
+                    connection.closeConnection();
+                    menuEstandarUser.chargeDgvProduccion();
+                    this.Close();
 
-			}
-			catch (MySqlException i)
-			{
-				MessageBox.Show(i.Message + "-" + i.ToString());
-			}
+                }
+                catch (MySqlException i)
+                {
+                    MessageBox.Show(i.Message + "-" + i.ToString());
+                }
+            }
 		}
 	}
 }
